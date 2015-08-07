@@ -40,7 +40,7 @@ gulp.task('serve', ['styles'], function () {
 
 gulp.task('watch', ['serve'], function () {
     // watch for changes
-    gulp.watch(['templates/**/*.html'], reload);
+    gulp.watch(['**/*.html'], reload);
 
     gulp.watch('styles/**/*.less', ['styles']);
     gulp.watch('scripts/**/*.js', ['scripts']);
