@@ -1,0 +1,19 @@
+{
+  "name": "ahmedjazzar.com",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedaljazzar/ahmedjazzar.com.git"
+  },
+  "author": "Ahmed Jazzar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmedaljazzar/ahmedjazzar.com/issues"
+  },
+  "homepage": "https://github.com/ahmedaljazzar/ahmedjazzar.com#readme"
+}
