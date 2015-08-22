@@ -1,5 +1,7 @@
 @aj-bg-color: #fff;
 @aj-text-color: #fff;
+@aj-blue-color-op: rgba(13, 169, 229, 0.7);
+@aj-blue-color: rgb(13, 169, 229);
 
 body  {
   background-color: @aj-bg-color;
@@ -9,11 +11,26 @@ body  {
     color: @aj-text-color;
     background: url('../../../images/pattern.png');
     height: 1262px;
+    padding-top: 0;
+
+    .logo-wrapper {
+      background: white;
+      width: 100px;
+      height: 100px;
+      box-shadow: 15px 15px 0 0 @aj-blue-color-op,
+                  0px 5px 0 0 @aj-blue-color;
+
+      .logo {
+        width: 70px;
+        margin: 10px;
+      }
+
+    }
 
     .name {
       font-family: "BlackJack";
       font-size: 70px;
-      text-shadow: -5px 5px 0px rgb(38, 176, 230);
+      text-shadow: -5px 5px 0px @aj-blue-color-op;
     }
 
     p {
