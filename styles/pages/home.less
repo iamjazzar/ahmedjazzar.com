@@ -1,5 +1,24 @@
-@color: #fff;
+@aj-bg-color: #fff;
+@aj-text-color: #fff;
 
 body  {
-  background-color: @color;
+  background-color: @aj-bg-color;
+
+  .header {
+    text-align: center;
+    color: @aj-text-color;
+    background: url('../../../images/pattern.png');
+    height: 1262px;
+
+    .name {
+      font-family: "BlackJack";
+      font-size: 70px;
+      text-shadow: -5px 5px 0px rgb(38, 176, 230);
+    }
+
+    p {
+      font-size: 35px;
+      font-family: "HP Simplified";
+    }
+  }
 }

@@ -1,3 +1,18 @@
 body {
   background-color: #ffffff;
 }
+body .header {
+  text-align: center;
+  color: #ffffff;
+  background: url('../../../images/pattern.png');
+  height: 1262px;
+}
+body .header .name {
+  font-family: "BlackJack";
+  font-size: 70px;
+  text-shadow: -5px 5px 0px #26b0e6;
+}
+body .header p {
+  font-size: 35px;
+  font-family: "HP Simplified";
+}
