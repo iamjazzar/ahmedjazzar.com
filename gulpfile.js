@@ -1,20 +1,22 @@
 'use strict';
 
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var combiner = require('stream-combiner2');
-var reload = browserSync.reload;
+var less = require('gulp-less');
 var shell = require('gulp-shell');
-var less        = require('gulp-less');
+var image = require('gulp-image');
+var combiner = require('stream-combiner2');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 
 // load plugins
 var $ = require('gulp-load-plugins')();
 
 var paths = {
-  scripts: ['client/js/**/*.coffee', '!client/external/**/*.coffee'],
+  scripts: 'scripts/**/*.js',
   less: 'styles/**/*.less',
-  css:  'styles/.compiled',
-  images: 'client/img/**/*'
+  compiled:  'styles/.compiled',
+  images: 'images/**/*',
+  html: '**/*.html',
 };
 
 
@@ -22,30 +24,32 @@ var paths = {
 gulp.task('styles', function() {
     return gulp.src(paths.less)
         .pipe(less())
-        .pipe(gulp.dest(paths.css))
+        .pipe(gulp.dest(paths.compiled))
         .pipe(reload({stream: true}));
 });
 
-// TODO: Clean task
-// TODO: Build task for production
-
 gulp.task('serve', ['styles'], function () {
     browserSync.init(null, {
-        proxy: "localhost:8080", // This should be already running in a separate command
+        proxy: "localhost:7070",
         open: 'internal',
         host: "localhost",
-        port: 3000
+        port: 4000
     });
 });
 
 gulp.task('watch', ['serve'], function () {
     // watch for changes
-    gulp.watch(['**/*.html'], reload);
+    gulp.watch([paths.html], reload);
+    gulp.watch(paths.less, ['styles']);
+    gulp.watch(paths.images, ['images']);
+    // gulp.watch(paths.scripts, ['scripts']);
+});
 
-    gulp.watch('styles/**/*.less', ['styles']);
-    gulp.watch('scripts/**/*.js', ['scripts']);
-    gulp.watch('images/**/*', ['images']);
+gulp.task('images', function () {
+  gulp.src(paths.images)
+    .pipe(image())
+    .pipe(gulp.dest(paths.compiled));
 });
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['watch', 'serve', 'styles']);
+gulp.task('default', ['watch', 'serve', 'styles', 'images']);
