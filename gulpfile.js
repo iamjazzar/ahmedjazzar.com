@@ -31,7 +31,7 @@ gulp.task('styles', function() {
 
 gulp.task('serve', ['styles'], function () {
     browserSync.init(null, {
-        proxy: "localhost:8080", // This should be already running in a separate command
+        proxy: "localhost:7070", // This should be already running in a separate command
         open: 'internal',
         host: "localhost",
         port: 3000
