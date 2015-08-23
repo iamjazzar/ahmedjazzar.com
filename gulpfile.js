@@ -11,10 +11,10 @@ var less        = require('gulp-less');
 var $ = require('gulp-load-plugins')();
 
 var paths = {
-  scripts: ['client/js/**/*.coffee', '!client/external/**/*.coffee'],
+  scripts: 'scripts/**/*.js',
   less: 'styles/**/*.less',
   css:  'styles/.compiled',
-  images: 'client/img/**/*'
+  images: 'images/**/*',
 };
 
 
@@ -26,15 +26,12 @@ gulp.task('styles', function() {
         .pipe(reload({stream: true}));
 });
 
-// TODO: Clean task
-// TODO: Build task for production
-
 gulp.task('serve', ['styles'], function () {
     browserSync.init(null, {
-        proxy: "localhost:7070", // This should be already running in a separate command
+        proxy: "localhost:7070",
         open: 'internal',
         host: "localhost",
-        port: 3000
+        port: 4000
     });
 });
 
@@ -42,9 +39,9 @@ gulp.task('watch', ['serve'], function () {
     // watch for changes
     gulp.watch(['**/*.html'], reload);
 
-    gulp.watch('styles/**/*.less', ['styles']);
-    gulp.watch('scripts/**/*.js', ['scripts']);
-    gulp.watch('images/**/*', ['images']);
+    gulp.watch(paths.less, ['styles']);
+    gulp.watch(paths.scripts, ['scripts']);
+    gulp.watch(paths.images, ['images']);
 });
 
 // The default task (called when you run `gulp` from cli)
