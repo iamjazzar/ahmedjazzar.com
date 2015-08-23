@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ahmedaljazzar/ahmedjazzar.com/issues"
   },
-  "homepage": "https://github.com/ahmedaljazzar/ahmedjazzar.com#readme"
+  "homepage": "https://github.com/ahmedaljazzar/ahmedjazzar.com#readme",
+  "devDependencies": {
+    "gulp-image": "^1.0.2",
+    "gulp-imagemin": "^2.3.0"
+  }
 }
