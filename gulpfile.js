@@ -126,13 +126,13 @@ gulp.task('serve', ['css'], function () {
 gulp.task('watch', ['serve'], function() {
 
   // Watch LESS files
-  gulp.watch(paths.styles, ['css']);
+  gulp.watch(paths.styles, ['css', reload]);
 
   // Watch JS files
-  gulp.watch(paths.scripts, ['js']);
+  gulp.watch(paths.scripts, ['js', reload]);
 
   // Watch image files
-  gulp.watch(paths.images, ['images']);
+  gulp.watch(paths.images, ['images', reload]);
 
   // Watch template files
   gulp.watch(['src/templates/*.ejs', '*.html'], ['templates', reload]);
