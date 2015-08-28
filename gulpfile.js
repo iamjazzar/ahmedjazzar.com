@@ -25,16 +25,15 @@ var gulp = require('gulp'),
     sprite = require('css-sprite').stream,
     flatten = require('gulp-flatten'),
     browserSync = require('browser-sync'),
-    streamqueue = require('streamqueue'),
     reload = browserSync.reload;
 
 // Define paths
 var paths = {
   scripts:   ['src/js/*.coffee', 'src/js/*.js'],
-  styles:    ['src/css/*.less', 'src/css/*.css'],
+  styles:    ['src/css/**/*.less', 'src/css/**/*.css'],
   images:    ['src/images/*.png'],
-  fonts:     ['src/fonts/**/*']
-  templates: ['src/templates/*.ejs', '*.html']
+  fonts:     ['src/**/*.{eot,svg,ttf,woff,woff2}'],
+  templates: ['src/templates/*.ejs']
 };
 
 // CSS
@@ -102,15 +101,10 @@ gulp.task('rev', function () {
 });
 
 // Copy fonts
-gulp.task('fonts', function () {
-    return streamqueue({objectMode: true},
-        $.bowerFiles(),
-        gulp.src(paths.fonts)
-    )
-        .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
-        .pipe($.flatten())
-        .pipe(gulp.dest('dist/assets/fonts'))
-        .pipe($.size());
+gulp.task('fonts', function() {
+  gulp.src(paths.fonts)
+    .pipe(flatten())
+    .pipe(gulp.dest('dist/assets/fonts'));
 });
 
 // Default task
@@ -121,7 +115,7 @@ gulp.task('default', ['clean'], function() {
 // Serve
 gulp.task('serve', ['css'], function () {
   browserSync.init(null, {
-      proxy: "localhost:7070", // This should be already running in a separate command
+      proxy: "localhost:7070",
       open: 'internal',
       host: "localhost",
       port: 4000
@@ -132,16 +126,16 @@ gulp.task('serve', ['css'], function () {
 gulp.task('watch', ['serve'], function() {
 
   // Watch LESS files
-  gulp.watch('src/css/**/*.less', ['css']);
+  gulp.watch(paths.styles, ['css', reload]);
 
   // Watch JS files
-  gulp.watch(paths.scripts, ['js']);
+  gulp.watch(paths.scripts, ['js', reload]);
 
   // Watch image files
-  gulp.watch(paths.images, ['images']);
+  gulp.watch(paths.images, ['images', reload]);
 
   // Watch template files
-  gulp.watch(paths.templates, ['templates', reload]);
+  gulp.watch(['src/templates/*.ejs', '*.html'], ['templates', reload]);
 
   // Create LiveReload server
   var server = livereload();
