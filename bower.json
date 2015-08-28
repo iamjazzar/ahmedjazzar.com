@@ -1,6 +1,6 @@
 {
   "name": "ahmedjazzar.com",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/ahmedaljazzar/ahmedjazzar.com",
   "authors": [
     "ahmedaljazzar <ahmed.mojaz@yahoo.com>"
@@ -10,7 +10,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "dist",
+    ".tmp"
   ]
 }
