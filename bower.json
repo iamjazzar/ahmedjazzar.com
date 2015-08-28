@@ -1,16 +1,8 @@
 {
-  "name": "ahmedjazzar.com",
-  "version": "0.0.0",
-  "homepage": "https://github.com/ahmedaljazzar/ahmedjazzar.com",
-  "authors": [
-    "ahmedaljazzar <ahmed.mojaz@yahoo.com>"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "name": "webapp",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass-official": "~3.2.0"
+  },
+  "devDependencies": {}
 }
