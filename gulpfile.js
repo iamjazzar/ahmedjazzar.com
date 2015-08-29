@@ -16,13 +16,10 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     include = require('gulp-include'),
-    ejs = require('gulp-ejs'),
     gutil = require('gulp-util'),
     rev = require('gulp-rev'),
     revall = require('gulp-rev-all'),
     livereload = require('gulp-livereload'),
-    gulpif = require('gulp-if'),
-    sprite = require('css-sprite').stream,
     flatten = require('gulp-flatten'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload;
@@ -32,8 +29,7 @@ var paths = {
   scripts:   ['src/js/*.coffee', 'src/js/*.js'],
   styles:    ['src/css/**/*.less', 'src/css/**/*.css'],
   images:    ['src/images/*.png'],
-  fonts:     ['src/**/*.{eot,svg,ttf,woff,woff2}'],
-  templates: ['src/templates/*.ejs']
+  fonts:     ['src/**/*.{eot,svg,ttf,woff,woff2}']
 };
 
 // CSS
@@ -79,14 +75,6 @@ gulp.task('images', function() {
     .pipe(notify({ message: 'Images task complete' }));
 });
 
-// Templates
-gulp.task('templates', function() {
-  return gulp.src(paths.templates)
-    .pipe(ejs().on('error', gutil.log))
-    .pipe(gulp.dest('dist'))
-    .pipe(notify({ message: 'Templates task complete' }));
-});
-
 // Clean up
 gulp.task('clean', function() {
   return gulp.src(['dist/assets/css', 'dist/assets/js', 'dist/assets/images', 'dist/assets/fonts', 'dist/*.html'], {read: false})
@@ -109,7 +97,7 @@ gulp.task('fonts', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('css', 'js', 'images', 'templates', 'fonts');
+  gulp.start('css', 'js', 'images', 'fonts');
 });
 
 // Serve
@@ -134,8 +122,8 @@ gulp.task('watch', ['serve'], function() {
   // Watch image files
   gulp.watch(paths.images, ['images', reload]);
 
-  // Watch template files
-  gulp.watch(['src/templates/*.ejs', '*.html'], ['templates', reload]);
+  // Watch html files
+  gulp.watch('*.html', [reload]);
 
   // Create LiveReload server
   var server = livereload();
