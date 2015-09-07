@@ -41,10 +41,9 @@
         <div class="nav-overlay" id="overlay">
           <nav class="overlay-menu">
             <ul>
-              <li ><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Portfolio</a></li>
-              <li><a href="#">Drop me a line</a></li>
+              {% for nav in navs %}
+                <li ><a href="{{ nav.href }}">{{ nav.name }}</a></li>
+              {% endfor %}
             </ul>
           </nav>
         </div>

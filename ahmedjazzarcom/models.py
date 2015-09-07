@@ -31,3 +31,17 @@ class HeaderData(models.Model):
 
     def __unicode__(self):
         return self.get_full_name()
+
+class Nav(models.Model):
+    name = models.CharField(max_length=15)
+    href = models.CharField(max_length=255)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def get_name(self):
+        return self.name
+
+    def get_href(self):
+        return self.href
+
+    def __unicode__(self):
+        return self.name

@@ -1,9 +1,12 @@
 from django.contrib import admin
 
-from models import HeaderData
+import models
 
 class HeaderDataAdmin(admin.ModelAdmin):
     list_display=["pk", "__unicode__", "updated"]
 
+class NavAdmin(admin.ModelAdmin):
+    list_display=["pk", "__unicode__", "updated"]
 
-admin.site.register(HeaderData, HeaderDataAdmin)
+admin.site.register(models.HeaderData, HeaderDataAdmin)
+admin.site.register(models.Nav, NavAdmin)
