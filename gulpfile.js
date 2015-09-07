@@ -123,6 +123,11 @@ gulp.task('watch', ['serve'], function() {
   // Watch html files
   gulp.watch('templates/**/*.html', [reload]);
 
+  gulp.watch('{ahmedjazzarcom,ahmedjazzar}/**/*.py', function () {
+      // TODO: Watch Django Server instead!
+      setTimeout(reload, 1000);
+  });
+
   // Create LiveReload server
   var server = livereload();
 
