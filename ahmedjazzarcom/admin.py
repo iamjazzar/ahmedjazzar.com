@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from models import HeaderData
+
+class HeaderDataAdmin(admin.ModelAdmin):
+    list_display=["pk", "__unicode__", "updated"]
+
+
+admin.site.register(HeaderData, HeaderDataAdmin)

@@ -50,11 +50,11 @@
         </div>
 
         <div class="logo-wrapper">
-          <img class="logo" src="{% static "images/logo.png" %}"/>
+          <img class="logo" src="{{ logo }}"/>
         </div>
         <div class="content">
-          <h1 class="name">Ahmed Jazzar,</h1>
-          <p>A self-taughst DEVELOPER & DESIGNER</p>
+          <h1 class="name">{{ full_name }},</h1>
+          <p>{{ about }}</p>
         </div>
         <div class="location-wrapper">
           <div class="location-describers">
@@ -63,10 +63,10 @@
             </div>
             <div class="text-desribtion">
               <div class="from">from</div>
-              <div class="palestine">Palestine</div>
+              <div class="palestine">{{ country }}</div>
             </div>
           </div>
-          <img src="{% static "images/palestine.png" %}" />
+          <img src="{{ country_image }}" />
         </div>
       </div>
     </div>
