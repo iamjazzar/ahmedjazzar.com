@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
-    clean = require('gulp-clean'),
+    rimraf = require('rimraf'),
     coffee = require('gulp-coffee'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
@@ -26,10 +26,10 @@ var gulp = require('gulp'),
 
 // Define paths
 var paths = {
-  scripts:   ['src/js/*.coffee', 'src/js/*.js'],
-  styles:    ['src/css/**/*.less', 'src/css/**/*.css'],
-  images:    ['src/images/*.png'],
-  fonts:     ['src/**/*.{eot,svg,ttf,woff,woff2}']
+  scripts:   ['static/scripts/*.coffee', 'static/scripts/*.js'],
+  styles:    ['static/styles/**/*.less', 'static/styles/**/*.css'],
+  images:    ['static/images/*.png'],
+  fonts:     ['static/fonts/**/*.{eot,svg,ttf,woff,woff2}']
 };
 
 // CSS
@@ -38,15 +38,14 @@ gulp.task('css', function() {
     .pipe(less({
       style: 'expanded',
       loadPath: [
-        process.cwd() + '/src/css/partials',
-        process.cwd() + '/src/vendor'
+        process.cwd() + '/static/styles/partials'
       ]
     }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(gulp.dest('dist/assets/css'))
+    .pipe(gulp.dest('.compiled/styles'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('dist/assets/css'))
+    .pipe(gulp.dest('.compiled/styles'))
     .pipe(notify({ message: 'CSS task complete' }));
 });
 
@@ -56,10 +55,10 @@ gulp.task('js', function() {
     .pipe(include())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .pipe(gulp.dest('dist/assets/js'))
+    .pipe(gulp.dest('.compiled/scripts'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
-    .pipe(gulp.dest('dist/assets/js'))
+    .pipe(gulp.dest('.compiled/scripts'))
     .pipe(notify({ message: 'JS task complete' }));
 });
 
@@ -67,23 +66,22 @@ gulp.task('js', function() {
 gulp.task('images', function() {
   return gulp.src(paths.images)
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('dist/assets/images'))
+    .pipe(gulp.dest('.compiled/images'))
     //.pipe(rev())
-    //.pipe(gulp.dest('dist/assets/images'))
+    //.pipe(gulp.dest('.compiled/images'))
     //.pipe(rev.manifest())
     //.pipe(gulp.dest('.'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 
 // Clean up
-gulp.task('clean', function() {
-  return gulp.src(['dist/assets/css', 'dist/assets/js', 'dist/assets/images', 'dist/assets/fonts', 'dist/*.html'], {read: false})
-    .pipe(clean());
+gulp.task('clean', function(cb) {
+  rimraf('./compiled', cb);
 });
 
 // Rev all files
 gulp.task('rev', function () {
-  gulp.src('dist/**')
+  gulp.src('.compiled/**')
     .pipe(revall({ ignore: [/^\/favicon.ico$/g, '.html'] }))
     .pipe(gulp.dest('rev'));
 });
@@ -92,7 +90,7 @@ gulp.task('rev', function () {
 gulp.task('fonts', function() {
   gulp.src(paths.fonts)
     .pipe(flatten())
-    .pipe(gulp.dest('dist/assets/fonts'));
+    .pipe(gulp.dest('.compiled/fonts'));
 });
 
 // Default task
@@ -103,7 +101,7 @@ gulp.task('default', ['clean'], function() {
 // Serve
 gulp.task('serve', ['css'], function () {
   browserSync.init(null, {
-      proxy: "localhost:7070",
+      proxy: "localhost:8000",
       open: 'internal',
       host: "localhost",
       port: 4000
@@ -123,14 +121,13 @@ gulp.task('watch', ['serve'], function() {
   gulp.watch(paths.images, ['images', reload]);
 
   // Watch html files
-  gulp.watch('*.html', [reload]);
+  gulp.watch('templates/**/*.html', [reload]);
 
   // Create LiveReload server
   var server = livereload();
 
   // Watch any files in assets folder reload on change
-  gulp.watch('dist/assets/**').on('change', function(file) {
+  gulp.watch('.compiled/**').on('change', function(file) {
     server.changed(file.path);
   });
-
 });

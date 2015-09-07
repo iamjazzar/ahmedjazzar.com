@@ -1,3 +1,13 @@
+# Python files
+*~
+*.pyc
+*.wpu
+*.wpr
+*.sqlite3
+
+# Front-end files
 node_modules
-dist
+/static/bower_components
+/rev
+.compiled
 .tmp
