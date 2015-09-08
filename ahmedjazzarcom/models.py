@@ -2,16 +2,14 @@ import os
 from django.db import models
 from django.conf import settings
 
-images_path = os.path.join("static", "images")
 
 class HeaderData(models.Model):
     first_name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
     about = models.TextField()
     country = models.CharField(max_length=15)
-    country_image = models.ImageField(upload_to=images_path)
-    logo = models.ImageField(upload_to=images_path)
-    pattern = models.ImageField(upload_to=images_path)
+    country_image = models.ImageField(upload_to='images') # TODO: Optimize before save
+    logo = models.ImageField(upload_to='images') # TODO: Optimize before save
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def get_full_name(self):
