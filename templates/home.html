@@ -4,13 +4,15 @@
 {% block title %}Ahmed Jazzar!{% endblock %}
 
 {% block header_links %}
-  {{ block.super }}
   <link rel="stylesheet" href="{% static "styles/home.min.css" %}">
   <link rel="stylesheet" href="{% static "styles/partials/aj-fonts.min.css" %}" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="{% static "styles/partials/animations.min.css" %}">
+  <!-- TODO: remove CDN and install the package -->
+  <!-- TODO: check https://fortawesome.github.io/Font-Awesome/get-started/ -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 {% endblock %}
 
-{% block body%}
+{% block content %}
   <div class="jumbotron header">
     <div class="container">
 
