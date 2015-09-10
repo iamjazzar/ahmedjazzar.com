@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ahmedaljazzar/ahmedjazzar.com#readme",
   "devDependencies": {
+    "bower": "^1.5.2",
     "browser-sync": "^2.8.2",
     "connect-livereload": "^0.4.0",
     "graceful-fs": "~4.1.2",
