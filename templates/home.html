@@ -1,11 +1,10 @@
 {% extends 'layout.html' %}
 {% load staticfiles %}
 
-{% block title %}Ahmed Jazzar!{% endblock %}
+{% block title %}{{ full_name }}!{% endblock %}
 
 {% block header_links %}
   <link rel="stylesheet" href="{% static "styles/home.min.css" %}">
-  <link rel="stylesheet" href="{% static "styles/partials/aj-fonts.min.css" %}" type="text/css" charset="utf-8" />
   <link rel="stylesheet" href="{% static "styles/partials/animations.min.css" %}">
   <!-- TODO: remove CDN and install the package -->
   <!-- TODO: check https://fortawesome.github.io/Font-Awesome/get-started/ -->
@@ -35,10 +34,12 @@
       <div class="logo-wrapper">
         <img class="logo" src="/media/{{ logo }}"/>
       </div>
+
       <div class="content">
         <h1 class="name">{{ full_name }},</h1>
         <p>{{ about }}</p>
       </div>
+
       <div class="location-wrapper">
         <div class="location-describers">
           <div class="map-marker floating">
@@ -50,6 +51,29 @@
           </div>
         </div>
         <img src="/media/{{ country_image }}" />
+      </div>
+    </div>
+    <div class="day-night container-fluid">
+      <div class="day-night-container day-container col-md-4">
+        <img class="left-arrow" src="{% static "images/left-arrow.png" %}" />
+        <div class="day">Day</div>
+        <div class="code">
+          &lt;/body&gt;&lt;/html&gt; </br>
+          def render( **kwargs </br>
+          self, content </br>
+          &bnsp;return </br>
+          .header { </br>
+        </div>
+      </div>
+      <div class="imac col-md-4">
+        <img class="img-responsive" src="{% static "images/imac-photoshop.png" %}"/>
+      </div>
+      <div class="day-night-container night-container col-md-4">
+        <img class="right-arrow" src="{% static "images/right-arrow.png" %}" />
+        <div class="night">Night</div>
+        <div class="paintings">
+          <img src="{% static "images/paintings.png" %}" alt="" />
+        </div>
       </div>
     </div>
   </div>

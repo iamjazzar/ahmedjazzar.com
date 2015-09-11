@@ -2,6 +2,7 @@
 @aj-text-color: white;
 @aj-blue-color-op: rgba(13, 169, 229, 0.7);
 @aj-blue-color: rgb(13, 169, 229);
+@aj-gray-color: rgb(30, 30, 31);
 
 @nav-height: 27px;
 @nav-width: 35px;
@@ -14,8 +15,10 @@ body  {
     text-align: center;
     color: @aj-text-color;
     background: url('../images/pattern.png');
-    height: 1200px;
-    padding-top: 0;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
 
     .nav-container {
       position: relative;
@@ -201,6 +204,7 @@ body  {
     .location-wrapper {
       max-width: 100px;
       margin: 0 auto;
+      margin-bottom: 35px;
 
       .location-describers  {
         position: absolute;
@@ -241,6 +245,73 @@ body  {
 
       img {
         max-width: 100%;
+      }
+    }
+
+    .day-night {
+      .day-night-container  {
+        font-size: 70px;
+        font-family: "lavendersweet";
+      }
+
+      .day-container  {
+        transform: rotate(20deg);
+
+        .left-arrow {
+          position: absolute;
+          right: 0;
+          bottom: -20px;
+          transform: rotate(-25deg);
+        }
+
+        .day  {
+          position: absolute;
+          right: 55px;
+          top: 36px;
+          transform: rotate(-25deg);
+        }
+
+        .code {
+          transform: rotate(-20deg);
+          font-family: monospace;
+          font-size: 20px;
+          color: @aj-gray-color;
+          text-align: right;
+          right: -180px;
+          top: 120px;
+          position: absolute;
+        }
+      }
+
+      .imac {
+        z-index: 1;
+        .img-responsive {
+          margin: auto;
+        }
+      }
+
+      .night-container  {
+        transform: rotate(-15deg);
+
+        .paintings {
+          left: -180px;
+          top: 102px;
+          position: absolute;
+          transform: rotate(180deg)
+        }
+
+        .right-arrow {
+          position: absolute;
+          left: 0;
+          top: -20px;
+          transform: rotate(30deg);
+        }
+
+        .night  {
+          position: absolute;
+          left: 100px;
+          top: 35px;
+        }
       }
     }
   }

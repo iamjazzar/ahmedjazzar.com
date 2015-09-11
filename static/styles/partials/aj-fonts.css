@@ -13,7 +13,6 @@
 }
 
 
-
 @font-face {
     font-family: 'hp_simplified';
     src: url('../../fonts/hpsimplified_rg-webfont.eot');
@@ -28,8 +27,6 @@
 }
 
 
-
-
 @font-face {
     font-family: 'blackjack';
     src: url('../../fonts/blackjar-webfont.eot');
@@ -38,6 +35,20 @@
          url('../../fonts/blackjar-webfont.woff') format('woff'),
          url('../../fonts/blackjar-webfont.ttf') format('truetype'),
          url('../../fonts/blackjar-webfont.svg#blackjackregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'lavendersweet';
+    src: url('../../fonts/lavendersweetorange-webfont.eot');
+    src: url('../../fonts/lavendersweetorange-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/lavendersweetorange-webfont.woff2') format('woff2'),
+         url('../../fonts/lavendersweetorange-webfont.woff') format('woff'),
+         url('../../fonts/lavendersweetorange-webfont.ttf') format('truetype'),
+         url('../../fonts/lavendersweetorange-webfont.svg#lavendersweetorangemedium') format('svg');
     font-weight: normal;
     font-style: normal;
 
