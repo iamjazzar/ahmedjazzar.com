@@ -1,12 +1,6 @@
-@aj-bg-color: white;
-@aj-text-color: white;
-@aj-blue-color-op: rgba(13, 169, 229, 0.7);
-@aj-blue-color: rgb(13, 169, 229);
-@aj-gray-color: rgb(30, 30, 31);
 
-@nav-height: 27px;
-@nav-width: 35px;
-@nav-color-main: #FF5252;
+@import "partials/aj-variables";
+@import "partials/aj-mixins";
 
 body  {
   background-color: @aj-bg-color;
@@ -208,7 +202,7 @@ body  {
 
       .location-describers  {
         position: absolute;
-        padding-top: 40px;
+        .padding-vert(40px);
         width: 110px;
 
         .map-marker {
@@ -275,7 +269,7 @@ body  {
           transform: rotate(-20deg);
           font-family: monospace;
           font-size: 20px;
-          color: @aj-gray-color;
+          color: @aj-text-gray-color;
           text-align: right;
           right: -180px;
           top: 120px;
@@ -313,6 +307,42 @@ body  {
           top: 35px;
         }
       }
+    }
+  }
+
+  .a-nerd-wrapper {
+    background-color: @aj-gray-color;
+    padding-top: 100px;
+    font-size: 20px;
+    color: @aj-text-light-gray-color;
+    text-align: justify;
+
+    .a-nerd  {
+      .title  {
+        font-family: "hp_simplified";
+        font-size: 40px;
+        color: @aj-text-gray-color;
+      }
+
+      .content  {
+        .padding-vert(30px);
+        font-family: "proximanova-regular";
+      }
+
+      .note {
+        font-family: "proximanova-italic";
+        border-left: 3px solid @aj-blue-color;
+        .padding-horz(25px);
+        margin-bottom: 50px;
+      }
+
+      .say-hello  {
+        .margin-vert(5px);
+      }
+    }
+
+    .image {
+      max-width: 35%;
     }
   }
 }
