@@ -13,7 +13,6 @@ var gulp = require('gulp'),
     rimraf = require('rimraf'),
     coffee = require('gulp-coffee'),
     concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     include = require('gulp-include'),
     gutil = require('gulp-util'),
@@ -45,8 +44,7 @@ gulp.task('css', function() {
     .pipe(gulp.dest('.compiled/styles'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('.compiled/styles'))
-    .pipe(notify({ message: 'CSS task complete' }));
+    .pipe(gulp.dest('.compiled/styles'));
 });
 
 // Javascript
@@ -58,20 +56,18 @@ gulp.task('js', function() {
     .pipe(gulp.dest('.compiled/scripts'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
-    .pipe(gulp.dest('.compiled/scripts'))
-    .pipe(notify({ message: 'JS task complete' }));
+    .pipe(gulp.dest('.compiled/scripts'));
 });
 
 // Optimize images
 gulp.task('images', function() {
   return gulp.src(paths.images)
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('.compiled/images'))
+    .pipe(gulp.dest('.compiled/images'));
     //.pipe(rev())
     //.pipe(gulp.dest('.compiled/images'))
     //.pipe(rev.manifest())
-    //.pipe(gulp.dest('.'))
-    .pipe(notify({ message: 'Images task complete' }));
+    //.pipe(gulp.dest('.'));
 });
 
 // Clean up
