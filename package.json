@@ -5,7 +5,9 @@
   "description": "My personal website",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "gulp"
+    "start": "gulpfile.js",
+    "test": "gulp",
+    "postinstall": "gulp default"
   },
   "repository": {
     "type": "git",
@@ -51,7 +53,8 @@
     "vinyl": "0.5.1",
     "vinyl-fs": "~1.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "keywords": [
     "ahmed",
     "jazzar",

@@ -32,7 +32,7 @@
       </div>
 
       <div class="logo-wrapper">
-        <img class="logo" src="/media/{{ logo }}"/>
+        <img class="logo" src="{{MEDIA_URL}}{{ logo }}"/>
       </div>
 
       <div class="content">
@@ -50,7 +50,7 @@
             <div class="palestine">{{ country }}</div>
           </div>
         </div>
-        <img src="/media/{{ country_image }}" />
+        <img src="{{MEDIA_URL}}{{ country_image }}" />
       </div>
     </div>
     <div class="day-night container-fluid">

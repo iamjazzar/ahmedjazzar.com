@@ -1,13 +1,25 @@
+# Uncomment the following lines before pushing to production
+# README.md
+# package.json
+# gulpfile.js
+# bower.json
+# /static
+
+# Comment the following lines before pushing to production
+/.compiled
+secret_vars.py
+
 # Python files
 *~
 *.pyc
 *.wpu
 *.wpr
-*.sqlite3
+*.sqlite
+/venv
 
 # Front-end files
-node_modules
-/static/bower_components
+/static/bower_components/
+/node_modules
+/staticfiles
 /rev
-.compiled
-.tmp
+/.tmp
