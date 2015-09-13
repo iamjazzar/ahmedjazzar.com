@@ -1,3 +1,4 @@
+
 {
   "name": "ahmedjazzar.com",
   "version": "1.0.0",
@@ -11,7 +12,7 @@
     "url": "git+https://github.com/ahmedaljazzar/ahmedjazzar.com.git"
   },
   "author": "Ahmed Jazzar",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ahmedaljazzar/ahmedjazzar.com/issues"
   },
@@ -50,5 +51,11 @@
     "vinyl": "0.5.1",
     "vinyl-fs": "~1.0.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": [
+    "ahmed",
+    "jazzar",
+    "personal",
+    "website"
+  ]
 }
