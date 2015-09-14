@@ -28,7 +28,8 @@ var paths = {
   scripts:   ['static/scripts/*.coffee', 'static/scripts/*.js'],
   styles:    ['static/styles/**/*.less', 'static/styles/**/*.css'],
   images:    ['static/images/*.png'],
-  fonts:     ['static/fonts/**/*.{eot,svg,ttf,woff,woff2}']
+  fonts:     ['static/fonts/**/*.{eot,svg,ttf,woff,woff2}'],
+  bower:     ['static/bower_components/**/*'],
 };
 
 // CSS
@@ -89,9 +90,15 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('.compiled/fonts'));
 });
 
+gulp.task('bower', function() {
+  gulp.src(paths.bower)
+    .pipe(flatten())
+    .pipe(gulp.dest('.compiled/bower_components'));
+});
+
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('css', 'js', 'images', 'fonts');
+  gulp.start('css', 'js', 'images', 'fonts', 'bower');
 });
 
 // Serve
@@ -115,6 +122,9 @@ gulp.task('watch', ['serve'], function() {
 
   // Watch image files
   gulp.watch(paths.images, ['images', reload]);
+
+  // Watch bower files
+  gulp.watch(paths.bower, ['bower', reload]);
 
   // Watch html files
   gulp.watch('templates/**/*.html', [reload]);
