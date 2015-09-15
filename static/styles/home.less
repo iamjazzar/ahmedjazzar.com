@@ -120,6 +120,7 @@ body  {
         font-family: "lato", serif;
 
       }
+
       ul {
         list-style: none;
         padding: 0;
@@ -191,7 +192,8 @@ body  {
       p {
         line-height: 100px;
         font-size: 35px;
-        font-family: "hp_simplified";
+        font-family: "HPSimplified";
+        font-weight: lighter;
       }
     }
 
@@ -206,7 +208,7 @@ body  {
         width: 110px;
 
         .map-marker {
-          font-size: 30px;
+          font-size: 25px;
           position: relative;
           top: -25px;
           left: 10px;
@@ -220,7 +222,7 @@ body  {
           bottom: 40px;
 
           .from {
-            font-size: 25px;
+            font-size: 30px;
             font-family: "lato";
             font-style: italic;
             font-weight: lighter;
@@ -228,7 +230,7 @@ body  {
             text-align: left;
           }
 
-          .palestine  {
+          .country  {
             font-size: 30px;
             font-family: "blackjack";
             text-shadow: -2px 0 0  @aj-blue-color;
@@ -244,7 +246,7 @@ body  {
 
     .day-night {
       .day-night-container  {
-        font-size: 70px;
+        font-size: 80px;
         font-family: "lavendersweet";
       }
 
@@ -269,7 +271,7 @@ body  {
           transform: rotate(-20deg);
           font-family: monospace;
           font-size: 20px;
-          color: @aj-text-gray-color;
+          color: @aj-dark-gray-color;
           text-align: right;
           right: -180px;
           top: 120px;
@@ -311,7 +313,7 @@ body  {
   }
 
   .a-nerd-wrapper {
-    background-color: @aj-gray-color;
+    background-color: @aj-background-gray-color;
     padding-top: 100px;
     font-size: 20px;
     color: @aj-text-light-gray-color;
@@ -319,18 +321,21 @@ body  {
 
     .a-nerd  {
       .title  {
-        font-family: "hp_simplified";
+        font-family: "HPSimplified";
+        font-weight: lighter;
         font-size: 40px;
         color: @aj-text-gray-color;
       }
 
       .content  {
         .padding-vert(30px);
-        font-family: "proximanova-regular";
+        font-family: "lato";
+        font-size: 18px;
       }
 
       .note {
-        font-family: "proximanova-italic";
+        font-family: "proximanova";
+        font-style: italic;
         border-left: 3px solid @aj-blue-color;
         .padding-horz(25px);
         margin-bottom: 50px;
@@ -354,34 +359,82 @@ body  {
     color: @aj-text-gray-color;
 
     .wanna-join  {
+
+      .langs  {
+        .circle {
+          color: @aj-text-color;
+          display: inline-block;
+          margin: 15px;
+          text-align: center;
+          box-shadow: 6px 8px 0 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .first-row  {
+          margin-left: 20px;
+          .margin-vert(20px);
+
+          .java {
+            font-style: italic;
+            font-family: proximanova;
+            .make-circle(100px, 30px, rgb(242, 101, 34), rgb(247, 148, 29));
+          }
+
+          .ubuntu {
+            position: absolute;
+            margin-top: -40px;
+            padding-right: 5px;
+            .make-circle(80px, 45px, rgb(26, 175, 93), rgb(14, 162, 81));
+          }
+
+          .html  {
+            .make-circle(75px, 40px, rgb(0, 174, 239), rgb(2, 158, 216));
+          }
+        }
+
+        .second-row {
+          .android  {
+            .make-circle(100px, 65px, rgb(237, 20, 91), rgb(221, 23, 87));
+          }
+
+          .css3 {
+            .make-circle(50px, 30px, rgb(146, 39, 143), rgb(166, 48, 163));
+          }
+
+          .python {
+            padding-top: 5px;
+            position: absolute;
+            margin-top: -13px;
+            .make-circle(80px, 45px, rgb(255, 220, 116), rgb(255, 206, 61));
+          }
+        }
+      }
       .title  {
-        font-family: "hp_simplified";
+        font-family: "HPSimplified";
+        font-weight: lighter;
         font-size: 40px;
         color: @aj-text-gray-color;
         .padding-vert(20px);
       }
 
-      .note {
-        font-family: "proximanova-regular";
+      .intro {
+        color: @aj-text-gray-color;
+        font-family: "Lato";
         font-weight: bold;
-
-        font-size: 15px;
+        font-style: italic;
+        font-size: 18px;
         .padding-vert(20px);
       }
 
       .content  {
+        color: rgb(126, 126, 126);
         .padding-vert(20px);
-        font-size: 15px;
-        font-family: "proximanova-regular";
+        font-family: lato;
+        font-size: 18px;
       }
 
       .fork-me  {
         .margin-vert(30px);
       }
     }
-
-    .image {
-    }
   }
-
 }
