@@ -1,62 +1,118 @@
 
 @font-face {
     font-family: 'lato';
-    src: url('../../fonts/lato-light-webfont.eot');
-    src: url('../../fonts/lato-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/lato-light-webfont.woff2') format('woff2'),
-         url('../../fonts/lato-light-webfont.woff') format('woff'),
-         url('../../fonts/lato-light-webfont.ttf') format('truetype'),
-         url('../../fonts/lato-light-webfont.svg#latolight') format('svg');
+    src: url('../../fonts/lato-regular.eot');
+    src: url('../../fonts/lato-regular.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/lato-regular.woff2') format('woff2'),
+         url('../../fonts/lato-regular.woff') format('woff'),
+         url('../../fonts/lato-regular.ttf') format('truetype'),
+         url('../../fonts/lato-regular.svg#latolight') format('svg');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'lato';
+    src: url('../../fonts/lato-lightitalic.eot');
+    src: url('../../fonts/lato-lightitalic.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/lato-lightitalic.woff2') format('woff2'),
+         url('../../fonts/lato-lightitalic.woff') format('woff'),
+         url('../../fonts/lato-lightitalic.ttf') format('truetype'),
+         url('../../fonts/lato-lightitalic.svg#latolight') format('svg');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../../fonts/lato-light.eot');
+    src: url('../../fonts/lato-light.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/lato-light.woff2') format('woff2'),
+         url('../../fonts/lato-light.woff') format('woff'),
+         url('../../fonts/lato-light.ttf') format('truetype'),
+         url('../../fonts/lato-light.svg#latolight') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../../fonts/lato-bolditalic.eot');
+    src: url('../../fonts/lato-bolditalic.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/lato-bolditalic.woff2') format('woff2'),
+         url('../../fonts/lato-bolditalic.woff') format('woff'),
+         url('../../fonts/lato-bolditalic.ttf') format('truetype'),
+         url('../../fonts/lato-bolditalic.svg#latolight') format('svg');
+    font-weight: 900;
+    font-style: italic;
 }
 
 
 @font-face {
-    font-family: 'hp_simplified';
-    src: url('../../fonts/hpsimplified_rg-webfont.eot');
-    src: url('../../fonts/hpsimplified_rg-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/hpsimplified_rg-webfont.woff2') format('woff2'),
-         url('../../fonts/hpsimplified_rg-webfont.woff') format('woff'),
-         url('../../fonts/hpsimplified_rg-webfont.ttf') format('truetype'),
-         url('../../fonts/hpsimplified_rg-webfont.svg#hp_simplifiedregular') format('svg');
+    font-family: 'HPSimplified';
+    src: url('../../fonts/HPSimplified-light.eot');
+    src: url('../../fonts/HPSimplified-light.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/HPSimplified-light.woff2') format('woff2'),
+         url('../../fonts/HPSimplified-light.woff') format('woff'),
+         url('../../fonts/HPSimplified-light.ttf') format('truetype'),
+         url('../../fonts/HPSimplified-light.svg#hp_simplifiedregular') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HPSimplified';
+    src: url('../../fonts/HPSimplified-regular.eot');
+    src: url('../../fonts/HPSimplified-regular.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/HPSimplified-regular.woff2') format('woff2'),
+         url('../../fonts/HPSimplified-regular.woff') format('woff'),
+         url('../../fonts/HPSimplified-regular.ttf') format('truetype'),
+         url('../../fonts/HPSimplified-regular.svg#hp_simplifiedregular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'HPSimplified';
+    src: url('../../fonts/HPSimplified-bold.eot');
+    src: url('../../fonts/HPSimplified-bold.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/HPSimplified-bold.woff2') format('woff2'),
+         url('../../fonts/HPSimplified-bold.woff') format('woff'),
+         url('../../fonts/HPSimplified-bold.ttf') format('truetype'),
+         url('../../fonts/HPSimplified-bold.svg#hp_simplifiedregular') format('svg');
+    font-weight: 900;
+    font-style: normal;
 }
 
 
 @font-face {
     font-family: 'blackjack';
-    src: url('../../fonts/blackjar-webfont.eot');
-    src: url('../../fonts/blackjar-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/blackjar-webfont.woff2') format('woff2'),
-         url('../../fonts/blackjar-webfont.woff') format('woff'),
-         url('../../fonts/blackjar-webfont.ttf') format('truetype'),
-         url('../../fonts/blackjar-webfont.svg#blackjackregular') format('svg');
+    src: url('../../fonts/blackjar- .eot');
+    src: url('../../fonts/blackjar.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/blackjar.woff2') format('woff2'),
+         url('../../fonts/blackjar.woff') format('woff'),
+         url('../../fonts/blackjar.ttf') format('truetype'),
+         url('../../fonts/blackjar.svg#blackjackregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 
 @font-face {
     font-family: 'lavendersweet';
-    src: url('../../fonts/lavendersweetorange-webfont.eot');
-    src: url('../../fonts/lavendersweetorange-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/lavendersweetorange-webfont.woff2') format('woff2'),
-         url('../../fonts/lavendersweetorange-webfont.woff') format('woff'),
-         url('../../fonts/lavendersweetorange-webfont.ttf') format('truetype'),
-         url('../../fonts/lavendersweetorange-webfont.svg#lavendersweetorangemedium') format('svg');
+    src: url('../../fonts/lavendersweetorange.eot');
+    src: url('../../fonts/lavendersweetorange.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/lavendersweetorange.woff2') format('woff2'),
+         url('../../fonts/lavendersweetorange.woff') format('woff'),
+         url('../../fonts/lavendersweetorange.ttf') format('truetype'),
+         url('../../fonts/lavendersweetorange.svg#lavendersweetorangemedium') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 
 @font-face {
-    font-family: 'proximanova-regular';
+    font-family: 'proximanova';
     src: url('../../fonts/proxima-nova-regular.eot');
     src: url('../../fonts/proxima-nova-regular.eot?#iefix') format('embedded-opentype'),
          url('../../fonts/proxima-nova-regular.woff2') format('woff2'),
@@ -65,12 +121,11 @@
          url('../../fonts/proxima-nova-regular.svg#proxima-nova-regular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 
 @font-face {
-    font-family: 'proximanova-italic';
+    font-family: 'proximanova';
     src: url('../../fonts/proxima-nova-italic.eot');
     src: url('../../fonts/proxima-nova-italic.eot?#iefix') format('embedded-opentype'),
          url('../../fonts/proxima-nova-italic.woff2') format('woff2'),
@@ -78,6 +133,5 @@
          url('../../fonts/proxima-nova-italic.ttf') format('truetype'),
          url('../../fonts/proxima-nova-italic.svg#proxima-nova-italic') format('svg');
     font-weight: normal;
-    font-style: normal;
-
+    font-style: italic;
 }

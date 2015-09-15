@@ -11,17 +11,19 @@
     {% endblock %}
     <title>{% block title %}{% endblock %}</title>
 
-    <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.ico" %}"/>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static "bower_components/bootstrap/dist/css/bootstrap.min.css" %}">
+    <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.ico" %}"/>
     <link rel="stylesheet" href="{% static "styles/partials/aj-fonts.min.css" %}" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="{% static "styles/partials/aj-theme.min.css" %}" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="{% static "styles/partials/font-mfizz.min.css" %}"  type="text/css" charset="utf-8">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" href="fontcustom-ie7.css" /><![endif]-->
 
     {% block header_links %}
     {% endblock %}

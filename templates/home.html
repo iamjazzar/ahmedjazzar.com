@@ -47,7 +47,7 @@
           </div>
           <div class="text-desribtion">
             <div class="from">from</div>
-            <div class="palestine">{{ country }}</div>
+            <div class="country">{{ country }}</div>
           </div>
         </div>
         <img src="{{MEDIA_URL}}{{ country_image }}" />
@@ -84,7 +84,7 @@
         <div class="title">A nerd.</div>
         <div class="content">
           I am a tireless seeker of knowledge, mining tool for math, and also,
-          coincidentallym a graphic designer. I enjoy deleting bunch of codes as
+          coincidentally a graphic designer. I enjoy deleting bunch of codes as
           much as I enjoy writing them.
         </div>
         <div class="note">
@@ -98,6 +98,44 @@
       </div>
       <div class="image col-md-6">
         <img class="img-responsive" src="{% static "images/cartoon-full.png" %}"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="wanna-join-wrapper container-fluid">
+    <div class="wanna-join container">
+      <div class="langs col-md-7">
+        <div class="row first-row">
+          <i class="circle html fa fa-html5"></i>
+          <p class="circle java">JAVA</p>
+          <i class="circle ubuntu icon-ubuntu"></i>
+        </div>
+        <div class="row second-row">
+          <i class="circle android fa fa-android"></i>
+          <i class="circle css3 fa fa-css3"></i>
+          <i class="circle python icon-python"></i>
+        </div>
+        <div class="laptop">
+          <img class="img-responsive" width="60%" src="{% static "images/laptop.png" %}" alt="" />
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="title">Wanna join me?</div>
+        <div class="intro">
+          I am very excited to kick off a new opportunity and I hope you join
+          me.
+        </div>
+        <div class="content">
+          Each month I will share with you projects, stories, updates, and
+          motivation to help you coding better a life, and enjoing your journy.
+        </div>
+        <a class="fork-me btn btn-vio-primary" href="#" role="button">
+          Fork me on GitHub
+          <i class="fa fa-lg fa-github-square"></i>
+        </a>
+        <div class="light-bulb">
+          <img class="img-responsive" src="{% static "images/light-bulb.png" %}" alt="" />
+        </div>
       </div>
     </div>
   </div>

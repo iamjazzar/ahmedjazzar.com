@@ -2,6 +2,16 @@
 @import "aj-variables";
 @import "aj-mixins";
 
+.btn  {
+  font-size: 15px;
+  font-family: "proximanova";
+  text-decoration: none;
+
+  .fa {
+    margin-left: 15px;
+  }
+}
+
 .btn-primary  {
   background-color: transparent;
   border-color: @aj-blue-color;
@@ -10,12 +20,29 @@
   border: 2px solid;
   .padding-horz(40px);
   .padding-vert(15px);
-  .fa {
-    margin-left: 15px;
-  }
 
-  &:hover {
+
+
+  &:hover, &:focus, &:active, &:active:focus{
     background-color: @aj-blue-color;
     border-color: @aj-blue-color;
+    color: @aj-text-color;
+  }
+}
+
+
+.btn-vio-primary  {
+  background-color: transparent;
+  border-color: @aj-violet-color;
+  text-transform: uppercase;
+  color: @aj-violet-color;
+  border: 2px solid;
+  .padding-horz(40px);
+  .padding-vert(15px);
+
+  &:hover, &:focus, &:active, &:active:focus {
+    background-color: @aj-violet-color;
+    border-color: @aj-violet-color;
+    color: @aj-text-color;
   }
 }

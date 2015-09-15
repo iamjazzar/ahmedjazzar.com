@@ -18,3 +18,16 @@
   margin-right: @value;
   margin-left: @value;
 }
+
+.make-circle(@value, @font-size, @first-color, @second-color)  {
+  width: @value;
+  height: @value;
+  font-size: @font-size;
+  line-height: @value;
+  border-radius: @value;
+  background: linear-gradient(
+    90deg,
+    @first-color @value/2,
+    @second-color @value/2
+  );
+}
