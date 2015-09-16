@@ -179,16 +179,16 @@
     <div class="twitter container">
       <div class="title">I just shared</div>
       <div class="tweet">
-        "Coding explained in 25 Profound Comics
-        <a>http://buff.ly/1dIFyyi</a>
-        #Programming"
+        " {{ tweet }} "
       </div>
       <div class="time-wrapper">
         <span class="time">
-          2 hours ago via Tweet Deck
+          at {{ tweet_date }}
         </span>
       </div>
-      <a class="follow-me btn btn-default" href="#" role="button">
+      <a class="follow-me btn btn-default"
+         href="https://twitter.com/{{ TWITTER_USERNAME }}" 
+         role="button">
         Follow me on Twitter
         <i class="fa fa-twitter"></i>
       </a>
