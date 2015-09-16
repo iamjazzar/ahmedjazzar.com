@@ -352,7 +352,7 @@ body  {
   }
 
   .wanna-join-wrapper {
-    padding-top: 100px;
+    padding-top: 50px;
     font-size: 20px;
     color: @aj-text-light-gray-color;
     text-align: justify;
@@ -381,13 +381,71 @@ body  {
 
           .ubuntu {
             position: absolute;
-            margin-top: -40px;
+            margin-top: 70px;
             padding-right: 5px;
             .make-circle(80px, 45px, rgb(26, 175, 93), rgb(14, 162, 81));
           }
 
           .html  {
             .make-circle(75px, 40px, rgb(0, 174, 239), rgb(2, 158, 216));
+          }
+
+          .light-bulb {
+            margin-top: 200px;
+            position: absolute;
+
+            .iconic-lightbulb {
+              * {
+                transition: .4s;
+              }
+
+              .icon-container {
+                stroke-width: 6;
+                stroke: white;
+                transition: 1s;
+              }
+
+              &:hover{
+                .icon-container {
+                  fill: rgb(255,248,219);
+                  transition: 2s;
+                }
+              }
+
+              .iconic-lightbulb-light {
+                * {
+                  stroke-width: 16;
+                  stroke: rgb(221,221,221);
+                  fill: none;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+
+                }
+              }
+
+              &:hover {
+                .iconic-lightbulb-light {
+                   * {
+                    stroke: rgb(255,204,0);
+                    stroke-width: 32;
+                  }
+                }
+              }
+            }
+
+            .iconic-lightbulb-base {
+              fill: #666;
+            }
+
+            .iconic-lightbulb-screws  {
+               * {
+                fill: none;
+                stroke-width: 16;
+                stroke: black;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              }
+            }
           }
         }
 
@@ -406,10 +464,6 @@ body  {
             margin-top: -13px;
             .make-circle(80px, 45px, rgb(255, 220, 116), rgb(255, 206, 61));
           }
-        }
-
-        .laptop {
-          margin-top: 45px;
         }
       }
       .title  {
@@ -438,9 +492,6 @@ body  {
 
       .fork-me  {
         .margin-vert(30px);
-      }
-      .light-bulb {
-        float:right;
       }
     }
   }
