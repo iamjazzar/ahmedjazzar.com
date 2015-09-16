@@ -60,6 +60,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ahmedjazzar.wsgi.application'
 
+# twitter settings
+
+TWITTER_USERNAME = 'AhmedAljazzar'
+
+# CONSUMER_KEY='[your consumer key]'
+# CONSUMER_SECRET='[your consumer secret]'
+# ACCESS_TOKEN='[your token]'
+# ACCESS_TOKEN_SECRET='[your token secret]'
+
 
 # Internationalization
 

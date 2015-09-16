@@ -352,7 +352,7 @@ body  {
   }
 
   .wanna-join-wrapper {
-    padding-top: 50px;
+    .padding-vert(60px);
     font-size: 20px;
     color: @aj-text-light-gray-color;
     text-align: justify;
@@ -492,6 +492,36 @@ body  {
 
       .fork-me  {
         .margin-vert(30px);
+      }
+    }
+  }
+
+  .twitter-wrapper  {
+    background: url('../images/twitter-pattern.png');
+
+    .twitter  {
+      text-align: center;
+      .padding-vert(50px);
+
+      .title, .tweet, .time-wrapper {
+        font-size: 27px;
+        font-family: "lato";
+        font-weight: lighter;
+        .margin-vert(25px);
+        color: rgb(243, 243, 243);
+      }
+
+       .tweet {
+         .margin-vert(60px);
+         color: @aj-text-color;
+       }
+
+       .time  {
+         border-bottom: 1px rgb(243, 243, 243) dotted;
+       }
+
+      .follow-me  {
+        margin-top: 35px;
       }
     }
   }

@@ -1,7 +1,11 @@
+
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
+
+from helpers import get_tweet, get_tweet_date
 import models
+
 
 class Home(TemplateView):
     template_name = 'home.html'
@@ -18,5 +22,8 @@ class Home(TemplateView):
         context['country_image'] = header.get_country_image()
         context['logo'] = header.get_logo()
         context['navs'] = navs
+        context['tweet'] = get_tweet()
+        context['tweet_date'] = get_tweet_date()
+        context['TWITTER_USERNAME'] = settings.TWITTER_USERNAME
 
         return context

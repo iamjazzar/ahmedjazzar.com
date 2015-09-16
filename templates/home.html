@@ -175,6 +175,26 @@
     </div>
   </div>
 
+  <div class="twitter-wrapper container-fluid">
+    <div class="twitter container">
+      <div class="title">I just shared</div>
+      <div class="tweet">
+        " {{ tweet }} "
+      </div>
+      <div class="time-wrapper">
+        <span class="time">
+          at {{ tweet_date }}
+        </span>
+      </div>
+      <a class="follow-me btn btn-default"
+         href="https://twitter.com/{{ TWITTER_USERNAME }}" 
+         role="button">
+        Follow me on Twitter
+        <i class="fa fa-twitter"></i>
+      </a>
+    </div>
+  </div>
+
 {% endblock %}
 
 {% block scripts %}

@@ -5,23 +5,32 @@
 .btn  {
   font-size: 15px;
   font-family: "proximanova";
+  background-color: transparent;
   text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid;
+  .padding-horz(40px);
+  .padding-vert(15px);
 
   .fa {
     margin-left: 15px;
   }
 }
 
+.btn-default  {
+  border-color: @aj-bg-color;
+  color: @aj-text-color;
+
+  &:hover, &:focus, &:active, &:active:focus{
+    background-color: @aj-bg-color;
+    border-color: @aj-bg-color;
+    color: @aj-twitter-color;
+  }
+}
+
 .btn-primary  {
-  background-color: transparent;
   border-color: @aj-blue-color;
-  text-transform: uppercase;
   color: @aj-blue-color;
-  border: 2px solid;
-  .padding-horz(40px);
-  .padding-vert(15px);
-
-
 
   &:hover, &:focus, &:active, &:active:focus{
     background-color: @aj-blue-color;
@@ -32,13 +41,8 @@
 
 
 .btn-vio-primary  {
-  background-color: transparent;
   border-color: @aj-violet-color;
-  text-transform: uppercase;
   color: @aj-violet-color;
-  border: 2px solid;
-  .padding-horz(40px);
-  .padding-vert(15px);
 
   &:hover, &:focus, &:active, &:active:focus {
     background-color: @aj-violet-color;
