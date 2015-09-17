@@ -200,6 +200,43 @@
     </div>
   </div>
 
+  <div class="newsletter-wrapper container-fluid">
+    <div class="newsletter container">
+      <div class="row">
+        <div class="social-buttons col-md-8 col-md-offset-2">
+          <a href="https://www.github.com/{{ GITHUB_USERNAME }}" target="_blank">
+            <i class="fa fa-2x fa-github"></i>
+          </a>
+          <a href="https://www.twitter.com/{{ TWITTER_USERNAME }}" target="_blank">
+            <i class="fa fa-2x fa-twitter"></i>
+          </a>
+          <a href="https://www.facebook.com/{{ FACEBOOK_USERNAME }}" target="_blank">
+            <i class="fa fa-2x fa-facebook-f"></i>
+          </a>
+          <a href="mailto:{{ EMAIL }}" target="_blank">
+            <i class="fa fa-2x fa-paper-plane-o"></i>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="subscription col-md-8 col-md-offset-2">
+          <div class="title col-md-3  col-md-offset-2">
+            Newsletter subsription
+          </div>
+          <div class="col-md-5">
+            <div class="email-input">
+                <input type="email" class="form-control" placeholder="Enter email">
+                <span class="envelope">
+                  <span class="separator"></span>
+                  <i class="fa fa-envelope"></i>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
 
 {% block scripts %}

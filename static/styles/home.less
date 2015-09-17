@@ -537,4 +537,79 @@ body  {
       }
     }
   }
+
+  .newsletter-wrapper {
+    background-color: @aj-background-gray-color;
+
+    .newsletter {
+      font-size: 16px;
+      font-family: lato;
+      font-weight: bold;
+      font-style: italic;
+
+      .padding-vert(200px);
+
+      .social-buttons {
+        text-align: center;
+
+        a {
+          color: rgb(61, 61, 61);
+          text-decoration: none;
+
+          &:hover, &:focus {
+            color: rgb(19, 195, 174);
+          }
+        }
+
+        .fa {
+          font-size: 2em;
+          border: 3px solid;
+          padding-top: 16px;
+          border-radius: 50%;
+          .margin-horz(20px);
+          margin-bottom: 90px;
+          border-radius: 50%;
+          width: 70px;
+          height: 70px;
+        }
+      }
+
+      .subscription {
+        .title  {
+          .padding-vert(11px);
+        }
+        .email-input {
+          position: relative;
+
+          .form-control {
+            padding-right: 30px;
+            height: 45px;
+
+            &:hover, &:focus  {
+              ~ .envelope {
+                color: @aj-blue-color;
+              }
+            }
+          }
+
+          .envelope {
+            position: absolute;
+            right: 0px;
+            top: 0;
+            padding: 10px 12px;
+            pointer-events: none;
+            margin-top: 1px;
+            color: @aj-blue-color-op;
+
+            .separator  {
+              border-left: 1px solid rgba(88, 88, 88, 0.3);
+              padding-right: 12px;
+              padding-top: 4px;
+              padding-bottom: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
