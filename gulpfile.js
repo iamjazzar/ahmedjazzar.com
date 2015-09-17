@@ -123,22 +123,15 @@ gulp.task('watch', ['serve'], function() {
   // Watch image files
   gulp.watch(paths.images, ['images', reload]);
 
-  // Watch bower files
-  gulp.watch(paths.bower, ['bower', reload]);
-
   // Watch html files
   gulp.watch('templates/**/*.html', [reload]);
 
   gulp.watch('{ahmedjazzarcom,ahmedjazzar}/**/*.py', function () {
       // TODO: Watch Django Server instead!
-      setTimeout(reload, 1000);
+      setTimeout(reload, 200);
   });
 
   // Create LiveReload server
   var server = livereload();
 
-  // Watch any files in assets folder reload on change
-  gulp.watch('.compiled/**').on('change', function(file) {
-    server.changed(file.path);
-  });
 });
