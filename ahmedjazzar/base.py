@@ -61,9 +61,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ahmedjazzar.wsgi.application'
 
-# twitter settings
+# Personal vars
 
 TWITTER_USERNAME = 'AhmedAljazzar'
+GITHUB_USERNAME = 'ahmedaljazzar'
+EMAIL = 'ahmed.mojaz@gmail.com'
+
+# twitter settings
 
 # CONSUMER_KEY='[your consumer key]'
 # CONSUMER_SECRET='[your consumer secret]'

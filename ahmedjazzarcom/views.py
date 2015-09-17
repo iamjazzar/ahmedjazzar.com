@@ -26,5 +26,7 @@ class Home(TemplateView):
         context['tweet'] = tweet.get('tweet')
         context['tweet_date'] = tweet.get('time')
         context['TWITTER_USERNAME'] = settings.TWITTER_USERNAME
+        context['GITHUB_USERNAME'] = settings.GITHUB_USERNAME
+        context['EMAIL'] = settings.EMAIL
 
         return context
