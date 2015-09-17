@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% load staticfiles %}
+{% load twitterize %}
 
 {% block title %}{{ full_name }}!{% endblock %}
 
@@ -179,15 +180,15 @@
     <div class="twitter container">
       <div class="title">I just shared</div>
       <div class="tweet">
-        " {{ tweet }} "
+        "{{ tweet |twitter_text |safe  }}"
       </div>
       <div class="time-wrapper">
         <span class="time">
-          at {{ tweet_date }}
+          {{ tweet_date }}
         </span>
       </div>
       <a class="follow-me btn btn-default"
-         href="https://twitter.com/{{ TWITTER_USERNAME }}" 
+         href="https://twitter.com/{{ TWITTER_USERNAME }}"
          role="button">
         Follow me on Twitter
         <i class="fa fa-twitter"></i>

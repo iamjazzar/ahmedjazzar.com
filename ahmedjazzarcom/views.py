@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 
-from helpers import get_tweet, get_tweet_date
+from helpers import last_tweet
 import models
 
 
@@ -14,6 +14,7 @@ class Home(TemplateView):
         context = super(Home, self).get_context_data(**kwargs)
         header = models.HeaderData.objects.get(pk=1)
         navs = models.Nav.objects.all()
+        tweet = last_tweet()
 
         context['MEDIA_URL'] = settings.MEDIA_URL
         context['full_name'] = header.get_full_name()
@@ -22,8 +23,8 @@ class Home(TemplateView):
         context['country_image'] = header.get_country_image()
         context['logo'] = header.get_logo()
         context['navs'] = navs
-        context['tweet'] = get_tweet()
-        context['tweet_date'] = get_tweet_date()
+        context['tweet'] = tweet.get('tweet')
+        context['tweet_date'] = tweet.get('time')
         context['TWITTER_USERNAME'] = settings.TWITTER_USERNAME
 
         return context
