@@ -370,6 +370,11 @@ body  {
           margin: 15px;
           text-align: center;
           box-shadow: 6px 8px 0 0 rgba(0, 0, 0, 0.15);
+
+          &:hover {
+            box-shadow: none;
+            transform: translate(3px);
+          }
         }
 
         .first-row  {
@@ -377,98 +382,67 @@ body  {
           .margin-vert(20px);
 
           .java {
-            font-style: italic;
-            font-family: proximanova;
-            .make-circle(100px, 30px, rgb(242, 101, 34), rgb(247, 148, 29));
+            .make-circle(100px, 70px, rgb(242, 101, 34), rgb(247, 148, 29));
           }
 
           .ubuntu {
-            position: absolute;
-            margin-top: 70px;
-            padding-right: 5px;
-            .make-circle(80px, 45px, rgb(26, 175, 93), rgb(14, 162, 81));
+            padding-right: 7px;
+            .make-circle(85px, 45px, rgb(26, 175, 93), rgb(14, 162, 81));
           }
 
           .html  {
-            .make-circle(75px, 40px, rgb(0, 174, 239), rgb(2, 158, 216));
+            .make-circle(65px, 40px, rgb(0, 174, 239), rgb(2, 158, 216));
+              position: absolute;
+              top: 140px;
+              left: 119px;
           }
 
-          .light-bulb {
-            margin-top: 200px;
+          .database {
+            .make-circle(70px, 40px, rgb(48, 114, 140), rgb(68, 138, 166));
             position: absolute;
-
-            .iconic-lightbulb {
-              * {
-                transition: .4s;
-              }
-
-              .icon-container {
-                stroke-width: 6;
-                stroke: white;
-                transition: 1s;
-              }
-
-              &:hover{
-                .icon-container {
-                  fill: rgb(255,248,219);
-                  transition: 2s;
-                }
-              }
-
-              .iconic-lightbulb-light {
-                * {
-                  stroke-width: 16;
-                  stroke: rgb(221,221,221);
-                  fill: none;
-                  stroke-linecap: round;
-                  stroke-linejoin: round;
-
-                }
-              }
-
-              &:hover {
-                .iconic-lightbulb-light {
-                   * {
-                    stroke: rgb(255,204,0);
-                    stroke-width: 32;
-                  }
-                }
-              }
-            }
-
-            .iconic-lightbulb-base {
-              fill: #666;
-            }
-
-            .iconic-lightbulb-screws  {
-               * {
-                fill: none;
-                stroke-width: 16;
-                stroke: black;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-              }
-            }
+            top: 115px;
+            right: 215px;
           }
         }
 
         .second-row {
           .android  {
-            .make-circle(100px, 65px, rgb(237, 20, 91), rgb(221, 23, 87));
+            .make-circle(90px, 65px, rgb(237, 20, 91), rgb(221, 23, 87));
+            position: absolute;
+            bottom: -90px;
+            left: 80px;
           }
 
           .css3 {
-            .make-circle(50px, 30px, rgb(146, 39, 143), rgb(166, 48, 163));
+            .make-circle(80px, 30px, rgb(146, 39, 143), rgb(166, 48, 163));
+              position: absolute;
+              left: 225px;
+              bottom: -60px;
           }
 
           .python {
-            padding-top: 5px;
+            .make-circle(75px, 45px, rgb(255, 220, 116), rgb(255, 206, 61));
+            line-height: 80px;
+          }
+
+          .c {
+            .make-circle(90px, 45px, rgb(242, 86, 97), rgb(242, 49, 49));
+            line-height: 95px;
             position: absolute;
-            margin-top: -13px;
-            .make-circle(80px, 45px, rgb(255, 220, 116), rgb(255, 206, 61));
+            top: 40px;
+            right: 95px;
+          }
+
+          .cplusplus  {
+            .make-circle(60px, 35px, rgb(155, 147, 136), rgb(194, 183, 169));
+            line-height: 66px;
+            position: absolute;
+            right: 120px;
+
           }
         }
       }
+
       .title  {
         font-family: "HPSimplified";
         font-weight: lighter;
@@ -538,26 +512,113 @@ body  {
     }
   }
 
-  .newsletter-wrapper {
+  .contact-wrapper {
     background-color: @aj-background-gray-color;
 
-    .newsletter {
+    .contact {
       font-size: 16px;
       font-family: lato;
       font-weight: bold;
       font-style: italic;
 
-      .padding-vert(200px);
+      padding-bottom: 100px;
+
+      .light-bulb {
+        text-align: center;
+        .swinging-bulb  {
+
+          .rope {
+            height: 190px;
+            width: 2px;
+            background-color: black;
+            display: block;
+            margin-left: 50%;
+          }
+
+          .bulb {
+            .iconic-lightbulb {
+              transform: rotate(180deg);
+              * {
+                transition: .4s;
+              }
+
+              .icon-container {
+                stroke-width: 6;
+                transition: 1s;
+              }
+
+              &:hover{
+                .icon-container {
+                  fill: rgb(255,248,219);
+                  transition: 2s;
+                }
+              }
+
+              .iconic-lightbulb-light {
+                * {
+                  stroke-width: 16;
+                  stroke: rgb(221,221,221);
+                  fill: none;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+
+                }
+              }
+
+              &:hover {
+                .iconic-lightbulb-light {
+                   * {
+                    stroke: rgb(255,204,0);
+                    stroke-width: 32;
+                  }
+                }
+              }
+            }
+
+            .iconic-lightbulb-base {
+              fill: rgb(102,102,102);
+            }
+
+            .iconic-lightbulb-screws  {
+               * {
+                fill: none;
+                stroke-width: 16;
+                stroke: black;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              }
+            }
+          }
+        }
+      }
+
+      .title  {
+        text-align: center;
+        font-size: 50px;
+        font-weight: lighter;
+        margin-bottom: 95px;
+
+        div {
+          font-size: 35px;
+          color: rgb(102, 102, 102);
+        }
+      }
 
       .social-buttons {
         text-align: center;
+
+        &:hover {
+          a {
+            color: #C4C6CA;
+          }
+        }
 
         a {
           color: rgb(61, 61, 61);
           text-decoration: none;
 
           &:hover, &:focus {
-            color: rgb(19, 195, 174);
+            color: rgb(61, 61, 61);
           }
         }
 
@@ -567,47 +628,9 @@ body  {
           padding-top: 16px;
           border-radius: 50%;
           .margin-horz(20px);
-          margin-bottom: 90px;
           border-radius: 50%;
           width: 70px;
           height: 70px;
-        }
-      }
-
-      .subscription {
-        .title  {
-          .padding-vert(11px);
-        }
-        .email-input {
-          position: relative;
-
-          .form-control {
-            padding-right: 30px;
-            height: 45px;
-
-            &:hover, &:focus  {
-              ~ .envelope {
-                color: @aj-blue-color;
-              }
-            }
-          }
-
-          .envelope {
-            position: absolute;
-            right: 0px;
-            top: 0;
-            padding: 10px 12px;
-            pointer-events: none;
-            margin-top: 1px;
-            color: @aj-blue-color-op;
-
-            .separator  {
-              border-left: 1px solid rgba(88, 88, 88, 0.3);
-              padding-right: 12px;
-              padding-top: 4px;
-              padding-bottom: 8px;
-            }
-          }
         }
       }
     }
@@ -656,10 +679,10 @@ body  {
       background-color: rgb(232, 235, 240);
       border: 1px solid rgb(232, 235, 240);
       border-radius: 7px;
-      box-shadow: 0 0 3px 1px rgb(232, 235, 240);
+      box-shadow: 0 0 1px 1px rgb(232, 235, 240);
 
       &:hover, &:focus  {
-        box-shadow: 0 0 0 0 transparent;
+        box-shadow: none;
       }
     }
   }
