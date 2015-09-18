@@ -7,6 +7,7 @@
 {% block header_links %}
   <link rel="stylesheet" href="{% static "styles/home.min.css" %}">
   <link rel="stylesheet" href="{% static "styles/partials/animations.min.css" %}">
+  <link rel="stylesheet" href="{% static "styles/partials/font-mfizz.min.css" %}">
   <!-- TODO: remove CDN and install the package -->
   <!-- TODO: check https://fortawesome.github.io/Font-Awesome/get-started/ -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -108,54 +109,16 @@
       <div class="langs col-md-6">
         <div class="row first-row">
           <i class="circle html fa fa-html5"></i>
-          <p class="circle java">JAVA</p>
+          <i class="circle java icon-java"></i>
           <i class="circle ubuntu icon-ubuntu"></i>
-          <span class="light-bulb">
-            <svg version="1.1"
-            class="iconic iconic-lightbulb"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="150px" height="150px"
-            viewBox="0 0 714 714"
-            xml:space="preserve">
-
-              <circle class="icon-container" cx="357" cy="357" r="330" stroke-width="16" stroke="#000" fill="none" />
-              <g class="iconic-lightbulb-screws">
-                  <defs>
-                      <clipPath id="iconic-lightbulb-screws-clip">
-                          <polygon points="304.333,511 433.667,511 430,521.5 281.667,547.167 280.333,521.5"/>
-                      </clipPath>
-                  </defs>
-                  <line clip-path="url(#iconic-lightbulb-screws-clip)" x1="430" y1="505" x2="302" y2="529"/>
-                  <line class="st4" x1="430" y1="537" x2="302" y2="561"/>
-                  <line class="st4" x1="430" y1="569" x2="302" y2="593"/>
-                  <line class="st4" x1="410" y1="605" x2="321" y2="621"/>
-              </g>
-
-              <g class="iconic-lightbulb-light">
-                  <defs>
-                      <clipPath id="iconic-lightbulb-light-clip">
-                          <polygon points="514,329 436,369 436,436 299,436 293,360 489,280"/>
-                      </clipPath>
-                  </defs>
-                  <g clip-path="url(#iconic-lightbulb-light-clip)">
-                      <line x1="330" y1="369" x2="330" y2="435"/>
-                      <polyline points="478,313 402,349 402,435"/>
-                  </g>
-                  <line x1="478" y1="129" x2="254" y2="233"/>
-                  <line x1="354" y1="125" x2="254" y2="173"/>
-                  <line x1="478" y1="189" x2="254" y2="293"/>
-                  <line x1="478" y1="249" x2="254" y2="353"/>
-              </g>
-
-              <path class="iconic-lightbulb-base" d="M292.431,505c0.863,4.314,5.169,7.845,9.569,7.845h128c4.4,0,8.706-3.53,9.569-7.845l12.861-64.311c0.863-4.314-2.03-7.845-6.431-7.845H286c-4.4,0-7.294,3.53-6.431,7.845L292.431,505z"/>
-            </svg>
-          </span>
+          <i class="circle database icon-database"></i>
         </div>
         <div class="row second-row">
           <i class="circle android fa fa-android"></i>
           <i class="circle css3 fa fa-css3"></i>
           <i class="circle python icon-python"></i>
+          <i class="circle c icon-c"></i>
+          <i class="circle cplusplus icon-cplusplus"></i>
         </div>
       </div>
       <div class="col-md-6">
@@ -200,8 +163,61 @@
     </div>
   </div>
 
-  <div class="newsletter-wrapper container-fluid">
-    <div class="newsletter container">
+  <div class="contact-wrapper container-fluid">
+    <div class="contact container">
+      <div class="light-bulb row">
+        <div class="swinging-bulb sway">
+          <div class="rope"></div>
+           <div class="bulb">
+             <svg version="1.1"
+             class="iconic iconic-lightbulb"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink"
+             width="150px" height="150px"
+             viewBox="0 -90 714 714"
+             xml:space="preserve">
+              <circle class="icon-container" cx="357" cy="220" r="230"  fill="none" />
+               <g class="iconic-lightbulb-screws">
+                   <defs>
+                       <clipPath id="iconic-lightbulb-screws-clip">
+                           <polygon points="304.333,511 433.667,511 430,521.5 281.667,547.167 280.333,521.5"/>
+                       </clipPath>
+                   </defs>
+                   <line clip-path="url(#iconic-lightbulb-screws-clip)" x1="430" y1="505" x2="302" y2="529"/>
+                   <line class="st4" x1="430" y1="537" x2="302" y2="561"/>
+                   <line class="st4" x1="430" y1="569" x2="302" y2="593"/>
+                   <line class="st4" x1="410" y1="605" x2="321" y2="621"/>
+               </g>
+
+               <g class="iconic-lightbulb-light">
+                   <defs>
+                       <clipPath id="iconic-lightbulb-light-clip">
+                           <polygon points="514,329 436,369 436,436 299,436 293,360 489,280"/>
+                       </clipPath>
+                   </defs>
+                   <g clip-path="url(#iconic-lightbulb-light-clip)">
+                       <line x1="330" y1="369" x2="330" y2="435"/>
+                       <polyline points="478,313 402,349 402,435"/>
+                   </g>
+                   <line x1="478" y1="129" x2="254" y2="233"/>
+                   <line x1="354" y1="125" x2="254" y2="173"/>
+                   <line x1="478" y1="189" x2="254" y2="293"/>
+                   <line x1="478" y1="249" x2="254" y2="353"/>
+               </g>
+
+               <path class="iconic-lightbulb-base" d="M292.431,505c0.863,4.314,5.169,7.845,9.569,7.845h128c4.4,0,8.706-3.53,9.569-7.845l12.861-64.311c0.863-4.314-2.03-7.845-6.431-7.845H286c-4.4,0-7.294,3.53-6.431,7.845L292.431,505z"/>
+             </svg>
+           </div>
+        </div>
+      </div>
+
+      <div class="title">
+        Got an idea worth sharing?
+        <div>
+          I’d Love to hear it from you :)
+        </div>
+      </div>
+
       <div class="row">
         <div class="social-buttons col-md-8 col-md-offset-2">
           <a href="https://www.github.com/{{ GITHUB_USERNAME }}" target="_blank">
@@ -213,25 +229,9 @@
           <a href="https://www.facebook.com/{{ FACEBOOK_USERNAME }}" target="_blank">
             <i class="fa fa-2x fa-facebook-f"></i>
           </a>
-          <a href="mailto:{{ EMAIL }}" target="_blank">
+          <a href="mailto:{{ EMAIL }}">
             <i class="fa fa-2x fa-paper-plane-o"></i>
           </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="subscription col-md-8 col-md-offset-2">
-          <div class="title col-md-3  col-md-offset-2">
-            Newsletter subsription
-          </div>
-          <div class="col-md-5">
-            <div class="email-input">
-                <input type="email" class="form-control" placeholder="Enter email">
-                <span class="envelope">
-                  <span class="separator"></span>
-                  <i class="fa fa-envelope"></i>
-                </span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -256,11 +256,25 @@
 {% block scripts %}
   {{ block.super }}
   <script type="text/javascript">
+
+    // toggle nav menu
     $('#toggle').click(function() {
      $(this).toggleClass('active');
      $('#overlay').toggleClass('open');
     });
 
+    // scroll tot top hover
+
+    $(".scroll-top").hover(
+    function () {
+        $('.fa-angle-up').addClass('floating');
+      },
+      function () {
+        $('.fa-angle-up').removeClass('floating');
+      }
+    );
+
+    // scroll to top
     $("a[href^='#header']").on('click', function(e) {
 
        e.preventDefault();
