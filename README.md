@@ -47,7 +47,7 @@ ahmedjazzar.com is written using the hackable text editor - [Atom](https://atom.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$ gulp watch`
 
 # Homepage
-![homepage](https://s3.amazonaws.com/upload.screenshot.co/c1f8f18f0d)
+![homepage](https://s3.amazonaws.com/upload.screenshot.co/70055694b4)
 
 # License
 The MIT License (MIT)
