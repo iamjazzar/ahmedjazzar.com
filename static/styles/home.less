@@ -612,4 +612,55 @@ body  {
       }
     }
   }
+
+  .footer-wrapper {
+    position: relative;
+
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 450px;
+      font-family: lato;
+      font-size: 18px;
+      letter-spacing: 1px;
+
+      a {
+        color: rgb(5, 139, 255);
+
+        &:hover {
+          color: rgb(5, 139, 255);
+        }
+      }
+
+      .fa-heart {
+        color: @aj-violet-color;
+        .margin-horz(5px);
+
+        animation-duration: 1s;
+        -webkit-animation-duration: 1s;
+      }
+    }
+
+    .scroll-top {
+      text-align: center;
+      color: black;
+      font-size: 28px;
+      text-decoration: none;
+      width: 45px;
+      height: 45px;
+      top: 0;
+      right: 0;
+      margin-top: 50px;
+      margin-right: 150px;
+      position: absolute;
+      background-color: rgb(232, 235, 240);
+      border: 1px solid rgb(232, 235, 240);
+      border-radius: 7px;
+      box-shadow: 0 0 3px 1px rgb(232, 235, 240);
+
+      &:hover, &:focus  {
+        box-shadow: 0 0 0 0 transparent;
+      }
+    }
+  }
 }
