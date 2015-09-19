@@ -11,11 +11,14 @@
     {% endblock %}
     <title>{% block title %}{% endblock %}</title>
 
+    <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.ico" %}"/>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static "bower_components/bootstrap/dist/css/bootstrap.min.css" %}">
-    <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.ico" %}"/>
     <link rel="stylesheet" href="{% static "styles/partials/aj-fonts.min.css" %}" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="{% static "styles/partials/aj-theme.min.css" %}" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="{% static "styles/partials/animations.min.css" %}">
+    <link rel="stylesheet" href="{% static "styles/layout.min.css" %}" type="text/css" charset="utf-8">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,13 +32,66 @@
 
   </head>
   <body>
+    <nav class="navbar navbar-default navbar-fixed-top hide">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="{{ urls.home }}">
+            <img class="logo" src="{{MEDIA_URL}}{{ logo }}"/>
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            {% for nav in navs %}
+              <li ><a href="{{ nav.href }}">{{ nav.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </nav>
     {% block content %}
     {% endblock %}
 
     {% block scripts%}
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="{% static "bower_components/jquery/dist/jquery.js" %}"></script>
-      <script src="{% static "bower_components/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+      <script src="{% static "bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+
+      <script type="text/javascript">
+
+        var lastScrollTop = 0,
+          offset,
+          direction;
+
+        function scrollDirection() {
+            offset = window.pageYOffset;
+
+            if (offset > lastScrollTop)
+                direction = "down";
+            else
+                direction = "up";
+
+            lastScrollTop = offset;
+            return  direction;
+        }
+
+        $(window).bind( "scroll", function() {
+          var scroll = $(window).scrollTop();
+
+          var dir = scrollDirection();
+          if( dir == "down" )  // hide
+            $( ".navbar" ).slideUp( 100, "easeOutSine" );
+          else {
+            if(scroll < 500)  // hide
+              $( ".navbar" ).slideUp( 100, "easeOutSine" );
+            else { // show
+              $( ".navbar" ).slideDown( 10, "easeOutSine" );
+              $( ".navbar" ).removeClass( "hide" );
+            }
+          }
+      });
+
+      </script>
     {% endblock %}
   </body>
 </html>

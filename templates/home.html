@@ -6,11 +6,8 @@
 
 {% block header_links %}
   <link rel="stylesheet" href="{% static "styles/home.min.css" %}">
-  <link rel="stylesheet" href="{% static "styles/partials/animations.min.css" %}">
   <link rel="stylesheet" href="{% static "styles/partials/font-mfizz.min.css" %}">
-  <!-- TODO: remove CDN and install the package -->
-  <!-- TODO: check https://fortawesome.github.io/Font-Awesome/get-started/ -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static "styles/partials/font-awesome-4.4.0/css/font-awesome.min.css" %}">
 {% endblock %}
 
 {% block content %}
@@ -34,7 +31,9 @@
       </div>
 
       <div id="header" class="logo-wrapper">
-        <img class="logo" src="{{MEDIA_URL}}{{ logo }}"/>
+        <a href=" {{ urls.home }}">
+          <img class="logo" src="{{MEDIA_URL}}{{ logo }}"/>
+        </a>
       </div>
 
       <div class="content">
@@ -258,29 +257,25 @@
   <script type="text/javascript">
 
     // toggle nav menu
-    $('#toggle').click(function() {
-     $(this).toggleClass('active');
-     $('#overlay').toggleClass('open');
+    $( "#toggle" ).click(function() {
+      $(this).toggleClass( "active" );
+      $( "#overlay" ).toggleClass( "open" );
     });
 
-    // scroll tot top hover
+    // scroll top hover
 
     $(".scroll-top").hover(
-    function () {
-        $('.fa-angle-up').addClass('floating');
-      },
       function () {
-        $('.fa-angle-up').removeClass('floating');
-      }
-    );
+        $( ".fa-angle-up" ).toggleClass( "floating" );
+    });
 
     // scroll to top
-    $("a[href^='#header']").on('click', function(e) {
+    $("a[href^='#header']").on( "click", function(e) {
 
        e.preventDefault();
        var hash = this.hash;
 
-       $('body').animate({
+       $( "body" ).animate({
            scrollTop: $(hash).offset().top
          }, 1000, function(){
        });
