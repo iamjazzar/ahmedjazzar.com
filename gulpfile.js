@@ -107,6 +107,7 @@ gulp.task('serve', ['css'], function () {
       proxy: "localhost:8000",
       open: 'internal',
       host: "localhost",
+      tunnel: true,
       port: 4000
   });
 });
