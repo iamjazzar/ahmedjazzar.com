@@ -364,16 +364,20 @@ body  {
     .wanna-join  {
 
       .langs  {
-        .circle {
-          color: @aj-text-color;
-          display: inline-block;
-          margin: 15px;
-          text-align: center;
-          box-shadow: 6px 8px 0 0 rgba(0, 0, 0, 0.15);
+        a {
+          text-decoration: none;
+          
+          .circle {
+            color: @aj-text-color;
+            display: inline-block;
+            margin: 15px;
+            text-align: center;
+            box-shadow: 6px 8px 0 0 rgba(0, 0, 0, 0.15);
 
-          &:hover {
-            box-shadow: none;
-            transform: translate(3px);
+            &:hover {
+              box-shadow: none;
+              transform: translate(3px);
+            }
           }
         }
 
