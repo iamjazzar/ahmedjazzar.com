@@ -1,3 +1,4 @@
+
 {% extends 'layout.html' %}
 {% load staticfiles %}
 {% load twitterize %}
@@ -7,7 +8,7 @@
 {% block header_links %}
   <link rel="stylesheet" href="{% static "styles/home.min.css" %}">
   <link rel="stylesheet" href="{% static "styles/partials/font-mfizz.min.css" %}">
-  <link rel="stylesheet" href="{% static "styles/partials/font-awesome-4.4.0/css/font-awesome.min.css" %}">
+  <link rel="stylesheet" href="{% static "styles/partials/font-awesome.min.css" %}">
 {% endblock %}
 
 {% block content %}
@@ -54,26 +55,18 @@
         <img src="{{MEDIA_URL}}{{ country_image }}" />
       </div>
     </div>
-    <div class="day-night container-fluid">
-      <div class="day-night-container day-container col-md-4">
-        <img class="left-arrow" src="{% static "images/left-arrow.png" %}" />
-        <div class="day">Day</div>
-        <div class="code">
-          &lt;/body&gt;&lt;/html&gt; </br>
-          def render( **kwargs </br>
-          self, content </br>
-          &bnsp;return </br>
-          .header { </br>
-        </div>
-      </div>
-      <div class="imac col-md-4">
-        <img class="img-responsive" src="{% static "images/imac-photoshop.png" %}"/>
-      </div>
-      <div class="day-night-container night-container col-md-4">
-        <img class="right-arrow" src="{% static "images/right-arrow.png" %}" />
-        <div class="night">Night</div>
-        <div class="paintings">
-          <img src="{% static "images/paintings.png" %}" alt="" />
+
+    <div id="section" class="container-fluid">
+      <div class="day-night row">
+        <div class="col-md-12">
+          <div id="imac" class="imac">
+            <img id="imac-img" class="imac-img"
+                src="{% static "images/imac.png" %}">
+            <div id="day-img" class="day-img"></div>
+            <div id="night-img" class="night-img"></div>
+            <div id="day-bg" class="day-bg"></div>
+            <div id="night-bg" class="night-bg"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -85,7 +78,7 @@
         <div class="title">A nerd.</div>
         <div class="content">
           I am a tireless seeker of knowledge, mining tool for math, and also,
-          coincidentally a graphic designer. I enjoy deleting bunch of codes as
+          coincidentally a graphic night. I enjoy deleting bunch of codes as
           much as I enjoy writing them.
         </div>
         <div class="note">
