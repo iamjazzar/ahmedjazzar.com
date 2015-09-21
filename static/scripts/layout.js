@@ -1,5 +1,5 @@
 
-"use strict";
+'use strict';
 
 var lastScrollTop = 0,
   offset,
@@ -8,27 +8,25 @@ var lastScrollTop = 0,
 function scrollDirection() {
     offset = window.pageYOffset;
 
-    if (offset > lastScrollTop)
-        direction = "down";
-    else
-        direction = "up";
+    if (offset > lastScrollTop) {
+      direction = 'down';
+    }
+    else {
+      direction = 'up';
+    }
 
     lastScrollTop = offset;
     return  direction;
 }
 
-$(window).bind( "scroll", function() {
+$(window).bind( 'scroll', function() {
   var scroll = $(window).scrollTop();
 
   var dir = scrollDirection();
-  if( dir == "down" )  // hide
-    $( ".navbar" ).slideUp( 100, "easeOutSine" );
-  else {
-    if(scroll < 500)  // hide
-      $( ".navbar" ).slideUp( 100, "easeOutSine" );
-    else { // show
-      $( ".navbar" ).slideDown( 10, "easeOutSine" );
-      $( ".navbar" ).removeClass( "hide" );
-    }
+  if( scroll > 500 && dir === 'down' )  {
+    $( '.navbar' ).slideDown( 10, 'easeOutSine' );
+    $( '.navbar' ).removeClass( 'hide' );
+  } else {
+    $( '.navbar' ).slideUp( 100, 'easeOutSine' );
   }
 });
