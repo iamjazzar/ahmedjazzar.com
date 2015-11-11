@@ -249,47 +249,26 @@ body  {
 
     .day-night  {
       .imac {
-        .imac-img {
-          opacity: 0;
-          display: block;
-          margin: 0 auto;
-          z-index: 0;          
-        }
+
+        @image-width: 430px;
+        @image-height: 258px;
+
+        width: 470px;
+        height: 380px;
+        overflow: hidden;
+        margin: 0 auto;
 
         .day-img  {
-          display: none;
-
-          width: 470px;
-          height: 380px;
-          position: absolute;
-          top: 0;
-          background: url('../images/imac-code.png') 0 0 no-repeat;
-          display: block;
-          z-index: 1;
-
-          background-position: 2px 2px;
-          margin-left: auto;
-          margin-right: auto;
+          .draw-image(@image-width, @image-height);
+          background: url('../images/code.png') 0 0 no-repeat;
           left: 0;
-          right: 0;
         }
 
         .night-img  {
-          display: none;
+          background: url('../images/photoshop.png') 0 0 no-repeat;
+          .draw-image(@image-width/2, @image-height);
+          left: @image-width/2;
 
-          width: 235px;
-          height: 380px;
-          position: absolute;
-          top: 2px;
-          background: url('../images/imac-photoshop.png') 0 0 no-repeat;
-          display: block;
-          z-index: 1;
-
-          background-position: 100% 0px;
-          margin-left: auto;
-          margin-right: auto;
-          left: 235px;
-          right: 0;
         }
       }
     }
