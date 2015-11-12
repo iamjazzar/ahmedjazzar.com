@@ -15,9 +15,8 @@ var xpLow = -imageWidth;
 var mouseX = 0;
 var relMouseX = 0;
 var windowCenterX = 0;
-var timeInterval = 600;
+var timeInterval = 50;
 var loop = 0;
-var speed = 200;
 
 // iMac Animation
 imacContainer.hover(function(){
@@ -29,10 +28,10 @@ imacContainer.hover(function(){
 
   nightImg.stop();
   loop = setInterval(function(){
-    xp += (relMouseX - xp) / speed;
+    xp += (relMouseX - xp) / timeInterval;
     xp = Math.max(xpLow, Math.min(xp, xpHigh));
     nightImg.css({width: (imageWidth + xp) * 0.5, left: (imageWidth - xp) * 0.5});
-  }, timeInterval/100);
+  });
 }, function(){
   clearInterval(loop);
   xp = 0;

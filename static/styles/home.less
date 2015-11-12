@@ -260,15 +260,15 @@ body  {
 
         .day-img  {
           .draw-image(@image-width, @image-height);
-          background: url('../images/code.png') 0 0 no-repeat;
+          background: url('../images/code.png') no-repeat;
           left: 0;
         }
 
         .night-img  {
-          background: url('../images/photoshop.png') 0 0 no-repeat;
+          background: url('../images/photoshop.png') no-repeat;
           .draw-image(@image-width/2, @image-height);
           left: @image-width/2;
-
+          background-position: right;
         }
       }
     }
