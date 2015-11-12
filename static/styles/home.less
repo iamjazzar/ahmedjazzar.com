@@ -248,27 +248,95 @@ body  {
     }
 
     .day-night  {
-      .imac {
+      display: flex;
 
+      .day-bg {
+        order: 1;
+        flex: 1;
+        padding-top: 20px;
+        position: relative;
+
+        * {
+          margin-left: auto;
+        }
+
+        .day-arrow  {
+          height: 86px;
+          width: 140px;
+          transform: rotate(-5deg);
+          background: url('../images/day-arrow.png') no-repeat;
+        }
+
+        .day  {
+          font-size: 80px;
+          font-family: lavendersweet;
+        }
+
+        .code {
+          font-family: monospace;
+          position: absolute;
+          text-align: right;
+          color: #364d5d;
+          font-size: 20px;
+          right: -80px;
+          bottom: 0;
+        }
+      }
+
+      .imac {
         @image-width: 430px;
         @image-height: 258px;
 
+        order: 2;
+        flex: 2;
         width: 470px;
         height: 380px;
         overflow: hidden;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
 
         .day-img  {
           .draw-image(@image-width, @image-height);
-          background: url('../images/code.png') 0 0 no-repeat;
+          background: url('../images/code.png') no-repeat;
           left: 0;
         }
 
         .night-img  {
-          background: url('../images/photoshop.png') 0 0 no-repeat;
+          background: url('../images/photoshop.png') no-repeat;
           .draw-image(@image-width/2, @image-height);
           left: @image-width/2;
+          background-position: right;
+        }
+      }
 
+      .night-bg {
+        order: 3;
+        flex: 1;
+        padding-top: 60px;
+        position: relative;
+        z-index: 0;
+
+        .night-arrow  {
+          height: 79px;
+          width: 107px;
+          float: left;
+          transform: rotate(15deg);
+          background: url('../images/night-arrow.png') no-repeat;
+        }
+
+        .night  {
+          padding-top: 35px;
+          padding-right: 30px;
+          font-size: 80px;
+          font-family: lavendersweet;
+          transform: rotate(-10deg);
+        }
+
+        .paintings  {
+          position: absolute;
+          left: -100px;
+          bottom: -30px;
         }
       }
     }
