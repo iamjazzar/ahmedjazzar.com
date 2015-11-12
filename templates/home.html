@@ -33,7 +33,7 @@
 
       <div id="header" class="logo-wrapper">
         <a href=" {{ urls.home }}">
-          <img class="logo" src="{{MEDIA_URL}}{{ logo }}"/>
+          <img class="logo" src="{{MEDIA_URL}}{{ logo }}" alt="Logo"/>
         </a>
       </div>
 
@@ -52,21 +52,32 @@
             <div class="country">{{ country }}</div>
           </div>
         </div>
-        <img src="{{MEDIA_URL}}{{ country_image }}" />
+        <img src="{{MEDIA_URL}}{{ country_image }}" alt="Palestine"/>
       </div>
     </div>
 
-    <div id="imac-container" class="container-fluid">
-      <div class="day-night row">
-        <div class="col-md-12">
-          <div class="imac">
-            <img class="imac-img"
-                src="{% static "images/imac.png" %}">
-            <div class="day-img"></div>
-            <div id="night-img" class="night-img"></div>
-            <div id="day-bg" class="day-bg"></div>
-            <div id="night-bg" class="night-bg"></div>
+    <div id="imac-container" class="row">
+      <div class="day-night col-md-8 col-md-offset-2">
+        <div id="day-bg" class="day-bg">
+          <div class="day-arrow"></div>
+          <div class="day">Day</div>
+          <div class="code">
+            &lt;/body&gt;&lt;/html&gt; <br>
+            def render( **kw <br>
+            self, content <br>
+            &amp;bnsp;return <br>
+            .header { <br>
           </div>
+        </div>
+        <div class="imac">
+          <img src="{% static "images/imac.png" %}" alt="iMac">
+          <div class="day-img"></div>
+          <div id="night-img" class="night-img"></div>
+        </div>
+        <div id="night-bg" class="night-bg">
+          <div class="night-arrow"></div>
+          <div class="night">Night</div>
+          <img class="paintings" src="{% static "images/paintings.png" %}" alt="Paintings">
         </div>
       </div>
     </div>
@@ -91,7 +102,7 @@
         </a>
       </div>
       <div class="image col-md-6">
-        <img class="img-responsive" src="{% static "images/cartoon-full.png" %}"/>
+        <img class="img-responsive" src="{% static "images/cartoon-full.png" %}" alt="My Picture"/>
       </div>
     </div>
   </div>
