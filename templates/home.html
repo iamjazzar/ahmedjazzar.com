@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-  <div class="jumbotron header">
+  <div id="header" class="jumbotron header">
     <div class="container">
 
       <div class="nav-container" id="toggle">
@@ -31,12 +31,11 @@
         </nav>
       </div>
 
-      <div id="header" class="logo-wrapper">
-        <a href=" {{ urls.home }}">
+      <a class="logo-link" href="{{ urls.home }}">
+        <div class="logo-wrapper">
           <img class="logo" src="{{MEDIA_URL}}{{ logo }}" alt="Logo"/>
-        </a>
-      </div>
-
+        </div>
+      </a>
       <div class="content">
         <h1 class="name">{{ full_name }},</h1>
         <p>{{ about }}</p>
@@ -240,19 +239,21 @@
       </div>
 
       <div class="row">
-        <div class="social-buttons col-md-8 col-md-offset-2">
-          <a href="https://www.github.com/{{ GITHUB_USERNAME }}" target="_blank">
-            <i class="fa fa-2x fa-github"></i>
-          </a>
-          <a href="https://www.twitter.com/{{ TWITTER_USERNAME }}" target="_blank">
-            <i class="fa fa-2x fa-twitter"></i>
-          </a>
-          <a href="https://www.facebook.com/{{ FACEBOOK_USERNAME }}" target="_blank">
-            <i class="fa fa-2x fa-facebook-f"></i>
-          </a>
-          <a href="mailto:{{ EMAIL }}">
-            <i class="fa fa-2x fa-paper-plane-o"></i>
-          </a>
+        <div class="col-md-8 col-md-offset-2">
+          <div class="social-buttons">
+            <a href="https://www.github.com/{{ GITHUB_USERNAME }}" target="_blank">
+              <i class="fa fa-2x fa-github"></i>
+            </a>
+            <a href="https://www.twitter.com/{{ TWITTER_USERNAME }}" target="_blank">
+              <i class="fa fa-2x fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/{{ FACEBOOK_USERNAME }}" target="_blank">
+              <i class="fa fa-2x fa-facebook-f"></i>
+            </a>
+            <a href="mailto:{{ EMAIL }}">
+              <i class="fa fa-2x fa-paper-plane-o"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
