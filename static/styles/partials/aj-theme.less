@@ -9,6 +9,10 @@
   text-decoration: none;
   text-transform: uppercase;
   border: 2px solid;
+  border: none;
+  transition: all 0.2s cubic-bezier(0.390, 0.500, 0.150, 1.360);
+
+
   .padding-horz(40px);
   .padding-vert(15px);
 
@@ -18,35 +22,34 @@
 }
 
 .btn-default  {
-  border-color: @aj-bg-color;
   color: @aj-text-color;
+  box-shadow: @aj-bg-color 0 0 0 2px inset;
 
   &:hover, &:focus, &:active, &:active:focus{
     background-color: @aj-bg-color;
-    border-color: @aj-bg-color;
     color: @aj-twitter-color;
+    box-shadow: @aj-bg-color 0 80px 0px 2px inset;
   }
 }
 
 .btn-primary  {
-  border-color: @aj-blue-color;
   color: @aj-blue-color;
+  box-shadow: @aj-blue-color 0 0 0 2px inset;
 
   &:hover, &:focus, &:active, &:active:focus{
-    background-color: @aj-blue-color;
-    border-color: @aj-blue-color;
     color: @aj-text-color;
+    box-shadow: @aj-blue-color 0 80px 0px 2px inset;
   }
 }
 
 
 .btn-vio-primary  {
-  border-color: @aj-violet-color;
   color: @aj-violet-color;
+  box-shadow: @aj-violet-color 0 0 0 2px inset;
 
   &:hover, &:focus, &:active, &:active:focus {
     background-color: @aj-violet-color;
-    border-color: @aj-violet-color;
     color: @aj-text-color;
+    box-shadow: @aj-violet-color 0 80px 0px 2px inset;
   }
 }
