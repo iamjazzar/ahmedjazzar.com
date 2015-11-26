@@ -1,0 +1,15 @@
+
+db:
+  image: postgres
+  environment:
+    POSTGRES_PASSWORD: "78625478"
+
+web:
+  build: .
+  command: python manage.py runserver 0.0.0.0:8000 --settings=ahmedjazzar.dev
+  volumes:
+    - .:/ahmedjazzar.com
+  ports:
+    - "8000:8000"
+  links:
+    - db
