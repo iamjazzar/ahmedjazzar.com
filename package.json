@@ -19,7 +19,7 @@
     "url": "https://github.com/ahmedaljazzar/ahmedjazzar.com/issues"
   },
   "homepage": "https://github.com/ahmedaljazzar/ahmedjazzar.com#readme",
-  "devDependencies": {
+  "dependencies": {
     "bower": "^1.5.2",
     "browser-sync": "^2.8.2",
     "connect-livereload": "^0.4.0",
@@ -53,7 +53,7 @@
     "vinyl": "0.5.1",
     "vinyl-fs": "~1.0.0"
   },
-  "dependencies": {
+  "devDependencies": {
   },
   "keywords": [
     "ahmed",

@@ -1,17 +1,10 @@
 
-# NOTE: Uncomment vars then add your own secret vars OR keep them commented and
-# declare them in secret_vars.py. You also need to look up ahmedjazzar and
-# ahmedjazzarcom in the entire project and change them to settings_folder_name
-# and app_name respectively
-
 import os
-
-from .secret_vars import *
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECRET_KEY = "<Y0uR-4pP_$ecRe7_K3y:)>"
+SECRET_KEY = os.environ['SECRET_KEY']
 
 ALLOWED_HOSTS = []
 
@@ -70,10 +63,10 @@ EMAIL = 'ahmed.mojaz@gmail.com'
 
 # twitter settings
 
-# CONSUMER_KEY='[your consumer key]'
-# CONSUMER_SECRET='[your consumer secret]'
-# ACCESS_TOKEN='[your token]'
-# ACCESS_TOKEN_SECRET='[your token secret]'
+CONSUMER_KEY=os.environ['CONSUMER_KEY']
+CONSUMER_SECRET=os.environ['CONSUMER_SECRET']
+ACCESS_TOKEN=os.environ['ACCESS_TOKEN']
+ACCESS_TOKEN_SECRET=os.environ['ACCESS_TOKEN_SECRET']
 
 
 # Internationalization

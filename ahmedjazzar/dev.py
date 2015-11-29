@@ -6,9 +6,9 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DEV_DB_NAME,
-        'USER': DEV_DB_USER,
-        'PASSWORD': DEV_DB_PASSWORD,
+        'NAME': 'ahmedjazzar',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': 'db',
         'PORT': 5432,
     },
