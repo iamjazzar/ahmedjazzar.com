@@ -68,6 +68,8 @@ CONSUMER_SECRET=os.environ['CONSUMER_SECRET']
 ACCESS_TOKEN=os.environ['ACCESS_TOKEN']
 ACCESS_TOKEN_SECRET=os.environ['ACCESS_TOKEN_SECRET']
 
+# email settings
+GOOGLE_SITE_VERIFICATION=os.environ['GOOGLE_SITE_VERIFICATION']
 
 # Internationalization
 
