@@ -251,6 +251,8 @@ body  {
 
     .day-night  {
       display: flex;
+      max-width: 1110px;
+      margin: 0 auto;
 
       .day-bg {
         order: 1;
@@ -300,8 +302,8 @@ body  {
         z-index: 1;
 
         .day-img  {
-          .draw-image(@image-width, @image-height);
           background: url('../images/code.png') no-repeat;
+          .draw-image(@image-width, @image-height);
           left: 0;
         }
 
