@@ -11,13 +11,8 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     rimraf = require('rimraf'),
-    coffee = require('gulp-coffee'),
-    concat = require('gulp-concat'),
     cache = require('gulp-cache'),
     include = require('gulp-include'),
-    gutil = require('gulp-util'),
-    rev = require('gulp-rev'),
-    revall = require('gulp-rev-all'),
     livereload = require('gulp-livereload'),
     flatten = require('gulp-flatten'),
     browserSync = require('browser-sync'),
@@ -25,12 +20,23 @@ var gulp = require('gulp'),
 
 // Define paths
 var paths = {
-  scripts:   ['static/scripts/*.coffee', 'static/scripts/*.js'],
-  styles:    ['static/styles/**/*.less', 'static/styles/**/*.css'],
+  scripts:   ['static/scripts/*.js'],
+  styles:    ['static/bower_components', 'static/styles', '.compiled'],
   images:    ['static/images/*.png'],
   fonts:     ['static/fonts/**/*.{eot,svg,ttf,woff,woff2}'],
   bower:     ['static/bower_components/**/*'],
 };
+
+// Clean up
+gulp.task('clean', function(cb) {
+  rimraf('./compiled', cb);
+});
+
+gulp.task('bower', function() {
+  gulp.src(paths.bower)
+    .pipe(flatten())
+    .pipe(gulp.dest('.compiled/bower_components'));
+});
 
 // CSS
 gulp.task('css', function() {
@@ -65,22 +71,6 @@ gulp.task('images', function() {
   return gulp.src(paths.images)
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
     .pipe(gulp.dest('.compiled/images'));
-    //.pipe(rev())
-    //.pipe(gulp.dest('.compiled/images'))
-    //.pipe(rev.manifest())
-    //.pipe(gulp.dest('.'));
-});
-
-// Clean up
-gulp.task('clean', function(cb) {
-  rimraf('./compiled', cb);
-});
-
-// Rev all files
-gulp.task('rev', function () {
-  gulp.src('.compiled/**')
-    .pipe(revall({ ignore: [/^\/favicon.ico$/g, '.html'] }))
-    .pipe(gulp.dest('rev'));
 });
 
 // Copy fonts
@@ -88,12 +78,6 @@ gulp.task('fonts', function() {
   gulp.src(paths.fonts)
     .pipe(flatten())
     .pipe(gulp.dest('.compiled/fonts'));
-});
-
-gulp.task('bower', function() {
-  gulp.src(paths.bower)
-    .pipe(flatten())
-    .pipe(gulp.dest('.compiled/bower_components'));
 });
 
 // Default task
