@@ -251,6 +251,8 @@ body  {
 
     .day-night  {
       display: flex;
+      max-width: 1110px;
+      margin: 0 auto;
 
       .day-bg {
         order: 1;
@@ -300,8 +302,8 @@ body  {
         z-index: 1;
 
         .day-img  {
-          .draw-image(@image-width, @image-height);
           background: url('../images/code.png') no-repeat;
+          .draw-image(@image-width, @image-height);
           left: 0;
         }
 
@@ -653,7 +655,8 @@ body  {
           color: rgb(61, 61, 61);
           text-decoration: none;
           display: inline-block;
-          width: 110px;
+          width: 70px;
+          .margin-horz(20px);
           transition: all 0.2s;
 
           &:hover, &:focus {
@@ -666,7 +669,6 @@ body  {
           border: 3px solid;
           padding-top: 16px;
           border-radius: 50%;
-          .margin-horz(20px);
           border-radius: 50%;
           width: 70px;
           height: 70px;
