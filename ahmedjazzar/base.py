@@ -59,7 +59,7 @@ WSGI_APPLICATION = 'ahmedjazzar.wsgi.application'
 TWITTER_USERNAME = 'AhmedAljazzar'
 GITHUB_USERNAME = 'ahmedaljazzar'
 FACEBOOK_USERNAME = 'ahm.aljazzar'
-EMAIL = 'ahmed.mojaz@gmail.com'
+EMAIL = 'me@ahmedjazzar.com'
 
 # twitter settings
 
