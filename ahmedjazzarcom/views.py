@@ -29,5 +29,6 @@ class Home(TemplateView):
         context['GITHUB_USERNAME'] = settings.GITHUB_USERNAME
         context['FACEBOOK_USERNAME'] = settings.FACEBOOK_USERNAME
         context['EMAIL'] = settings.EMAIL
+        context['GOOGLE_SITE_VERIFICATION'] = settings.GOOGLE_SITE_VERIFICATION
 
         return context
