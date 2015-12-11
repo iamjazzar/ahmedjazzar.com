@@ -15,40 +15,17 @@ def last_tweet():
         token_secret=settings.ACCESS_TOKEN_SECRET,
     )
 
-    tweets = Twitter(auth=auth).statuses.user_timeline(screen_name=settings.TWITTER_USERNAME)
+    try:
+        tweets = Twitter(auth=auth).statuses.user_timeline(screen_name=settings.TWITTER_USERNAME)
+        tweet = tweets[0].get('text')
+        created_at = parser.parse(tweets[0].get('created_at'))
+    except TwitterHTTPError:
+        tweet = "OMG! You do not configure your Twitter account yet!"
+        created_at = datetime.now()
+
     last_tweet = {
-        'tweet': tweets[0].get('text'),
-        'time': pretty_date(parser.parse(tweets[0].get('created_at'))),
+        'tweet': tweet,
+        'time': created_at,
     }
 
     return last_tweet
-
-def pretty_date(time=False):
-
-    diff = datetime.now() - time.replace(tzinfo=None)
-
-    seconds_diff = diff.seconds
-    days_diff = diff.days
-
-    if days_diff == 0:
-        if seconds_diff < 10:
-            return "just now"
-        if seconds_diff < 60:
-            return str(seconds_diff) + " seconds ago"
-        if seconds_diff < 120:
-            return "a minute ago"
-        if seconds_diff < 3600:
-            return str(seconds_diff / 60) + " minutes ago"
-        if seconds_diff < 7200:
-            return "an hour ago"
-        if seconds_diff < 86400:
-            return str(seconds_diff / 3600) + " hours ago"
-    if days_diff == 1:
-        return "Yesterday"
-    if days_diff < 7:
-        return str(days_diff) + " days ago"
-    if days_diff < 31:
-        return str(days_diff / 7) + " weeks ago"
-    if days_diff < 365:
-        return str(days_diff / 30) + " months ago"
-    return str(days_diff / 365) + " years ago"
