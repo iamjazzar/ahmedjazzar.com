@@ -2,6 +2,7 @@
 {% extends 'layout.html' %}
 {% load staticfiles %}
 {% load twitterize %}
+{% load humanize %}
 
 {% block title %}{{ full_name }}!{% endblock %}
 
@@ -170,7 +171,7 @@
       </div>
       <div class="time-wrapper">
         <span class="time">
-          {{ tweet_date }}
+          {{ tweet_date |naturaltime }}
         </span>
       </div>
       <a class="follow-me btn btn-default"
