@@ -386,12 +386,26 @@ body  {
       }
 
       .say-hello  {
-        .margin-vert(5px);
+        margin: 0 5px;
+
+        @media (max-width: @screen-md)  {
+          margin: 0 auto;
+          display: block;
+        }
       }
     }
 
     .image {
       max-width: 35%;
+
+      @media(max-width: @screen-md) {
+        max-width: none;
+        padding-top: 50px;
+
+        img {
+          margin: 15px auto;
+        }
+      }
     }
   }
 
