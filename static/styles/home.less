@@ -199,6 +199,11 @@ body  {
         font-size: 35px;
         font-family: "HPSimplified";
         font-weight: lighter;
+
+        @media (max-width: @screen-sm)  {
+          line-height: normal;
+          .margin-vert(70px);
+        }
       }
     }
 
@@ -344,6 +349,10 @@ body  {
           bottom: -30px;
         }
       }
+    }
+
+    .imac-fake  {
+      margin: 0 30px;
     }
   }
 
