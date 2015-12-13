@@ -735,17 +735,17 @@ body  {
       text-decoration: none;
       width: 45px;
       height: 45px;
-      top: 0;
-      right: 0;
-      margin-top: 50px;
-      margin-right: 150px;
-      position: absolute;
       background-color: white;
       border-radius: 7px;
       box-shadow: 0 0 0 1px rgb(61, 61, 61);
+      margin: -35px 0 0 auto;
 
       &:hover, &:focus  {
         box-shadow: none;
+      }
+
+      @media (max-width: @screen-sm) {
+        margin: 50px auto 0;
       }
     }
   }
