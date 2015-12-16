@@ -387,11 +387,6 @@ body  {
 
       .say-hello  {
         margin: 0 5px;
-
-        @media (max-width: @screen-md)  {
-          margin: 0 auto;
-          display: block;
-        }
       }
     }
 
@@ -403,7 +398,7 @@ body  {
         padding-top: 50px;
 
         img {
-          margin: 15px auto;
+          margin: 15px auto 0;
         }
       }
     }
@@ -571,6 +566,10 @@ body  {
         font-size: 40px;
         color: @aj-text-gray-color;
         .padding-vert(20px);
+
+        @media (max-width: @screen-xs) {
+          font-size: 36px;
+        }
       }
 
       .intro {
@@ -610,27 +609,33 @@ body  {
         color: rgb(243, 243, 243);
       }
 
-       .tweet {
-         .margin-vert(30px);
-         color: @aj-text-color;
+     .tweet {
+       .margin-vert(30px);
+       color: @aj-text-color;
 
-         a  {
-           color: rgb(46, 74, 93);
+       a  {
+         color: rgb(46, 74, 93);
 
-           &:hover, &:focus {
-             text-decoration: none;
-             border-bottom: 1px solid #2e4a5d;
+         &:hover, &:focus {
+           text-decoration: none;
+           border-bottom: 1px solid #2e4a5d;
+         }
+
+         &:not(.tweet-url) {
+           @media (max-width: @screen-xs) {
+             font-size: 20px;
            }
          }
        }
+     }
 
-       .time  {
-         border-bottom: 1px rgb(243, 243, 243) dotted;
-       }
+     .time  {
+       border-bottom: 1px rgb(243, 243, 243) dotted;
+     }
 
-      .follow-me  {
-        margin-top: 35px;
-      }
+    .follow-me  {
+      margin-top: 35px;
+    }
     }
   }
 
@@ -647,6 +652,8 @@ body  {
 
       .light-bulb {
         text-align: center;
+        overflow: hidden;
+
         .swinging-bulb  {
 
           .rope {
