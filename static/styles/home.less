@@ -199,6 +199,11 @@ body  {
         font-size: 35px;
         font-family: "HPSimplified";
         font-weight: lighter;
+
+        @media (max-width: @screen-sm)  {
+          line-height: normal;
+          .margin-vert(70px);
+        }
       }
     }
 
@@ -345,6 +350,10 @@ body  {
         }
       }
     }
+
+    .imac-fake  {
+      margin: 0 30px;
+    }
   }
 
   .a-nerd-wrapper {
@@ -377,12 +386,21 @@ body  {
       }
 
       .say-hello  {
-        .margin-vert(5px);
+        margin: 0 5px;
       }
     }
 
     .image {
       max-width: 35%;
+
+      @media(max-width: @screen-md) {
+        max-width: none;
+        padding-top: 50px;
+
+        img {
+          margin: 15px auto 0;
+        }
+      }
     }
   }
 
@@ -396,13 +414,16 @@ body  {
     .wanna-join  {
 
       .langs  {
+        .bubbles  {
+          display: table;
+          margin: 0 auto
+        }
         a {
           text-decoration: none;
 
           .circle {
             color: @aj-text-color;
             display: inline-block;
-            margin: 15px;
             text-align: center;
             box-shadow: 6px 8px 0 0 rgba(0, 0, 0, 0.15);
             transition: all 0.1s ease-in-out;
@@ -414,70 +435,129 @@ body  {
           }
         }
 
-        .first-row  {
-          margin-left: 20px;
-          .margin-vert(20px);
+        .first-col  {
+          margin-top: 50px;
+          margin-right: 30px;
+          width: 100px;
+          padding: 0;
 
           .java {
             .make-circle(100px, 70px, rgb(242, 101, 34), rgb(247, 148, 29));
           }
-
+          .html  {
+            .make-circle(65px, 40px, rgb(0, 174, 239), rgb(2, 158, 216));
+          }
           .ubuntu {
             padding-right: 7px;
             .make-circle(85px, 45px, rgb(26, 175, 93), rgb(14, 162, 81));
-          }
-
-          .html  {
-            .make-circle(65px, 40px, rgb(0, 174, 239), rgb(2, 158, 216));
-              position: absolute;
-              top: 140px;
-              left: 119px;
-          }
-
-          .database {
-            .make-circle(70px, 40px, rgb(48, 114, 140), rgb(68, 138, 166));
-            position: absolute;
-            top: 115px;
-            right: 215px;
+            margin-left: 50px;
           }
         }
 
-        .second-row {
+        .second-col {
+          width: 90px;
+          padding: 0;
+          margin-right: 50px;
+          margin-left: 10px;
+
+          .database {
+            .make-circle(70px, 40px, rgb(48, 114, 140), rgb(68, 138, 166));
+              margin-left: -10px;
+          }
           .android  {
             .make-circle(90px, 65px, rgb(237, 20, 91), rgb(221, 23, 87));
-            position: absolute;
-            bottom: -90px;
-            left: 80px;
           }
-
           .css3 {
             .make-circle(80px, 30px, rgb(146, 39, 143), rgb(166, 48, 163));
-              position: absolute;
-              left: 225px;
-              bottom: -60px;
+            margin-left: 35px;
           }
+        }
+
+        .third-col {
+          margin-top: 25px;
+          width: 90px;
+          padding: 0;
 
           .python {
             .make-circle(75px, 45px, rgb(255, 220, 116), rgb(255, 206, 61));
             line-height: 80px;
+            margin-left: -10px;
           }
+
 
           .c {
             .make-circle(90px, 45px, rgb(242, 86, 97), rgb(242, 49, 49));
             line-height: 95px;
-            position: absolute;
-            top: 40px;
-            right: 95px;
           }
 
           .cplusplus  {
             .make-circle(60px, 35px, rgb(155, 147, 136), rgb(194, 183, 169));
-            line-height: 66px;
-            position: absolute;
-            right: 120px;
-
+            line-height: 65px;
+            margin-left: 10px;
           }
         }
+
+        @media (max-width: @screen-xs) {
+
+          .bubbles  {
+            display: block;
+          }
+          .first-col  {
+            margin-right: 16px;
+            width: 50px;
+
+            .java {
+              .make-circle(50px, 40px, rgb(242, 101, 34), rgb(247, 148, 29));
+            }
+            .html  {
+              .make-circle(40px, 25px, rgb(0, 174, 239), rgb(2, 158, 216));
+            }
+            .ubuntu {
+              padding-right: 7px;
+              .make-circle(45px, 30px, rgb(26, 175, 93), rgb(14, 162, 81));
+              margin-left: 50px;
+            }
+          }
+
+          .second-col {
+            width: 45px;
+            padding: 0;
+            margin-right: 20px;
+            .database {
+              .make-circle(40px, 25px, rgb(48, 114, 140), rgb(68, 138, 166));
+              margin-left: -10px;
+            }
+            .android  {
+              .make-circle(45px, 30px, rgb(237, 20, 91), rgb(221, 23, 87));
+            }
+            .css3 {
+              .make-circle(40px, 20px, rgb(146, 39, 143), rgb(166, 48, 163));
+              margin-left: 35px;
+            }
+          }
+
+          .third-col {
+            margin-top: 25px;
+            width: 45px;
+            padding: 0;
+
+            .python {
+              .make-circle(40px, 25px, rgb(255, 220, 116), rgb(255, 206, 61));
+              margin-left: -10px;
+            }
+
+
+            .c {
+              .make-circle(45px, 25px, rgb(242, 86, 97), rgb(242, 49, 49));
+            }
+
+            .cplusplus  {
+              .make-circle(40px, 20px, rgb(155, 147, 136), rgb(194, 183, 169));
+              margin-left: 20px;
+            }
+          }
+        }
+
       }
 
       .title  {
@@ -486,6 +566,10 @@ body  {
         font-size: 40px;
         color: @aj-text-gray-color;
         .padding-vert(20px);
+
+        @media (max-width: @screen-xs) {
+          font-size: 36px;
+        }
       }
 
       .intro {
@@ -525,27 +609,33 @@ body  {
         color: rgb(243, 243, 243);
       }
 
-       .tweet {
-         .margin-vert(30px);
-         color: @aj-text-color;
+     .tweet {
+       .margin-vert(30px);
+       color: @aj-text-color;
 
-         a  {
-           color: rgb(46, 74, 93);
+       a  {
+         color: rgb(46, 74, 93);
 
-           &:hover, &:focus {
-             text-decoration: none;
-             border-bottom: 1px solid #2e4a5d;
+         &:hover, &:focus {
+           text-decoration: none;
+           border-bottom: 1px solid #2e4a5d;
+         }
+
+         &:not(.tweet-url) {
+           @media (max-width: @screen-xs) {
+             font-size: 20px;
            }
          }
        }
+     }
 
-       .time  {
-         border-bottom: 1px rgb(243, 243, 243) dotted;
-       }
+     .time  {
+       border-bottom: 1px rgb(243, 243, 243) dotted;
+     }
 
-      .follow-me  {
-        margin-top: 35px;
-      }
+    .follow-me  {
+      margin-top: 35px;
+    }
     }
   }
 
@@ -562,6 +652,8 @@ body  {
 
       .light-bulb {
         text-align: center;
+        overflow: hidden;
+
         .swinging-bulb  {
 
           .rope {
@@ -633,7 +725,7 @@ body  {
         text-align: center;
         font-size: 50px;
         font-weight: lighter;
-        margin-bottom: 95px;
+        margin-bottom: 75px;
 
         div {
           font-size: 35px;
@@ -643,7 +735,7 @@ body  {
 
       .social-buttons {
         text-align: center;
-        .margin-horz(150px);
+        margin: 0 auto;
 
         &:hover {
           a {
@@ -656,7 +748,7 @@ body  {
           text-decoration: none;
           display: inline-block;
           width: 70px;
-          .margin-horz(20px);
+          margin: 20px;
           transition: all 0.2s;
 
           &:hover, &:focus {
@@ -712,17 +804,17 @@ body  {
       text-decoration: none;
       width: 45px;
       height: 45px;
-      top: 0;
-      right: 0;
-      margin-top: 50px;
-      margin-right: 150px;
-      position: absolute;
       background-color: white;
       border-radius: 7px;
       box-shadow: 0 0 0 1px rgb(61, 61, 61);
+      margin: -35px 0 0 auto;
 
       &:hover, &:focus  {
         box-shadow: none;
+      }
+
+      @media (max-width: @screen-sm) {
+        margin: 50px auto 0;
       }
     }
   }
