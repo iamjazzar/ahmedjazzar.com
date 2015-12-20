@@ -23,7 +23,7 @@ var paths = {
   scripts:   ['static/scripts/*.js'],
   styles:    [
     'static/bower_components/bootstrap/less/bootstrap.less',
-    'static/styles/**/*.{less, css}'
+    'static/styles/**/*.{less,css}'
    ],
   images:    ['static/images/*.png'],
   fonts:     ['static/fonts/**/*.{eot,svg,ttf,woff,woff2}'],

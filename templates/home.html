@@ -15,23 +15,23 @@
 {% block content %}
   <div id="header" class="jumbotron header">
     <div class="container">
+      {% if navs %}
+        <div class="nav-container" id="toggle">
+          <span class="top"></span>
+          <span class="middle"></span>
+          <span class="bottom"></span>
+        </div>
 
-      <div class="nav-container" id="toggle">
-        <span class="top"></span>
-        <span class="middle"></span>
-        <span class="bottom"></span>
-      </div>
-
-      <div class="nav-overlay" id="overlay">
-        <nav class="overlay-menu">
-          <ul>
-            {% for nav in navs %}
-              <li ><a href="{{ nav.href }}">{{ nav.name }}</a></li>
-            {% endfor %}
-          </ul>
-        </nav>
-      </div>
-
+        <div class="nav-overlay" id="overlay">
+          <nav class="overlay-menu">
+            <ul>
+              {% for nav in navs %}
+                <li ><a href="{{ nav.href }}">{{ nav.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      {% endif %}
       <a class="logo-link" href="{{ urls.home }}">
         <div class="logo-wrapper">
           <img class="logo" src="{{MEDIA_URL}}{{ logo }}" alt="Logo"/>
