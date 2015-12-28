@@ -33,23 +33,26 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top hidden-xs hide">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="{{ urls.home }}">
-            <img class="logo" src="{{MEDIA_URL}}{{ logo }}" alt="Logo"/>
-          </a>
-        </div>
+    {% if navs %}
+      <nav class="navbar navbar-default navbar-fixed-top hidden-xs hide">
+        <div class="container">
+          <div class="navbar-header">
+            <a href="{{ urls.home }}">
+              <img class="logo" src="{{MEDIA_URL}}{{ logo }}" alt="Logo"/>
+            </a>
+          </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            {% for nav in navs %}
-              <li ><a href="{{ nav.href }}">{{ nav.name }}</a></li>
-            {% endfor %}
-          </ul>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              {% for nav in navs %}
+                <li ><a href="{{ nav.href }}">{{ nav.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 
