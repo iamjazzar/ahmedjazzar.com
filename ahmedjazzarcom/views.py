@@ -24,13 +24,13 @@ class Home(TemplateView):
             navs = models.Nav.objects.all()
 
         except:
-             full_name = "Full Name"
-             about = "Wow! I can see you now :D"
-             country = "Country"
-             country_image = None
-             logo = None
+            full_name = "Full Name"
+            about = "Wow! I can see you now :D"
+            country = "Country"
+            country_image = None
+            logo = None
 
-             navs = None
+            navs = None
 
 
         tweet = last_tweet()
@@ -40,7 +40,7 @@ class Home(TemplateView):
         context['about'] = about
         context['country'] = country
         context['country_image'] = country_image
-        context['logo'] =  logo
+        context['logo'] = logo
         context['navs'] = navs
         context['tweet'] = tweet.get('tweet')
         context['tweet_date'] = tweet.get('time')
@@ -48,5 +48,20 @@ class Home(TemplateView):
         context['GITHUB_USERNAME'] = settings.GITHUB_USERNAME
         context['FACEBOOK_USERNAME'] = settings.FACEBOOK_USERNAME
         context['EMAIL'] = settings.EMAIL
+
+        return context
+
+class FourOhFourView(TemplateView):
+    template_name = "404.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(FourOhFourView, self).get_context_data(**kwargs)
+
+        try:
+            navs = models.Nav.objects.all()
+        except:
+            navs = None
+
+        context['navs'] = navs
 
         return context
