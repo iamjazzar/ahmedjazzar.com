@@ -1,0 +1,71 @@
+
+@import "partials/aj-variables";
+@import "partials/aj-mixins";
+
+body  {
+  overflow: hidden;
+
+  .header {
+    .make-header();
+    padding: 100px 0;
+
+    .content  {
+      .error  {
+        font-family: "blackjack";
+        font-size: 100px;
+        text-shadow: -5px 5px 0 @aj-blue-color-op;
+        margin-bottom: 70px
+      }
+
+      .message  {
+        font-size: 30px;
+        font-family: lato;
+        font-style: italic;
+        font-weight: lighter;
+        margin-top: 25px;
+        padding-left: 0;
+        text-shadow: -2px 2px 0 @aj-blue-color-op;
+
+        .email-me {
+          font-size: 25px;
+          font-style: normal;
+          margin-top: 20px;
+
+          a {
+            text-shadow: none;
+            border-bottom: 1px #337ab7 dotted;
+
+            &:hover {
+              text-decoration: none;
+              border-bottom: 1px #23527c dotted;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .navbar {
+    height: 100px;
+    margin-top: 20px;
+    border-color: transparent;
+
+    .navbar-nav  {
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+
+      li  {
+        .margin-horz(20px);
+        a {
+          font-size: 30px;
+          font-family: HPSimplified;
+          font-weight: lighter;
+        }
+      }
+    }
+    .navbar-collapse  {
+      text-align: center;
+    }
+  }
+}
