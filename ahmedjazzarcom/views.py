@@ -74,3 +74,14 @@ class FourOhFourView(TemplateView):
         context['navs'] = navs
 
         return context
+
+    @classmethod
+    def get_rendered_view(cls):
+        as_view_fn = cls.as_view()
+
+        def view_fn(request):
+            response = as_view_fn(request)
+            response.render()
+            return response
+
+        return view_fn
