@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^super/', include(admin.site.urls)),
     url(r'^$', views.Home.as_view(), name='home'),
     url(r'^404/$', views.FourOhFourView.as_view(), name='404'),
+    url(r'^500/$', views.FiveHundredView.as_view(), name='500'),
 ]
 
 if settings.DEBUG:

@@ -51,6 +51,15 @@ class Home(TemplateView):
 
         return context
 
+class FiveHundredView(TemplateView):
+    template_name = "500.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(FiveHundredView, self).get_context_data(**kwargs)
+        context['EMAIL'] = settings.EMAIL
+
+        return context
+
 class FourOhFourView(TemplateView):
     template_name = "404.html"
 
