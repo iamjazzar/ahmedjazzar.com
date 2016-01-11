@@ -1,0 +1,54 @@
+
+.blink	{
+	animation-name: blink;
+	animation-iteration-count: infinite;
+	animation-timing-function: cubic-bezier(1,0,0,1);
+	animation-duration: 1s;
+}
+
+@keyframes blink {
+  from { opacity: 1; } to { opacity:0; }
+}
+
+.enter	{
+	animation-name: enter;
+	animation: enter .5s;
+	animation-fill-mode: backwards;
+	animation-duration: 0.5s;
+	animation-delay: .4s;
+}
+
+@keyframes enter	{
+	from	{ opacity: 0; }	to	{ opacity: 1; }
+}
+
+.stretch-left	{
+	animation-name: stretchLeft;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-out;
+	transform-origin: 100% 0%;
+}
+
+@keyframes stretchLeft {
+	0% {
+		transform: scaleX(0.3);
+	}
+	40% {
+		transform: scaleX(1.02);
+	}
+	60% {
+		transform: scaleX(0.98);
+	}
+	80% {
+		transform: scaleX(1.01);
+	}
+	100% {
+		transform: scaleX(0.98);
+	}
+	80% {
+		transform: scaleX(1.01);
+	}
+	100% {
+		transform: scaleX(1);
+	}
+}

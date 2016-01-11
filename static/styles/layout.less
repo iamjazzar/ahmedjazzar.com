@@ -1,43 +1,116 @@
 
 @import "partials/aj-variables";
-@import "partials/aj-mixins";
 
-body  {
-  .navbar-default {
-    height: 30px;
-    background-color: rgba(255,255,255,0.95);
+html  {
+  height: 100%;
 
-    .navbar-header  {
+  body  {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: @aj-bg-color;
+
+    color: @aj-text-color;
+    font-family: anonymous,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    .main {
+      height: 955px;
+
+      .logo {
+        width: 50px;
+        margin-top: 50px;
+        margin-left: 85px;
+      }
+
       a {
-        color: #555;
-        font-size: 25px;
-        font-family: HPSimplified;
-        font-weight: lighter;
-        line-height: 2;
-
-        &:hover, &:focus {
-          text-decoration: none;
-        }
+        color: @aj-alt-text-color;
+        font-weight: bold;
       }
     }
 
-    .navbar-nav > li > a {
-        padding-top: 0px;
-        padding-bottom: 0px;
-        line-height: 50px;
-    }
+    .aside {
+      position: fixed;
+      width: 400px;
+      cursor: pointer;
+      top: 0;
+      right: -320px;
+      height: 100%;
+      background-color: #2E353C;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 60px;
+      font-size: 20px;
+      font-family: sans-serif, anonymous;
+      font-weight: lighter;
 
-    .nav  {
-      li  {
-        a {
-          color: #555;
-          font-size: 19px;
-          font-family: proximanova;
+      &.open  {
+        background-color: rgba(46, 53, 60, 0.9);
+        right: 0;
+      }
 
-          &:hover {
-            // TODO: specify different color for each element.
-            color: @aj-violet-color;
+      .aside-title, .footer  {
+        font-size: small;
+        color: #636E7D;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .intro  {
+        font-size: 22px;
+        margin-bottom: 90px;
+      }
+
+      .aside-paragraph  {
+        font-size: 18px;
+
+        li  {
+          list-style: none;
+          font-size: 16px;
+          padding-top: 10px;
+        }
+
+        &.contact {
+          padding-top: 10px;
+          position: absolute;
+          left: 50%;
+
+          .links  {
+            position: relative;
+            left: -50%;
+            width: 213px;
+
+            &:hover {
+              a {
+                color: #636E7D;
+              }
+            }
+
+            a {
+              color: white;
+              &:hover {
+                text-decoration: none;
+                color: white;
+              }
+            }
+
+            .fa {
+              margin-right: 15px;
+              margin-left: 15px;
+              font-size: 23px;
+            }
           }
+        }
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+
+        .footer-paragraph {
+          position: relative;
+          width: 145px;
+          left: -50%;
         }
       }
     }
