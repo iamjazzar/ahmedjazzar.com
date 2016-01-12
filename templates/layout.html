@@ -67,7 +67,7 @@
           <div class="aside-paragraph">
             <ul>
               {% for latest_project in latest_projects %}
-                <li>{{ latest_project }}.</li>
+                <li><a href="{{ latest_project.url }}" target="_blank">{{ latest_project.project }}.</a></li>
               {% endfor %}
             </ul>
           </div>
@@ -77,16 +77,16 @@
       </div>
       <div class="aside-paragraph contact">
         <div class="links">
-          <a href="https://www.github.com/{{ GITHUB_USERNAME }}" target="_blank">
+          <a href="https://www.github.com/{{ github_user }}" target="_blank">
             <i class="fa fa-github"></i>
           </a>
-          <a href="https://www.twitter.com/{{ TWITTER_USERNAME }}" target="_blank">
+          <a href="https://www.twitter.com/{{ twitter_user }}" target="_blank">
             <i class="fa fa-twitter"></i>
           </a>
-          <a href="https://www.facebook.com/{{ FACEBOOK_USERNAME }}" target="_blank">
+          <a href="https://www.facebook.com/{{ facebook_user }}" target="_blank">
             <i class="fa fa-facebook-f"></i>
           </a>
-           <a href="mailto:{{ EMAIL }}">
+           <a href="mailto:{{ email }}">
              <i class="fa fa-paper-plane-o"></i>
            </a>
         </div>
