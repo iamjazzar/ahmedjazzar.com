@@ -4,11 +4,13 @@
 	animation-name: blinkSkip;
 	animation-iteration-count: infinite;
 	animation-timing-function: cubic-bezier(1,0,0,1);
+	animation-delay: 2.5s;
 	animation-duration: 1s;
+	opacity: 0;
 }
 
 @keyframes blinkSkip {
-  from { opacity: 0.2; } to { opacity:0; }
+  from { opacity: 0; } to { opacity:0.2; }
 }
 
 .blink	{
@@ -27,7 +29,7 @@
 	animation: enter .5s;
 	animation-fill-mode: backwards;
 	animation-duration: 0.5s;
-	animation-delay: .4s;
+	animation-delay: 1.5s;
 }
 
 @keyframes enter	{
