@@ -1,13 +1,13 @@
 
 'use strict';
 
-var main = $( '.main' );
 var aside = $( '.aside' );
+var count = 0;
 
-aside.click(function() {
-  $(this).toggleClass('open', 'slow');
-});
-
-main.click(function() {
-  aside.removeClass('open', 'slow');
+aside.hover(function() {
+  if (count === 0) {
+    count++;
+    return;
+  }
+  aside.toggleClass('open', 'slow');
 });

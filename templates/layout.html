@@ -37,13 +37,17 @@
   <body background="{% static "images/header.jpg" %}">
 
     <div class="main">
-      <a href="{{ urls.home }}">
-        <img class="logo" src="{{ MEDIA_URL }}{{ logo }}" alt="Aا" />
-      </a>
+      <div class="logo-area">
+        <a href="{{ urls.home }}">
+          <img class="logo" src="{{ MEDIA_URL }}{{ logo }}" alt="Aا" />
+        </a>
+        <span class="skip blink-skip"> | TAB to skip..</span>
+      </div>
+
       {% block content %}
       {% endblock %}
     </div>
-    <div class="aside hide">
+    <div class="aside open hide">
       <div class="intro">
         I'm a {{ age }} year old {{ about }}.
       </div>

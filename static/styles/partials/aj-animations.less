@@ -1,4 +1,16 @@
 
+
+.blink-skip	{
+	animation-name: blinkSkip;
+	animation-iteration-count: infinite;
+	animation-timing-function: cubic-bezier(1,0,0,1);
+	animation-duration: 1s;
+}
+
+@keyframes blinkSkip {
+  from { opacity: 0.2; } to { opacity:0; }
+}
+
 .blink	{
 	animation-name: blink;
 	animation-iteration-count: infinite;
@@ -22,33 +34,30 @@
 	from	{ opacity: 0; }	to	{ opacity: 1; }
 }
 
-.stretch-left	{
-	animation-name: stretchLeft;
+.slide-left{
+	animation-name: slideLeft;
 	animation-duration: 1.5s;
-	animation-timing-function: ease-out;
-	transform-origin: 100% 0%;
+	animation-timing-function: ease-in-out;
+	visibility: visible !important;
 }
 
-@keyframes stretchLeft {
+@keyframes slideLeft {
 	0% {
-		transform: scaleX(0.3);
+		transform: translateX(150%);
 	}
-	40% {
-		transform: scaleX(1.02);
+	50%{
+		transform: translateX(-8%);
 	}
-	60% {
-		transform: scaleX(0.98);
+	65%{
+		transform: translateX(4%);
 	}
-	80% {
-		transform: scaleX(1.01);
+	80%{
+		transform: translateX(-4%);
 	}
-	100% {
-		transform: scaleX(0.98);
-	}
-	80% {
-		transform: scaleX(1.01);
+	95%{
+		transform: translateX(2%);
 	}
 	100% {
-		transform: scaleX(1);
+		transform: translateX(0%);
 	}
 }

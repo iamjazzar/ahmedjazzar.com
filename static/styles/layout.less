@@ -13,12 +13,25 @@ html  {
     font-family: anonymous,"Helvetica Neue",Helvetica,Arial,sans-serif;
 
     .main {
+      @logo-height: 50px;
       height: 955px;
 
-      .logo {
-        width: 50px;
-        margin-top: 50px;
-        margin-left: 85px;
+      .logo-area  {
+        .logo {
+          position: absolute;
+          height: @logo-height;
+          top: @logo-height;
+          left: 85px;
+        }
+
+        .skip {
+          position: absolute;
+          top: 1.25 * @logo-height;
+          left: 145px;
+          cursor: pointer;
+          font-size: 14px;
+          text-shadow: 0px 0px 1px white;
+        }
       }
 
       a {
