@@ -20,7 +20,6 @@ function skipMe() {
 
 }
 
-
 skip.click(function() {
   skipMe();
 });
@@ -33,7 +32,7 @@ site.keydown(function(e) {
   }
 });
 
-site.keypress(function(e) {
+site.keypress(function() {
   var consoleLine = lines.eq(clicks);
   if( clicks >= lines.size()-2 )  {
     return;
