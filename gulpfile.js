@@ -90,7 +90,7 @@ gulp.task('default', ['clean'], function() {
 // Serve
 gulp.task('serve', ['css'], function () {
   browserSync.init(null, {
-      proxy: "localhost:8000",
+      proxy: "http://192.168.99.100:8000",
       open: 'internal',
       host: "localhost",
       port: 4000

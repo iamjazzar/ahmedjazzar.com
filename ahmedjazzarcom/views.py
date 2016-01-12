@@ -3,9 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 
-from helpers import last_tweet
 import models
-
 
 class Home(TemplateView):
     template_name = 'home.html'
@@ -13,41 +11,50 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(Home, self).get_context_data(**kwargs)
 
-        try:
-            header = models.HeaderData.objects.get(pk=1)
-            full_name = header.get_full_name()
-            about = header.get_about()
-            country = header.get_country()
-            country_image = header.get_country_image()
-            logo = header.get_logo()
+        main = models.MainPage.objects.get(pk=1)
 
-            navs = models.Nav.objects.all()
+        first_name = main.get_first_name()
+        last_name = main.get_last_name()
+        full_name = main.get_full_name()
+        logo = main.get_logo()
+        country = main.get_country()
+        work_location = main.get_work_location()
+        email = main.get_email()
+        github_user = main.get_github_username()
+        twitter_user = main.get_twitter_username()
+        linkedin_user = main.get_linkedin_username()
+        facebook_user = main.get_facebook_username()
+        organization = main.get_organization()
+        position = main.get_position()
+        organization_link = main.get_organization_link()
 
-        except:
-            full_name = "Full Name"
-            about = "Wow! I can see you now :D"
-            country = "Country"
-            country_image = None
-            logo = None
+        side_bar = models.SideBar.objects.all()[0]
 
-            navs = None
-
-
-        tweet = last_tweet()
+        about = side_bar.get_about()
+        age = side_bar.get_age()
+        interests = side_bar.get_interests()
+        latest_projects = side_bar.get_latest_projects()
 
         context['MEDIA_URL'] = settings.MEDIA_URL
+        context['first_name'] = first_name
+        context['last_name'] = last_name
         context['full_name'] = full_name
-        context['about'] = about
         context['country'] = country
-        context['country_image'] = country_image
+        context['organization'] = organization
+        context['position'] = position
+        context['organization_link'] = organization_link
+        context['work_location'] = work_location
         context['logo'] = logo
-        context['navs'] = navs
-        context['tweet'] = tweet.get('tweet')
-        context['tweet_date'] = tweet.get('time')
-        context['TWITTER_USERNAME'] = settings.TWITTER_USERNAME
-        context['GITHUB_USERNAME'] = settings.GITHUB_USERNAME
-        context['FACEBOOK_USERNAME'] = settings.FACEBOOK_USERNAME
-        context['EMAIL'] = settings.EMAIL
+        context['email'] = email
+        context['github_user'] = github_user
+        context['twitter_user'] = twitter_user
+        context['linkedin_user'] = linkedin_user
+        context['facebook_user'] = facebook_user
+
+        context['about'] = about
+        context['age'] = age
+        context['interests'] = interests
+        context['latest_projects'] = latest_projects
 
         return context
 

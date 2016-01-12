@@ -19,7 +19,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'twitter_text',
     'storages',
     'ahmedjazzarcom',
 )
@@ -54,21 +53,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ahmedjazzar.wsgi.application'
-
-# Personal vars
-
-TWITTER_USERNAME = 'AhmedAljazzar'
-GITHUB_USERNAME = 'ahmedaljazzar'
-FACEBOOK_USERNAME = 'ahm.aljazzar'
-EMAIL = 'me@ahmedjazzar.com'
-
-# twitter settings
-
-CONSUMER_KEY=os.environ['CONSUMER_KEY']
-CONSUMER_SECRET=os.environ['CONSUMER_SECRET']
-ACCESS_TOKEN=os.environ['ACCESS_TOKEN']
-ACCESS_TOKEN_SECRET=os.environ['ACCESS_TOKEN_SECRET']
-
 
 # Internationalization
 
