@@ -9,6 +9,7 @@ var alertContainer = $( '.alert-container' );
 var canAlert = true;
 var clicks = 0;
 var skipped = false;
+var screenMd = 992;
 
 function skipMe() {
   if(skipped) {
@@ -69,3 +70,7 @@ site.click(function() {
     showAlert();
   }
 });
+
+if ($(window).width() < screenMd) {
+   skipMe();
+}

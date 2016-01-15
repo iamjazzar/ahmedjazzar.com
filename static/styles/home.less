@@ -3,12 +3,11 @@
 
 body  {
   .console-wrapper  {
-    max-height: 955px;
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
 
     .console  {
-      position: absolute;
-      bottom: 115px;
-      left: 85px;
       max-width: 860px;
 
       span  {
@@ -45,6 +44,23 @@ body  {
           vertical-align: text-bottom;
           padding-left: 10px;
           cursor: help;
+        }
+      }
+    }
+
+    @media (max-width: @screen-md)  {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      margin-top: 50px;
+
+      .console  {
+        margin-top: 15px;
+        padding: 0 50px 15px;
+
+        span  {
+          line-height: 40px;
+          font-size: 18px;
         }
       }
     }
