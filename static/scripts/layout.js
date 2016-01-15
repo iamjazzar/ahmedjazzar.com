@@ -3,18 +3,17 @@
 
 var aside = $( '.aside' );
 var main = $( '.main' );
-var count = 0;
+var triggered = false;
 
 aside.hover(function() {
   aside.addClass('open', 'slow');
+  triggered=true;
 });
 
 main.hover(function() {
-  if (count === 0) {
-    count++;
-    return;
+  if (triggered) {
+    aside.removeClass('open', 'slow');
   }
-  aside.removeClass('open', 'slow');
 });
 
 main.click(function() {

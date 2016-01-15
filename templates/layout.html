@@ -1,5 +1,7 @@
 
 {% load staticfiles %}
+{% load twitterize %}
+{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,54 +43,85 @@
         <a href="{{ urls.home }}">
           <img class="logo" src="{{ MEDIA_URL }}{{ logo }}" alt="Aا" />
         </a>
-        <span class="skip blink-skip"> | TAB to skip..</span>
       </div>
 
       {% block content %}
       {% endblock %}
     </div>
     <div class="aside open hide">
-      <div class="intro">
-        I'm a {{ age }} year old {{ about }}.
+
+      <div class="nav-header">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#about">About</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#timeline">Timeline</a>
+          </li>
+        </ul>
       </div>
 
-      <div class="aside-title">interests</div>
-
-        <div class="aside-paragraph">
-          <ul>
-            {% for interest in interests %}
-              <li>{{ interest }}.</li>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div class="aside-title">my latest projects</div>
-
-          <div class="aside-paragraph">
-            <ul>
-              {% for latest_project in latest_projects %}
-                <li><a href="{{ latest_project.url }}" target="_blank">{{ latest_project.project }}.</a></li>
-              {% endfor %}
-            </ul>
+      <div class="tab-content">
+        <div id="about" class="tab-pane fade in active about">
+          <div class="intro">
+            I'm a {{ age }} year old {{ about }}.
           </div>
 
-      <div class="aside-title">
-        Got an idea worth sharing?
-      </div>
-      <div class="aside-paragraph contact">
-        <div class="links">
-          <a href="https://www.github.com/{{ github_user }}" target="_blank">
-            <i class="fa fa-github"></i>
-          </a>
-          <a href="https://www.twitter.com/{{ twitter_user }}" target="_blank">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a href="https://www.facebook.com/{{ facebook_user }}" target="_blank">
-            <i class="fa fa-facebook-f"></i>
-          </a>
-           <a href="mailto:{{ email }}">
-             <i class="fa fa-paper-plane-o"></i>
-           </a>
+            <div class="aside-title">interests</div>
+
+              <div class="aside-paragraph">
+                <ul>
+                  {% for interest in interests %}
+                    <li>{{ interest }}.</li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              <div class="aside-title">my latest projects</div>
+
+              <div class="aside-paragraph">
+                <ul>
+                  {% for latest_project in latest_projects %}
+                    <li><a href="{{ latest_project.url }}" target="_blank">{{ latest_project.project }}.</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              <div class="aside-title">
+                Got an idea worth sharing?
+              </div>
+              <div class="aside-paragraph contact">
+                <div class="links">
+                  <a href="https://www.github.com/{{ github_user }}" target="_blank">
+                    <i class="fa fa-github"></i>
+                  </a>
+                  <a href="https://www.twitter.com/{{ twitter_user }}" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="https://www.facebook.com/{{ facebook_user }}" target="_blank">
+                    <i class="fa fa-facebook-f"></i>
+                  </a>
+                   <a href="mailto:{{ email }}">
+                     <i class="fa fa-paper-plane-o"></i>
+                   </a>
+                </div>
+              </div>
+          </div>
+
+        <div id="timeline" class="tab-pane fade timeline">
+
+          <div class="intro">I just shared</div>
+
+          <div class="tweets">
+            {% for tweet, tweet_date in timeline %}
+              <div class="aside-paragraph tweet">
+                {{ tweet |twitter_text |safe  }}
+              </div>
+              <div class="aside-title tweet-time">
+                {{ tweet_date |naturaltime }}
+              </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
 
@@ -102,6 +135,7 @@
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src="{% static "bower_components/jquery/dist/jquery.js" %}"></script>
       <script src="{% static "bower_components/jquery-ui/jquery-ui.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "bower_components/bootstrap/js/tab.js" %}"></script>
       <script src="{% static "scripts/layout.min.js" %}"></script>
     {% endblock %}
   </body>

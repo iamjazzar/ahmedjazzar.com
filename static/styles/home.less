@@ -11,16 +11,6 @@ body  {
       left: 85px;
       max-width: 860px;
 
-      .cursor {
-        display: inline-block;
-        width: 3px;
-        height: 33px;
-        margin-left: 10px;
-        border-radius: 3px;
-        box-shadow: 0 0 10px rgba(0,0,0,.3);
-        background: @aj-alt-text-color;
-      }
-
       span  {
         display: inline;
         line-height: 61px;
@@ -33,13 +23,29 @@ body  {
         }
       }
 
-      .place-holder {
-        display: inline-block;
-        line-height: 35px;
-        font-size: 30px;
-        background-color: #283038;
-        vertical-align: text-bottom;
-        padding-left: 10px;
+      .initial-line {
+        display: inline;
+        user-select: none;
+
+        .cursor {
+          display: inline-block;
+          width: 3px;
+          height: 33px;
+          margin-left: 10px;
+          border-radius: 3px;
+          box-shadow: 0 0 10px rgba(0,0,0,.3);
+          background: @aj-alt-text-color;
+        }
+
+        .place-holder {
+          display: inline-block;
+          line-height: 35px;
+          font-size: 30px;
+          background-color: #283038;
+          vertical-align: text-bottom;
+          padding-left: 10px;
+          cursor: help;
+        }
       }
     }
   }

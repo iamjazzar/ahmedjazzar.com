@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.conf import settings
 
+from helpers import last_tweets
 import models
 
 class Home(TemplateView):
@@ -35,6 +36,8 @@ class Home(TemplateView):
         interests = side_bar.get_interests()
         latest_projects = side_bar.get_latest_projects()
 
+        timeline = last_tweets(twitter_user)
+
         context['MEDIA_URL'] = settings.MEDIA_URL
         context['first_name'] = first_name
         context['last_name'] = last_name
@@ -55,6 +58,8 @@ class Home(TemplateView):
         context['age'] = age
         context['interests'] = interests
         context['latest_projects'] = latest_projects
+
+        context['timeline']=timeline
 
         return context
 
