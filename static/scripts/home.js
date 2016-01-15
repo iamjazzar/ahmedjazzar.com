@@ -1,80 +1,76 @@
 
 'use strict';
 
-var body = $( 'body' );
-var nightImg = $( '#night-img' );
-var imacContainer = $( '#imac-container' );
-var navContainer = $( '#toggle' );
-var navOverlay = $( '#overlay' );
-var scrollTop = $( '#scroll-top' );
-var nightBackground = $( '#night-bg' );
-var dayBackground = $( '#day-bg' );
-var imac = $( '#imac' );
+var placeHolder = $( '#place-holder' );
+var site = $( document );
+var lines = $( '#console span' );
+var aside = $( '.aside' );
+var alertContainer = $( '.alert-container' );
+var canAlert = true;
+var clicks = 0;
+var skipped = false;
+var screenMd = 992;
 
-var imageWidth = 430;
-var xp = 0;
-var xpHigh = imageWidth;
-var xpLow = -imageWidth;
-var mouseX = 0;
-var relMouseX = 0;
-var windowCenterX = 0;
-var timeInterval = 500;
-var loop = 0;
-var relativeWidth = 0;
+function skipMe() {
+  if(skipped) {
+    return;
+  }
 
-// iMac Animation
-imacContainer.hover(function(){
-  $(this).mousemove(function(e){
-    mouseX = e.pageX;
-    windowCenterX = $(window).width() / 2;
-    relMouseX = mouseX - windowCenterX;
-  });
+  setInterval(function(){
+    site.trigger( 'keypress', 71 );
+  },40);
+}
 
-  nightImg.stop();
-  imac.stop();
-  loop = setInterval(function(){
-    xp += 10 * (relMouseX - xp) / timeInterval;
-    xp = Math.max(xpLow, Math.min(xp, xpHigh));
-    relativeWidth = (imageWidth + xp) * 0.5;
+function showAlert() {
+  alertContainer.removeClass( 'hide' );
+  alertContainer.addClass( 'fast-enter' );
+}
 
-    nightImg.css({width: (imageWidth + xp) * 0.5, left: (imageWidth - xp) * 0.5});
-    imac.css({right: xp/25});
+function hideAlert() {
+  alertContainer.addClass( 'fadeout' );
+  alertContainer.addClass( 'hide' );
+  alertContainer.removeClass( 'fast-enter' );
+}
 
-    var relativeOpacity = 2 * relativeWidth/imageWidth;
-    nightBackground.css({opacity: relativeOpacity});
-    dayBackground.css({opacity: 2 - relativeOpacity});
-  });
-}, function(){
-  clearInterval(loop);
-  xp = 0;
-  nightImg.animate({width: imageWidth * 0.5, left: imageWidth * 0.5}, timeInterval);
-  nightBackground.css({opacity: 1});
-  dayBackground.css({opacity: 1});
-  imac.animate({right: 0}, timeInterval);
+site.keydown(function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 9) {
+    e.preventDefault();
+    hideAlert();
+    skipMe();
+  }
 });
 
-// toggle nav menu
-navContainer.click(function() {
-  $(this).toggleClass( 'active' );
-  navOverlay.toggleClass( 'open' );
+site.keypress(function() {
+  var consoleLine = lines.eq(clicks);
+  if( clicks >= lines.size()-2 )  {
+    return;
+  }
+
+  if(clicks >= lines.size()-4)  {
+    aside.addClass( 'slide-left');
+    aside.removeClass( 'hide');
+  }
+
+  if (clicks === 0) {
+    placeHolder.addClass( 'hide' );
+  }
+
+  if(clicks === 3)  {
+    hideAlert();
+    canAlert = false;
+  }
+  consoleLine.removeClass( 'hide' );
+  clicks++;
 });
 
+site.click(function() {
 
-// scroll top hover
-scrollTop.hover(
-  function () {
-    $( '.fa-angle-up' ).toggleClass( 'floating' );
+  if (canAlert) {
+    showAlert();
+  }
 });
 
-
-// scroll to top
-$( 'a[href^="#header"]' ).on( 'click', function(e) {
-
-   e.preventDefault();
-   var hash = this.hash;
-
-   body.animate({
-       scrollTop: $(hash).offset().top
-     }, 1000, function(){
-   });
- });
+if ($(window).width() < screenMd) {
+   skipMe();
+}

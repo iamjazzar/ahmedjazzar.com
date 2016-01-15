@@ -1,42 +1,248 @@
 
 @import "partials/aj-variables";
-@import "partials/aj-mixins";
 
-body  {
-  .navbar-default {
-    height: 30px;
-    background-color: rgba(255,255,255,0.95);
+html  {
+  height: 100%;
 
-    .navbar-header  {
+  body  {
+    @logo-height: 50px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: @aj-bg-color;
+    height: 100%;
+    color: @aj-text-color;
+    font-family: anonymous,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    .main {
+      height: 100%;
+
+      .logo-area  {
+        user-select: none;
+        position: absolute;
+        top: @logo-height;
+        left: 2*@logo-height;
+
+        a {
+          display: inline-block;
+
+          .logo {
+            height: @logo-height;
+          }
+        }
+      }
+
       a {
-        color: #555;
-        font-size: 25px;
-        font-family: HPSimplified;
-        font-weight: lighter;
-        line-height: 2;
+        color: @aj-link-color;
+        font-weight: bold;
+      }
+    }
 
-        &:hover, &:focus {
-          text-decoration: none;
+    .aside {
+      position: fixed;
+      width: 400px;
+      cursor: pointer;
+      top: 0;
+      right: -320px;
+      height: 100%;
+      background-color: #2E353C;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 40px;
+      font-size: 20px;
+      font-family: sans-serif, anonymous;
+      font-weight: lighter;
+      overflow-y: scroll;
+
+      &.open  {
+        background-color: rgba(46, 53, 60, 0.9);
+        cursor: default;
+        right: 0;
+      }
+
+      .nav-header  {
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 35px;
+
+        .nav {
+          font-size: 14px;
+          border: 0;
+          user-select: none;
+
+          li  {
+            margin-bottom: 0;
+            width: 50%;
+
+            &:first-child {
+              a {
+                border-radius: 4px 0 0 4px;
+              }
+            }
+
+            &:last-child  {
+              a {
+                border-radius: 0 4px 4px 0;
+              }
+            }
+
+            a {
+              background-color: @aj-alt-grey-color;
+              color: @aj-text-color;
+              font-weight: bolder;
+              text-align: center;
+              padding: 3px 15px;
+              margin-right: 0;
+              border-radius: 0;
+              border: 0;
+            }
+          }
+
+          .active  {
+            a {
+              background-color: @aj-grey-color;
+              color: @aj-text-color;
+              font-weight: lighter;
+            }
+
+            &:hover, &:focus {
+              a {
+                border: 0;
+              }
+            }
+          }
+        }
+      }
+
+      .tab-content  {
+        .aside-title, .footer  {
+          font-size: small;
+          color: #636E7D;
+          margin-top: 50px;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+
+          &.tweet-time  {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.085);
+
+            &:last-child  {
+              border-bottom: 0;
+            }
+          }
+        }
+
+        .intro  {
+          font-size: 22px;
+          margin-bottom: 30px;
+        }
+
+        .aside-paragraph  {
+          font-size: 18px;
+
+          li  {
+            list-style: none;
+            font-size: 16px;
+            padding-top: 10px;
+
+            a {
+              color: @aj-text-color;
+            }
+          }
+
+          &.contact {
+            padding-top: 10px;
+            user-select: none;
+
+            .links  {
+              margin: 0 auto;
+              width: 213px;
+
+              &:hover {
+                a {
+                  color: #636E7D;
+                }
+              }
+
+              a {
+                color: white;
+                margin-right: 15px;
+                margin-left: 15px;
+                font-size: 23px;
+
+                &:hover {
+                  text-decoration: none;
+                  color: white;
+                }
+              }
+            }
+          }
+
+          &.tweet {
+            text-align: center;
+            list-style: none;
+            font-size: 16px;
+            margin-top: 20px;
+
+            a {
+              color: @aj-text-color;
+            }
+          }
+        }
+
+        .footer {
+          margin-top: 50px;
+          .footer-paragraph {
+            width: 145px;
+            margin: 0 auto;
+          }
         }
       }
     }
 
-    .navbar-nav > li > a {
-        padding-top: 0px;
-        padding-bottom: 0px;
-        line-height: 50px;
-    }
+    @media (max-width: @screen-md) {
+      background-position: center;
 
-    .nav  {
-      li  {
-        a {
-          color: #555;
-          font-size: 19px;
-          font-family: proximanova;
+      .main {
+        height: auto;
 
-          &:hover {
-            // TODO: specify different color for each element.
-            color: @aj-violet-color;
+        .logo-area  {
+          margin-top: @logo-height;
+          position: relative;
+          top: auto;
+          left: auto;
+
+          a {
+            display: block;
+
+            .logo {
+              display: block;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+
+      .aside {
+        width: 100%;
+        position: relative;
+        right: auto;
+        top: auto;
+        height: auto;
+        padding-bottom: 50px;
+
+        .footer {
+          position: relative;
+          left: auto;
+          bottom: auto;
+
+          .footer-paragraph {
+            width: 145px;
+            margin: 0 auto;
           }
         }
       }

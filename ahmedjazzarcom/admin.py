@@ -2,11 +2,19 @@ from django.contrib import admin
 
 import models
 
-class HeaderDataAdmin(admin.ModelAdmin):
-    list_display=["pk", "__unicode__", "updated"]
+class MainPageAdmin(admin.ModelAdmin):
+    list_display=["__unicode__", "pk", "updated"]
 
-class NavAdmin(admin.ModelAdmin):
+class SideBarAdmin(admin.ModelAdmin):
     list_display=["__unicode__", "updated"]
 
-admin.site.register(models.HeaderData, HeaderDataAdmin)
-admin.site.register(models.Nav, NavAdmin)
+class InterestAdmin(admin.ModelAdmin):
+    list_display=["__unicode__", "updated"]
+
+class LatestProjectAdmin(admin.ModelAdmin):
+    list_display=["__unicode__", "updated"]
+
+admin.site.register(models.MainPage, MainPageAdmin)
+admin.site.register(models.SideBar, SideBarAdmin)
+admin.site.register(models.LatestProject, LatestProjectAdmin)
+admin.site.register(models.Interest, InterestAdmin)

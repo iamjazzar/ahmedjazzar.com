@@ -1,0 +1,57 @@
+
+.blink	{
+	animation-name: blink;
+	animation-iteration-count: infinite;
+	animation-timing-function: cubic-bezier(1,0,0,1);
+	animation-duration: 1s;
+}
+
+@keyframes blink {
+  from { opacity: 1; } to { opacity:0; }
+}
+
+.fast-enter	{
+	animation-name: enter;
+	animation: enter .5s;
+	animation-duration: 2.5s;
+}
+
+.enter	{
+	animation-name: enter;
+	animation: enter .5s;
+	animation-fill-mode: backwards;
+	animation-duration: 0.5s;
+	animation-delay: 1.5s;
+}
+
+@keyframes enter	{
+	from	{ opacity: 0; }	to	{ opacity: 1; }
+}
+
+.slide-left{
+	animation-name: slideLeft;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-in-out;
+	visibility: visible !important;
+}
+
+@keyframes slideLeft {
+	0% {
+		transform: translateX(150%);
+	}
+	50%{
+		transform: translateX(-8%);
+	}
+	65%{
+		transform: translateX(4%);
+	}
+	80%{
+		transform: translateX(-4%);
+	}
+	95%{
+		transform: translateX(2%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}

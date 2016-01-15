@@ -1,32 +1,21 @@
 
 'use strict';
 
-var lastScrollTop = 0,
-  offset,
-  direction;
+var aside = $( '.aside' );
+var main = $( '.main' );
+var triggered = false;
 
-function scrollDirection() {
-    offset = window.pageYOffset;
+aside.hover(function() {
+  aside.addClass('open', 'slow');
+  triggered=true;
+});
 
-    if (offset > lastScrollTop) {
-      direction = 'down';
-    }
-    else {
-      direction = 'up';
-    }
-
-    lastScrollTop = offset;
-    return  direction;
-}
-
-$(window).bind( 'scroll', function() {
-  var scroll = $(window).scrollTop();
-
-  var dir = scrollDirection();
-  if( scroll > 500 && dir === 'down' )  {
-    $( '.navbar' ).slideDown( 10, 'easeOutSine' );
-    $( '.navbar' ).removeClass( 'hide' );
-  } else {
-    $( '.navbar' ).slideUp( 100, 'easeOutSine' );
+main.hover(function() {
+  if (triggered) {
+    aside.removeClass('open', 'slow');
   }
+});
+
+main.click(function() {
+  aside.toggleClass('open', 'slow');
 });

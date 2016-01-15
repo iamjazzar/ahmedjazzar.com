@@ -1,285 +1,83 @@
 
 {% extends 'layout.html' %}
 {% load staticfiles %}
-{% load twitterize %}
-{% load humanize %}
 
 {% block title %}{{ full_name }}!{% endblock %}
 
 {% block header_links %}
-  <link rel="stylesheet" href="{% static "styles/home.min.css" %}">
-  <link rel="stylesheet" href="{% static "styles/partials/font-mfizz.min.css" %}">
-  <link rel="stylesheet" href="{% static "styles/partials/font-awesome.min.css" %}">
+  <link rel="stylesheet" href="{% static "styles/home.min.css" %}" type="text/css" charset="utf-8">
 {% endblock %}
 
 {% block content %}
-  <div id="header" class="jumbotron header">
-    <div class="container">
-      {% if navs %}
-        <div class="nav-container" id="toggle">
-          <span class="top"></span>
-          <span class="middle"></span>
-          <span class="bottom"></span>
-        </div>
+<div class="console-wrapper wrapper">
+  <div id="console" class="console">
+    <span class="hide">Hello</span>
+    <span class="hide">there,</span>
+    <span class="hide">I'm</span>
+    <span class="hide">{{ first_name }}</span>
+    <span class="hide">{{ last_name }}</span>
+    <span class="hide">from</span>
+    <span class="hide">{{ country }}.</span>
+    <span class="hide"><br><br></span>
+    <span class="hide">I'm</span>
+    <span class="hide">working</span>
+    <span class="hide">as</span>
+    <span class="hide">a</span>
+    <span class="hide">{{ position }}</span>
+    <span class="hide">at</span>
+    <span class="hide"><a href="{{ organization_link }}" target="_blank">{{ organization }}</a></span>
+    <span class="hide">in</span>
+    <span class="hide">{{ work_location }}.</span>
+    <span class="hide"><br></span>
+    <span class="hide">You</span>
+    <span class="hide">can</span>
+    <span class="hide">find</span>
+    <span class="hide">me</span>
+    <span class="hide">tweeting</span>
+    <span class="hide">on</span>
+    <span class="hide"><a href="https://www.twitter.com/{{ twitter_user }}" target="_blank">Twitter</a></span>
+    <span class="hide">and</span>
+    <span class="hide">writing</span>
+    <span class="hide">bunches</span>
+    <span class="hide">of</span>
+    <span class="hide">code</span>
+    <span class="hide">on</span>
+    <span class="hide"><a href="https://www.github.com/{{ github_user }}" target="_blank">Github</a>,</span>
+    <span class="hide">but</span>
+    <span class="hide">I'd</span>
+    <span class="hide">love</span>
+    <span class="hide">hearing</span>
+    <span class="hide">from</span>
+    <span class="hide">you</span>
+    <span class="hide">in</span>
+    <span class="hide">person</span>
+    <span class="hide">so</span>
+    <span class="hide">let's</span>
+    <span class="hide">connect</span>
+    <span class="hide">on</span>
+    <span class="hide"><a href="https://jo.linkedin.com/in/{{ linkedin_user }}" target="_blank">LinkedIn</a></span>
+    <span class="hide">or</span>
+    <span class="hide">through</span>
+    <span class="hide"><a href="mailto:{{ email }}">{{ email }}</a>.</span>
+    <span class="hide"><br><br></span>
+    <span class="hide">Talk</span>
+    <span class="hide">to</span>
+    <span class="hide">you</span>
+    <span class="hide">soon,</span>
+    <span class="hide">{{ first_name }}.</span>
 
-        <div class="nav-overlay" id="overlay">
-          <nav class="overlay-menu">
-            <ul>
-              {% for nav in navs %}
-                <li ><a href="{{ nav.href }}">{{ nav.name }}</a></li>
-              {% endfor %}
-            </ul>
-          </nav>
-        </div>
-      {% endif %}
-      <a class="logo-link" href="{{ urls.home }}">
-        <div class="logo-wrapper">
-          <img class="logo" src="{{MEDIA_URL}}{{ logo }}" alt="Logo"/>
-        </div>
-      </a>
-      <div class="content">
-        <h1 class="name">{{ full_name }},</h1>
-        <p>{{ about }}</p>
-      </div>
-
-      <div class="location-wrapper">
-        <div class="location-describers">
-          <div class="map-marker floating">
-            <i class="fa fa-map-marker"></i>
-          </div>
-          <div class="text-desribtion">
-            <div class="from">from</div>
-            <div class="country">{{ country }}</div>
-          </div>
-        </div>
-        <img src="{{MEDIA_URL}}{{ country_image }}" alt="Palestine"/>
-      </div>
-    </div>
-
-    <div id="imac-container" class="row hidden-sm hidden-xs">
-      <div class="day-night">
-        <div id="day-bg" class="day-bg">
-          <div class="day-arrow"></div>
-          <div class="day">Day</div>
-          <div class="code">
-            &lt;/body&gt;&lt;/html&gt; <br>
-            def response(request,*ar <br>
-            self, content <br>
-            &amp;bnsp;return <br>
-            .header { <br>
-          </div>
-        </div>
-        <div id="imac" class="imac">
-          <img src="{% static "images/imac.png" %}" alt="iMac">
-          <div class="day-img"></div>
-          <div id="night-img" class="night-img"></div>
-        </div>
-        <div id="night-bg" class="night-bg">
-          <div class="night-arrow"></div>
-          <div class="night">Night</div>
-          <img class="paintings" src="{% static "images/paintings.png" %}" alt="Paintings">
-        </div>
-      </div>
-    </div>
-    <div class="imac-fake hidden-md hidden-lg">
-      <img class="img-responsive" src="{% static "images/imac-fake.png" %}" alt="iMac">
+    <div class="initial-line">
+      <span id="cursor" class="cursor blink"></span>
+      <span id="place-holder" class="place-holder enter">Start typing...</span>
     </div>
   </div>
+</div>
 
-  <div class="a-nerd-wrapper container-fluid">
-    <div class="a-nerd container">
-      <div class="col-md-6">
-        <div class="title">A nerd.</div>
-        <div class="content">
-          I am a tireless seeker of knowledge, mining tool for math, and also,
-          coincidentally a graphic night. I enjoy deleting bunch of codes as
-          much as I enjoy writing them.
-        </div>
-        <div class="note">
-          I am not ashamed of being a human being who always looks both ways
-          before crossing a one-way street.
-        </div>
-        <a class="say-hello btn btn-primary" href="mailto:{{ EMAIL }}" role="button">
-          Say Hello
-          <i class="fa fa-envelope"></i>
-        </a>
-      </div>
-      <div class="image col-md-6">
-        <img class="img-responsive" src="{% static "images/cartoon-full.png" %}" alt="My Picture"/>
-      </div>
-    </div>
+<div class="container alert-container hide">
+  <div class="alert alert-info">
+    <strong>Info!</strong> It's easy, just start typing on your keyboard or you can just <strong>press TAB</strong> to skip all this boring stuff.
   </div>
-
-  <div class="wanna-join-wrapper container-fluid">
-    <div class="wanna-join container">
-      <div class="langs col-md-6">
-        <div class="bubbles">
-        <div class="first-col col-xs-4 col-md-2">
-          <a href="http://www.w3schools.com/html/html5_intro.asp" target="_blank">
-            <i class="circle html fa fa-html5"></i>
-          </a>
-          <a href="https://docs.oracle.com/javase/tutorial/java/" target="_blank">
-            <i class="circle java icon-java"></i>
-          </a>
-          <a href="http://www.ubuntu.com/" target="_blank">
-            <i class="circle ubuntu icon-ubuntu"></i>
-          </a>
-        </div>
-        <div class="second-col col-xs-4 col-md-2">
-          <a href="https://en.wikipedia.org/wiki/Database" target="_blank">
-            <i class="circle database icon-database"></i>
-          </a>
-          <a href="http://developer.android.com/" target="_blank">
-            <i class="circle android fa fa-android"></i>
-          </a>
-          <a href="http://www.w3schools.com/css/css3_intro.asp" target="_blank">
-            <i class="circle css3 fa fa-css3"></i>
-          </a>
-        </div>
-        <div class="third-col col-xs-4 col-md-2">
-          <a href="https://www.python.org/" target="_blank">
-            <i class="circle python icon-python"></i>
-          </a>
-          <a href="http://www.cprogramming.com/" target="_blank">
-            <i class="circle c icon-c"></i>
-          </a>
-          <a href="http://www.cplusplus.com/" target="_blank">
-            <i class="circle cplusplus icon-cplusplus"></i>
-          </a>
-        </div>
-      </div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="title">Wanna join me?</div>
-        <div class="intro">
-          I am very excited to kick off a new opportunity and I hope you join
-          me.
-        </div>
-        <div class="content">
-          Each month I will share with you projects, stories, updates, and
-          motivation to help you coding better a life, and enjoing your journy.
-        </div>
-        <a class="fork-me btn btn-vio-primary"
-          href="https://www.github.com/{{ GITHUB_USERNAME }}"
-          target="_blank"
-          role="button">
-          Fork me on GitHub
-          <i class="fa fa-lg fa-github-square"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="twitter-wrapper container-fluid">
-    <div class="twitter container">
-      <div class="title">I just shared</div>
-      <div class="tweet">
-        "{{ tweet |twitter_text |safe  }}"
-      </div>
-      <div class="time-wrapper">
-        <span class="time">
-          {{ tweet_date |naturaltime }}
-        </span>
-      </div>
-      <a class="follow-me btn btn-default"
-         href="https://twitter.com/{{ TWITTER_USERNAME }}"
-         target="_blank"
-         role="button">
-        Follow me on Twitter
-        <i class="fa fa-twitter"></i>
-      </a>
-    </div>
-  </div>
-
-  <div class="contact-wrapper container-fluid">
-    <div class="contact container">
-      <div class="light-bulb row">
-        <div class="swinging-bulb sway">
-          <div class="rope"></div>
-           <div class="bulb">
-             <svg version="1.1"
-             class="iconic iconic-lightbulb"
-             xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink"
-             width="150px" height="150px"
-             viewBox="0 -90 714 714"
-             xml:space="preserve">
-              <circle class="icon-container" cx="357" cy="220" r="230"  fill="none" />
-               <g class="iconic-lightbulb-screws">
-                   <defs>
-                       <clipPath id="iconic-lightbulb-screws-clip">
-                           <polygon points="304.333,511 433.667,511 430,521.5 281.667,547.167 280.333,521.5"/>
-                       </clipPath>
-                   </defs>
-                   <line clip-path="url(#iconic-lightbulb-screws-clip)" x1="430" y1="505" x2="302" y2="529"/>
-                   <line class="st4" x1="430" y1="537" x2="302" y2="561"/>
-                   <line class="st4" x1="430" y1="569" x2="302" y2="593"/>
-                   <line class="st4" x1="410" y1="605" x2="321" y2="621"/>
-               </g>
-
-               <g class="iconic-lightbulb-light">
-                   <defs>
-                       <clipPath id="iconic-lightbulb-light-clip">
-                           <polygon points="514,329 436,369 436,436 299,436 293,360 489,280"/>
-                       </clipPath>
-                   </defs>
-                   <g clip-path="url(#iconic-lightbulb-light-clip)">
-                       <line x1="330" y1="369" x2="330" y2="435"/>
-                       <polyline points="478,313 402,349 402,435"/>
-                   </g>
-                   <line x1="478" y1="129" x2="254" y2="233"/>
-                   <line x1="354" y1="125" x2="254" y2="173"/>
-                   <line x1="478" y1="189" x2="254" y2="293"/>
-                   <line x1="478" y1="249" x2="254" y2="353"/>
-               </g>
-
-               <path class="iconic-lightbulb-base" d="M292.431,505c0.863,4.314,5.169,7.845,9.569,7.845h128c4.4,0,8.706-3.53,9.569-7.845l12.861-64.311c0.863-4.314-2.03-7.845-6.431-7.845H286c-4.4,0-7.294,3.53-6.431,7.845L292.431,505z"/>
-             </svg>
-           </div>
-        </div>
-      </div>
-
-      <div class="title">
-        Got an idea worth sharing?
-        <div>
-          I’d Love to hear it from you :)
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <div class="social-buttons">
-            <a href="https://www.github.com/{{ GITHUB_USERNAME }}" target="_blank">
-              <i class="fa fa-2x fa-github"></i>
-            </a>
-            <a href="https://www.twitter.com/{{ TWITTER_USERNAME }}" target="_blank">
-              <i class="fa fa-2x fa-twitter"></i>
-            </a>
-            <a href="https://www.facebook.com/{{ FACEBOOK_USERNAME }}" target="_blank">
-              <i class="fa fa-2x fa-facebook-f"></i>
-            </a>
-            <a href="mailto:{{ EMAIL }}">
-              <i class="fa fa-2x fa-paper-plane-o"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-wrapper container-fluid">
-    <div class="footer container">
-      Designed with <i class="fa fa-heart"></i> by
-      <a href="https://www.github.com/{{ GITHUB_USERNAME }}" target="_blank">Ahmed Jazzar</a>
-      &nbsp;&nbsp;-&nbsp;&nbsp;2015
-      <a href="#header">
-        <div id="scroll-top" class="scroll-top">
-          <i class="fa fa-angle-up"></i>
-        </div>
-      </a>
-    </div>
-
-  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
