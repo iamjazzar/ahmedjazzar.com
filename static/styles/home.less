@@ -18,7 +18,7 @@ body  {
         margin-left: 4px;
 
         &.highlight  {
-          color: @aj-alt-text-color;
+          color: @aj-link-color;
           font-weight: bold;
         }
       }
@@ -34,7 +34,7 @@ body  {
           margin-left: 10px;
           border-radius: 3px;
           box-shadow: 0 0 10px rgba(0,0,0,.3);
-          background: @aj-alt-text-color;
+          background: @aj-link-color;
         }
 
         .place-holder {
@@ -47,6 +47,20 @@ body  {
           cursor: help;
         }
       }
+    }
+  }
+
+  .alert-container  {
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .alert-info {
+      background-color: @aj-op-yellow-color;
+      color: @aj-grey-color;
+      border-color: @aj-op-yellow-color
     }
   }
 }
