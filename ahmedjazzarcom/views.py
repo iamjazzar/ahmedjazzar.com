@@ -60,6 +60,7 @@ class Home(TemplateView):
         context['latest_projects'] = latest_projects
 
         context['timeline']=timeline
+        context['GOOGLE_TRACKING_KEY']=settings.GOOGLE_TRACKING_KEY
 
         return context
 
