@@ -55,6 +55,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ahmedjazzar.wsgi.application'
 
+# google Analytics
+GOOGLE_TRACKING_KEY=os.environ['GOOGLE_TRACKING_KEY']
+
 # twitter settings
 
 CONSUMER_KEY=os.environ['CONSUMER_KEY']
