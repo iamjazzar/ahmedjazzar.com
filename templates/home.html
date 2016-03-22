@@ -10,24 +10,24 @@
 
 {% block content %}
 <div class="console-wrapper wrapper">
-  <div id="console" class="console">
+  <div id="console" class="console" itemscope itemtype="http://schema.org/Person">
     <span class="hide">Hello</span>
     <span class="hide">there,</span>
     <span class="hide">I'm</span>
-    <span class="hide">{{ first_name }}</span>
-    <span class="hide">{{ last_name }}</span>
+    <span class="hide" itemprop="givenName">{{ first_name }}</span>
+    <span class="hide" itemprop="familyName">{{ last_name }}</span>
     <span class="hide">from</span>
-    <span class="hide">{{ country }}.</span>
+    <span class="hide" itemprop="nationality">{{ country }}.</span>
     <span class="hide"><br><br></span>
     <span class="hide">I'm</span>
     <span class="hide">working</span>
     <span class="hide">as</span>
     <span class="hide">a</span>
-    <span class="hide">{{ position }}</span>
+    <span class="hide" itemprop="jobTitle">{{ position }}</span>
     <span class="hide">at</span>
-    <span class="hide"><a href="{{ organization_link }}" target="_blank">{{ organization }}</a></span>
+    <span class="hide"><a href="{{ organization_link }}" itemprop="memberOf" target="_blank">{{ organization }}</a></span>
     <span class="hide">in</span>
-    <span class="hide">{{ work_location }}.</span>
+    <span class="hide" itemprop="workLocation">{{ work_location }}.</span>
     <span class="hide"><br></span>
     <span class="hide">You</span>
     <span class="hide">can</span>
@@ -58,7 +58,7 @@
     <span class="hide"><a href="https://jo.linkedin.com/in/{{ linkedin_user }}" target="_blank">LinkedIn</a></span>
     <span class="hide">or</span>
     <span class="hide">through</span>
-    <span class="hide"><a href="mailto:{{ email }}">{{ email }}</a>.</span>
+    <span class="hide"><a href="mailto:{{ email }}" itemprop="email">{{ email }}</a>.</span>
     <span class="hide"><br><br></span>
     <span class="hide">Talk</span>
     <span class="hide">to</span>
@@ -70,6 +70,10 @@
       <span id="cursor" class="cursor blink"></span>
       <span id="place-holder" class="place-holder enter">Start typing...</span>
     </div>
+
+    <div class="hidden"itemprop="name">{{ full_name }}</div>
+    <img class="hidden" src="{% static "images/header.jpg" %}" itemprop="image" alt="Photo of {{ full_name }}"/>
+    <div class="hidden" itemprop="url">http://www.ahmedjazzar.com</div>
   </div>
 </div>
 
