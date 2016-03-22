@@ -11,10 +11,26 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *muast* come first in the head; any other head content must come *after* these tags -->
-       <meta name="Description" CONTENT="Ahmed Jazzar's personal website. I'm a {{ age }} year old {{ about }}. Interested in programming and building solution for internationalization and localization.">
-       <meta itemprop="name" content="{{ full_name }}!">
+       <meta name="Description" CONTENT="A {{ age }} year old {{ about }}.">
+
        <meta itemprop="url" content="http://www.ahmedjazzar.com">
+       <meta itemprop="image" content="{{ MEDIA_URL }}{{ logo }}">
+       <meta itemprop="name" content="{{ full_name }}">
+       <meta itemprop="description" content="A {{ age }} year old {{ about }}.">
+
+       <meta property="og:title" content="{{ full_name }}">
+       <meta property="og:url" content="http://www.ahmedjazzar.com">
+       <meta property="og:description" content="A {{ age }} year old {{ about }}.">
+       <meta property="og:image" content="{{ MEDIA_URL }}{{ logo }}">
+       <meta property="og:type" content="website">
+       <meta property="og:site_name" content="Edraak">
+
+       <meta name="twitter:title" content="{{ full_name }}">
+       <meta name="twitter:url" content="http://www.ahmedjazzar.com">
+       <meta name="twitter:description" content="A {{ age }} year old {{ about }}.">
+       <meta name="twitter:image" content="{{ MEDIA_URL }}{{ logo }}">
     {% endblock %}
+
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="shortcut icon" type="image/png" href="{% static "images/favicon.ico" %}"/>
