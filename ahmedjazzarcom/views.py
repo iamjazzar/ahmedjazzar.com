@@ -1,19 +1,20 @@
-from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
-from django.views.generic import TemplateView
+from django.urls import reverse
+from django.views.generic import TemplateView, ListView, DetailView
 
 from ahmedjazzarcom import models
 
 
-class Home(TemplateView):
+class HomeView(TemplateView):
     template_name = 'home.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(Home, self).get_context_data(**kwargs)
 
-        context['social_accounts'] = models.SocialAccount.objects.all()
+class AboutView(TemplateView):
+    template_name = 'about.html'
 
-        return context
+
+class ContactView(TemplateView):
+    template_name = 'contact.html'
 
     def post(self, request, **kwargs):
         data = request.POST
@@ -21,7 +22,18 @@ class Home(TemplateView):
         email = data['email']
         message = data['message']
 
-        models.ContactRequest.objects.create(
-            name=name, email=email, message=message)
+        if message and email:
+            models.ContactRequest.objects.create(
+                name=name, email=email, message=message)
 
         return redirect(reverse('home'))
+
+
+class WorksView(ListView):
+    template_name = 'works.html'
+    model = models.Work
+
+
+class WorkView(DetailView):
+    template_name = 'work.html'
+    model = models.Work

@@ -54,8 +54,14 @@ class Migration(migrations.Migration):
                 ('about', models.TextField()),
                 ('birth_date', models.DateField()),
                 ('updated', models.DateTimeField(auto_now=True)),
-                ('interests', models.ForeignKey(to='ahmedjazzarcom.Interest')),
-                ('latest_projects', models.ForeignKey(to='ahmedjazzarcom.LatestProject')),
+                ('interests', models.ForeignKey(
+                    to='ahmedjazzarcom.Interest',
+                    on_delete=models.CASCADE
+                )),
+                ('latest_projects', models.ForeignKey(
+                    to='ahmedjazzarcom.LatestProject',
+                    on_delete=models.CASCADE
+                )),
             ],
         ),
     ]
