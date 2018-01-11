@@ -18,9 +18,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    'markdown_deux',
+    'secretballot',
     'storages',
 
-    'ahmedjazzarcom',
+    'ahmedjazzarcom.apps.AhmedjazzarcomConfig',
 )
 
 MIDDLEWARE = [
@@ -31,6 +33,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'secretballot.middleware.SecretBallotIpUseragentMiddleware',
 ]
 
 
@@ -39,7 +43,7 @@ ROOT_URLCONF = 'ahmedjazzar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

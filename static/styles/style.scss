@@ -522,7 +522,7 @@ h1, h2, h3, h4, h5, h6, figure {
 				.fh5co-lead{
 					font-size: 20px;
 					color: $brand-white;
-					.icon-heart {
+					.fa-heart {
 						color: $brand-danger;
 					}
 				}
@@ -579,7 +579,7 @@ h1, h2, h3, h4, h5, h6, figure {
 			color: $brand-black;
 		}
 	}
-	.icon {
+	.fa {
 		// width: 90px;
 		// height: 90px;
 		// background: $brand-primary;
@@ -1479,4 +1479,77 @@ input[type="text"] {
 			}
 		}
 	}
+}
+
+
+.share-review  {
+	margin: 40px auto 0;
+	.share-link {
+		color: #ed2553;
+		opacity: 0.8;
+
+		&:hover	{
+			opacity: 1;
+			text-shadow: 0 0 10px rgba(237, 37, 83, 0.38);
+		 }
+	 }
+
+	li{
+		margin-right: 10px;
+		margin-left: 10px;
+	}
+}
+
+.like-content {
+  display: inline-block;
+  width: 100%;
+  margin: 40px 0 0;
+  padding: 40px 0 0;
+  font-size: 18px;
+  border-top: 10px dashed #eee;
+  text-align: center;
+  span {
+    color: #9d9da4;
+    font-family: monospace;
+  }
+  .btn-secondary {
+    display: block;
+    margin: 40px auto 0;
+    text-align: center;
+    background: #ed2553;
+    border-radius: 3px;
+    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+    padding: 10px 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    &:hover {
+      transform: translateY(-3px);
+    }
+    .fa {
+      margin-right: 5px;
+    }
+  }
+}
+
+.animate-like {
+  animation-name: likeAnimation;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.65s;
+}
+
+@keyframes likeAnimation {
+  0% {
+    transform: scale(30);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

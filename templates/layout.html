@@ -31,16 +31,19 @@
   <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400"
         rel="stylesheet">
   <link
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700"
-      rel="stylesheet">
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="{% static 'styles/animate.css' %}">
-  <link rel="stylesheet" href="{% static 'styles/icomoon.css' %}">
+  <link rel="stylesheet"
+        href="{% static 'bower_components/font-awesome/css/font-awesome.css' %}">
   <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">
   <link rel="stylesheet"
         href="{% static 'styles/magnific-popup.css' %}">
   <link rel="stylesheet" href="{% static 'styles/flexslider.css' %}">
   <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+  <link rel="icon" type="image/x-icon"
+        href="{% static 'images/favicon.ico' %}">
 
   <!-- Modernizr JS -->
   <script src="{% static 'scripts/modernizr-2.6.2.min.js' %}"></script>
@@ -69,19 +72,21 @@
               <li class="active">
                 <a href="{% url 'home' %}">{% trans 'Home' %}</a>
               </li>
-              <li><a href="{% url 'works' %}">{% trans 'Work' %}</a></li>
-              <li class="has-dropdown">
-                <a href="blog.html">{% trans 'Blog' %}</a>
-                <ul class="dropdown">
-                  <li><a href="#">Web Design</a></li>
-                  <li><a href="#">eCommerce</a></li>
-                  <li><a href="#">Branding</a></li>
-                  <li><a href="#">API</a></li>
-                </ul>
+              <li><a href="{% url 'works' %}">{% trans 'Work' %}</a>
               </li>
-              <li><a href="{% url 'about' %}">{% trans 'About' %}</a></li>
+              <li class="has-dropdown">
+                <a href="{% url 'blog' %}">{% trans 'Blog' %}</a>
+                {#                <ul class="dropdown">#}
+                {#                  <li><a href="#">Mako</a></li>#}
+                {#                  <li><a href="#">Django</a></li>#}
+                {#                  <li><a href="#">Branding</a></li>#}
+                {#                  <li><a href="#">API</a></li>#}
+                {#                </ul>#}
+              </li>
+              <li><a href="{% url 'about' %}">{% trans 'About' %}</a>
+              </li>
               <li><a
-                  href="{% url 'contact' %}">{% trans 'Contact' %}</a>
+                href="{% url 'contact' %}">{% trans 'Contact' %}</a>
               </li>
             </ul>
           </div>
@@ -102,13 +107,11 @@
         <div class="col-md-3 col-md-push-1">
           <h4>{% trans 'Latest Posts' %}</h4>
           <ul class="fh5co-footer-links">
-            <li><a href="#">Amazing Templates</a></li>
-            <li><a href="#">100+ Free Download Templates</a>
-            </li>
-            <li><a href="#">Neat is now available</a></li>
-            <li><a href="#">Download 1000+ icons</a></li>
-            <li><a href="#">Big Deal for this month of
-              March, Join Us here</a></li>
+            {% for post in latest_posts %}
+              <li>
+                <a href="{% url 'post' post.slug %}">{{ post }}</a>
+              </li>
+            {% endfor %}
           </ul>
         </div>
 
@@ -137,19 +140,20 @@
           <p>
             <small class="block">
               {% now 'Y' as year %}
-              {% blocktrans %}&copy; {{ year }} Ahmed Jazzar. All Rights Reserved.{% endblocktrans %}
+              {% blocktrans %}&copy; {{ year }} Ahmed Jazzar. All Rights
+                Reserved.{% endblocktrans %}
             </small>
           </p>
           <p>
-            <ul class="fh5co-social-icons">
-              {% for account in social_accounts %}
-                <li>
-                  <a href="{{ account.link }}">
-                    <i class="{{ account.get_class }}"></i>
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
+          <ul class="fh5co-social-icons">
+            {% for account in social_accounts %}
+              <li>
+                <a href="{{ account.link }}">
+                  <i class="fa {{ account.get_class }}"></i>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
           </p>
         </div>
       </div>
@@ -157,19 +161,22 @@
   </div>
 </div>
 <div class="gototop js-top">
-  <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
 
-<script src="{% static 'scripts/jquery.min.js' %}"></script>
+<script
+  src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
 <script src="{% static 'scripts/jquery.easing.1.3.js' %}"></script>
 <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
 <script src="{% static 'scripts/jquery.waypoints.min.js' %}"></script>
 <script src="{% static 'scripts/jquery.flexslider-min.js' %}"></script>
 <script
-    src="{% static 'scripts/jquery.magnific-popup.min.js' %}"></script>
+  src="{% static 'scripts/jquery.magnific-popup.min.js' %}"></script>
 <script src="{% static 'scripts/magnific-popup-options.js' %}"></script>
 <script src="{% static 'scripts/jquery.countTo.js' %}"></script>
 <script src="{% static 'scripts/main.js' %}"></script>
+
+{% block scripts %}{% endblock %}
 
 </body>
 </html>

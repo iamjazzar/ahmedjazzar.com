@@ -29,7 +29,7 @@
         {% for work in object_list %}
         <div class="col-md-4 text-center animate-box">
           <a href="{% url 'work' slug=work.slug %}" class="work"
-             style="background-image: url({{ work.image.url }});">
+             style="background-image: url({{ work.main_image.url }});">
             <div class="desc">
               <h3>{{ work.name }}</h3>
               <span>{{ work.type }}</span>

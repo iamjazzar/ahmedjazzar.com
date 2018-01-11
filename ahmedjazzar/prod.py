@@ -25,6 +25,8 @@ ALLOWED_HOSTS = [
 '.ahmedjazzar.com.'
 ]
 
+SITE_BASE = 'www.ahmedjazzar.com'
+
 # Static and Media asset configuration
 
 AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']

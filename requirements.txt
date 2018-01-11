@@ -2,6 +2,8 @@ boto==2.38.0
 dj-database-url==0.3.0
 dj-static==0.0.6
 Django==2.0.1
+django-markdown-deux==1.0.5
+django-secretballot==1.0.0
 django-storages==1.1.8
 django-toolbelt==0.0.1
 gunicorn==19.3.0

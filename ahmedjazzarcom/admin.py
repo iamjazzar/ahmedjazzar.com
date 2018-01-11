@@ -3,12 +3,17 @@ from django.contrib import admin
 from ahmedjazzarcom import models
 
 
-class ImageAdmin(admin.ModelAdmin):
-    list_display = ['id', 'image']
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ['title']
+    readonly_fields = ('slug', )
 
 
 class ContactRequestAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'resolved']
+
+
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ['id', 'image']
 
 
 class SocialAccountAdmin(admin.ModelAdmin):
@@ -20,6 +25,7 @@ class WorkAdmin(admin.ModelAdmin):
     readonly_fields = ('slug', )
 
 
+admin.site.register(models.Blog, BlogAdmin)
 admin.site.register(models.ImageModel, ImageAdmin)
 admin.site.register(models.SocialAccount, SocialAccountAdmin)
 admin.site.register(models.ContactRequest, ContactRequestAdmin)

@@ -10,7 +10,7 @@ DATABASES = {
     },
 }
 
-
+SITE_BASE = 'http://127.0.0.1'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static', 'staticfiles')

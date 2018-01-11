@@ -7,11 +7,14 @@ from ahmedjazzarcom import views
 
 
 urlpatterns = [
-    path(r'', views.HomeView.as_view(), name='home'),
-    path(r'about', views.AboutView.as_view(), name='about'),
-    path(r'contact', views.ContactView.as_view(), name='contact'),
-    path(r'works', views.WorksView.as_view(), name='works'),
-    path(r'work/<slug:slug>', views.WorkView.as_view(), name='work'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('about', views.AboutView.as_view(), name='about'),
+    path('blog', views.BlogView.as_view(), name='blog'),
+    path('blog', views.BlogView.as_view(), name='blog'),
+    path('blog/<slug:slug>', views.BlogPostView.as_view(), name='post'),
+    path('contact', views.ContactView.as_view(), name='contact'),
+    path('works', views.WorksView.as_view(), name='works'),
+    path('work/<slug:slug>', views.WorkView.as_view(), name='work'),
 
     # Includes
     path('admin/', admin.site.urls),
