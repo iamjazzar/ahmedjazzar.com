@@ -18,6 +18,8 @@ class AboutView(TemplateView):
         context = super(AboutView, self).get_context_data(**kwargs)
 
         context['tab'] = 'about'
+        context['sliders'] = models.Slider.objects.filter(page='about')
+
         return context
 
 
@@ -29,6 +31,8 @@ class BlogView(ListView):
         context = super(BlogView, self).get_context_data(**kwargs)
 
         context['tab'] = 'blog'
+        context['sliders'] = models.Slider.objects.filter(page='blog')
+
         return context
 
 
@@ -83,6 +87,8 @@ class ContactView(TemplateView):
         context = super(ContactView, self).get_context_data(**kwargs)
 
         context['tab'] = 'contact'
+        context['sliders'] = models.Slider.objects.filter(page='contact')
+
         return context
 
     def post(self, request, **kwargs):
@@ -105,6 +111,12 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
 
         context['tab'] = 'home'
+        context['works'] = models.Work.objects.order_by('-created')[:3]
+        context['about'] = models.AboutMe.objects.last()
+        context['sliders'] = models.Slider.objects.filter(page='home')
+        context['featured'] = models.Blog.objects.filter(
+            featured=True).last()
+
         return context
 
 
@@ -116,6 +128,8 @@ class WorksView(ListView):
         context = super(WorksView, self).get_context_data(**kwargs)
 
         context['tab'] = 'work'
+        context['sliders'] = models.Slider.objects.filter(page='work')
+
         return context
 
 

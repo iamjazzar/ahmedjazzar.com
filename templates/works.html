@@ -5,30 +5,13 @@
 
 {% block body %}
   <div class="container-wrap">
-    <aside id="fh5co-hero">
-      <div class="flexslider">
-        <ul class="slides">
-          <li style="background-image: url({% static 'images/img_bg_3.jpg' %});">
-            <div class="overlay-gradient"></div>
-            <div class="row">
-              <div
-                  class="col-md-6 col-md-offset-3 slider-text slider-text-bg">
-                <div class="slider-text-inner text-center">
-                  <h1>{% trans 'Nothing granted!' %}</h1>
-                  <h2>{% trans 'Here is what worked on my machine 😎' %}</h2>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </aside>
+    {% include 'components/aside.html' with sliders=sliders %}
 
     <div id="fh5co-work">
       <div class="row">
         {% for work in object_list %}
         <div class="col-md-4 text-center animate-box">
-          <a href="{% url 'work' slug=work.slug %}" class="work"
+          <a href="{{ work.url }}" class="work"
              style="background-image: url({{ work.main_image.url }});">
             <div class="desc">
               <h3>{{ work.name }}</h3>

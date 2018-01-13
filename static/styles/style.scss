@@ -8,8 +8,9 @@ $grid-gutter-width: 40px !default;
 $border-radius-base:  4px !default;
 $padding-base-vertical: 14px !default;
 
-$brand-primary: #66D37E !default;
-$brand-secondary: #007CB9 !default;
+$brand-primary: #ebcb93 !default;
+$brand-secondary: #454E5A !default;
+$brand-danger: #ed2553 !default;
 
 $brand-white: #fff;
 $brand-black: #000;
@@ -515,6 +516,7 @@ h1, h2, h3, h4, h5, h6, figure {
 				}
 				.heading-section{
 					font-size: 50px;
+					color: $brand-secondary;
 					@media screen and (max-width: $screen-sm){
 						font-size: 30px;
 					}
@@ -1486,12 +1488,10 @@ input[type="text"] {
 	margin: 40px auto 0;
 	.share-link {
 		color: #ed2553;
-		opacity: 0.8;
-
+			text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 		&:hover	{
-			opacity: 1;
-			text-shadow: 0 0 10px rgba(237, 37, 83, 0.38);
-		 }
+			transform: translateY(-3px);
+		}
 	 }
 
 	li{
@@ -1509,16 +1509,15 @@ input[type="text"] {
   border-top: 10px dashed #eee;
   text-align: center;
   span {
-    color: #9d9da4;
+    color: $brand-secondary;
     font-family: monospace;
   }
   .btn-secondary {
     display: block;
     margin: 40px auto 0;
     text-align: center;
-    background: #ed2553;
+    background: $brand-danger;
     border-radius: 3px;
-    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
     padding: 10px 17px;
     font-size: 18px;
     cursor: pointer;
@@ -1529,7 +1528,8 @@ input[type="text"] {
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;
     &:hover {
-      transform: translateY(-3px);
+		transform: translateY(-3px);
+		box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
     }
     .fa {
       margin-right: 5px;

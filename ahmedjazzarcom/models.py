@@ -7,6 +7,13 @@ from django.urls import reverse
 from django.utils.text import slugify
 
 
+class AboutMe(models.Model):
+    coffee_cups = models.IntegerField()
+    clients = models.IntegerField()
+    projects = models.IntegerField()
+    hours = models.IntegerField()
+
+
 class Blog(models.Model):
     slug = models.SlugField(unique=True)
 
@@ -15,6 +22,7 @@ class Blog(models.Model):
 
     short_description = models.CharField(max_length=160)
     image = models.ImageField(upload_to='blog', null=True)
+    featured = models.BooleanField(default=False)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -43,9 +51,12 @@ class Blog(models.Model):
         return 'https://www.twitter.com/intent/tweet?text={}'.format(
             parse.quote(text))
 
+    @property
+    def url(self):
+        return reverse('post', kwargs={'slug': self.slug})
+
     def get_full_url(self):
-        object_path = reverse('post', kwargs={'slug': self.slug})
-        full_url = parse.urljoin(settings.SITE_BASE, object_path)
+        full_url = parse.urljoin(settings.SITE_BASE, self.url)
 
         return full_url
 
@@ -75,6 +86,31 @@ class ContactRequest(models.Model):
 class ImageModel(models.Model):
     image = models.ImageField(upload_to='work')
 
+    def __str__(self):
+        return self.image.name
+
+
+class Slider(models.Model):
+    PAGES = (
+        ('about', 'About Me'),
+        ('blog', 'Blog'),
+        ('contact', 'Contact Me'),
+        ('home', 'Home'),
+        ('work', 'Work'),
+    )
+
+    header = models.CharField(max_length=128)
+    quote = models.CharField(max_length=512)
+    image = models.ImageField()
+    page = models.CharField(max_length=128, choices=PAGES)
+    center_text = models.BooleanField(default=False)
+    classes = models.CharField(
+        max_length=265,
+        help_text='col-md-6 col-md-offset-3 col-md-pull-3',
+        default='col-md-6 col-md-offset-3 col-md-pull-3'
+    )
+
+
 
 class SocialAccount(models.Model):
     name = models.CharField(max_length=55)
@@ -98,9 +134,15 @@ class Work(models.Model):
 
     images = models.ManyToManyField(ImageModel)
 
+    created = models.DateTimeField(auto_now_add=True)
+
     def save(self, **kwargs):
         self.slug = slugify(self.name)
         super(Work, self).save(**kwargs)
+
+    @property
+    def url(self):
+        return reverse('work', kwargs={'slug': self.slug})
 
     def get_services_display(self):
         return self.services.split(';')

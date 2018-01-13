@@ -1,11 +1,14 @@
+from django.conf import settings
+
 from ahmedjazzarcom import models
 
 
 def ahmedjazzar(request):
     social_accounts = models.SocialAccount.objects.all()
-    latest_posts = models.Blog.objects.order_by('-created')[:5]
+    latest_posts = models.Blog.objects.order_by('-created')[:3]
 
     return {
+        'is_debug': settings.DEBUG,
         'social_accounts': social_accounts,
-        'latest_posts': reversed(latest_posts)
+        'latest_posts': latest_posts
     }
