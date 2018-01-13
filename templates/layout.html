@@ -69,12 +69,14 @@
           </div>
           <div class="col-xs-9 text-right menu-1">
             <ul>
-              <li class="active">
+              <li class="{% if tab == 'home' %}active{% endif %}">
                 <a href="{% url 'home' %}">{% trans 'Home' %}</a>
               </li>
-              <li><a href="{% url 'works' %}">{% trans 'Work' %}</a>
+              <li class="{% if tab == 'work' %}active{% endif %}">
+                <a href="{% url 'works' %}">{% trans 'Work' %}</a>
               </li>
-              <li class="has-dropdown">
+              <li class="{% if tab == 'blog' %}active{% endif %}">
+                {# class="has-dropdown" #}
                 <a href="{% url 'blog' %}">{% trans 'Blog' %}</a>
                 {#                <ul class="dropdown">#}
                 {#                  <li><a href="#">Mako</a></li>#}
@@ -83,9 +85,11 @@
                 {#                  <li><a href="#">API</a></li>#}
                 {#                </ul>#}
               </li>
-              <li><a href="{% url 'about' %}">{% trans 'About' %}</a>
+              <li class="{% if tab == 'about' %}active{% endif %}">
+                <a href="{% url 'about' %}">{% trans 'About' %}</a>
               </li>
-              <li><a
+              <li class="{% if tab == 'contact' %}active{% endif %}">
+                <a
                 href="{% url 'contact' %}">{% trans 'Contact' %}</a>
               </li>
             </ul>

@@ -14,10 +14,22 @@ from ahmedjazzarcom import models
 class AboutView(TemplateView):
     template_name = 'about.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'about'
+        return context
+
 
 class BlogView(ListView):
     model = models.Blog
     template_name = 'blog.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'blog'
+        return context
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -29,6 +41,7 @@ class BlogPostView(DetailView):
         context = super(BlogPostView, self).get_context_data(**kwargs)
 
         context['voted'] = self.did_vote()
+        context['tab'] = 'blog'
         return context
 
     def post(self, request, *args, **kwargs):
@@ -55,6 +68,12 @@ class BlogPostView(DetailView):
 class ContactView(TemplateView):
     template_name = 'contact.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(ContactView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'contact'
+        return context
+
     def post(self, request, **kwargs):
         data = request.POST
         name = data['name']
@@ -71,12 +90,30 @@ class ContactView(TemplateView):
 class HomeView(TemplateView):
     template_name = 'home.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'home'
+        return context
+
 
 class WorksView(ListView):
     template_name = 'works.html'
     model = models.Work
 
+    def get_context_data(self, **kwargs):
+        context = super(WorksView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'work'
+        return context
+
 
 class WorkView(DetailView):
     template_name = 'work.html'
     model = models.Work
+
+    def get_context_data(self, **kwargs):
+        context = super(WorkView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'work'
+        return context
