@@ -61,7 +61,8 @@ class Blog(models.Model):
         return full_url
 
     def save(self, **kwargs):
-        self.slug = slugify(self.title)
+        if not self.slug:
+            self.slug = slugify(self.title)
         super(Blog, self).save(**kwargs)
 
     def __str__(self):
@@ -137,7 +138,9 @@ class Work(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def save(self, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.slug:
+            self.slug = slugify(self.name)
+
         super(Work, self).save(**kwargs)
 
     @property

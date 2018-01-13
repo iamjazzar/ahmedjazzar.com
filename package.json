@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/ahmedaljazzar/ahmedjazzar.com#readme",
   "dependencies": {
+    "browser-sync": "^2.23.2",
+    "gulp-sass": "^3.1.0",
     "bower": "^1.5.2",
     "gulp": "^3.9.1"
   },
@@ -28,8 +30,5 @@
     "website"
   ],
   "devDependencies": {
-    "browser-sync": "^2.23.2",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0"
   }
 }

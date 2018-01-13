@@ -1,6 +1,5 @@
 
 # Project Files
-static/bower_components/
 node_modules/
 staticfiles/
 rev/

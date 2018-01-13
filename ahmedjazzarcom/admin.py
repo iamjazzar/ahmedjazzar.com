@@ -9,7 +9,6 @@ class AboutMeAdmin(admin.ModelAdmin):
 
 class BlogAdmin(admin.ModelAdmin):
     list_display = ['title', 'featured']
-    readonly_fields = ('slug', )
 
 
 class ContactRequestAdmin(admin.ModelAdmin):
@@ -30,7 +29,6 @@ class SocialAccountAdmin(admin.ModelAdmin):
 
 class WorkAdmin(admin.ModelAdmin):
     list_display = ['name', 'link']
-    readonly_fields = ('slug', )
 
 
 admin.site.register(models.Slider, SliderAdmin)

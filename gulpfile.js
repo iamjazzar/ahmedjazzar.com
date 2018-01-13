@@ -49,4 +49,5 @@ gulp.task('serve', ['sass'], function () {
 });
 
 gulp.task('styles', ['css', 'sass']);
-gulp.task('default', ['images', 'styles', 'scripts', 'serve']);
+gulp.task('default', ['images', 'styles', 'scripts']);
+gulp.task('watch', ['default', 'serve']);
