@@ -2,7 +2,8 @@ from urllib import parse
 
 from django.conf import settings
 from django.db import models
-from django.urls import reverse_lazy, reverse
+from django.db.models import CASCADE
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -54,6 +55,12 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class BlogView(models.Model):
+    blog = models.OneToOneField(
+        Blog, on_delete=CASCADE, unique=True,
+        db_index=True, related_name='views')
 
 
 class ContactRequest(models.Model):

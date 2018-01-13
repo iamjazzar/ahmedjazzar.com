@@ -52,7 +52,7 @@
                     <i class="fa fa-heart-o"></i>
                     {{ blog.vote_total }}
                   </li>
-                  <li><i class="fa fa-eye"></i>1,308</li>
+                  <li><i class="fa fa-eye"></i>{{ blog.views.votes.count }}</li>
                   <li><a href="{% url 'post' blog.slug %}">
                     {% trans 'Read More' %}
                     <i class="fa fa-angle-right"></i></a></li>

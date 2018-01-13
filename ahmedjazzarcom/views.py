@@ -37,6 +37,10 @@ class BlogPostView(DetailView):
     template_name = 'blog_post.html'
     model = models.Blog
 
+    def get(self, *args, **kwargs):
+        self.count_view()
+        return super(BlogPostView, self).get(*args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super(BlogPostView, self).get_context_data(**kwargs)
 
@@ -55,6 +59,13 @@ class BlogPostView(DetailView):
         obj.add_vote(token=token, vote='+1')
 
         return JsonResponse({'state': 'Successfully voted'}, status=200)
+
+    def count_view(self):
+        obj, created = models.BlogView.objects.get_or_create(
+            blog=self.get_object())
+
+        token = self.request.secretballot_token
+        obj.add_vote(token=token, vote='+1')
 
     def did_vote(self):
         content_type = ContentType.objects.get_for_model(self.model).id
