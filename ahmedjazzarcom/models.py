@@ -6,6 +6,9 @@ from django.db.models import CASCADE
 from django.urls import reverse
 from django.utils.text import slugify
 
+from martor.models import MartorField
+from meta.models import ModelMeta
+
 
 class AboutMe(models.Model):
     coffee_cups = models.IntegerField()
@@ -14,18 +17,33 @@ class AboutMe(models.Model):
     hours = models.IntegerField()
 
 
-class Blog(models.Model):
+class Blog(ModelMeta, models.Model):
     slug = models.SlugField(unique=True)
 
     title = models.CharField(max_length=128)
-    text = models.TextField()
+    text = MartorField()
 
     short_description = models.CharField(max_length=160)
     image = models.ImageField(upload_to='blog', null=True)
     featured = models.BooleanField(default=False)
+    draft = models.BooleanField(default=True)
+
+    related_posts = models.ManyToManyField('self')
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    _metadata = {
+        'description': 'short_description',
+        'image': 'image.url',
+    }
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def published(self):
+        return not self.draft
 
     @property
     def email_share_url(self):
@@ -59,6 +77,10 @@ class Blog(models.Model):
         full_url = parse.urljoin(settings.SITE_BASE, self.url)
 
         return full_url
+
+    @classmethod
+    def get_ready(cls):
+        return cls.objects.filter(draft=False)
 
     def save(self, **kwargs):
         if not self.slug:
@@ -112,7 +134,6 @@ class Slider(models.Model):
     )
 
 
-
 class SocialAccount(models.Model):
     name = models.CharField(max_length=55)
     link = models.URLField()
@@ -123,7 +144,7 @@ class SocialAccount(models.Model):
         return self.css_class or alternative_class
 
 
-class Work(models.Model):
+class Work(ModelMeta, models.Model):
     slug = models.SlugField(unique=True)
     name = models.CharField(max_length=128, db_index=True)
     type = models.CharField(max_length=128)
@@ -134,8 +155,14 @@ class Work(models.Model):
     link = models.URLField(blank=True, null=True)
 
     images = models.ManyToManyField(ImageModel)
+    related_works = models.ManyToManyField('self')
 
     created = models.DateTimeField(auto_now_add=True)
+
+    _metadata = {
+        'description': 'short_description',
+        'image': 'image.url',
+    }
 
     def save(self, **kwargs):
         if not self.slug:
@@ -149,3 +176,6 @@ class Work(models.Model):
 
     def get_services_display(self):
         return self.services.split(';')
+
+    def __str__(self):
+        return self.name

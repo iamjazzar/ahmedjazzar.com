@@ -3,9 +3,11 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load markdown_deux_tags %}
+{% load martortags %}
 
 {% block body %}
   <div class="container-wrap">
+
     <aside id="fh5co-hero">
       <div class="flexslider">
         <ul class="slides">
@@ -16,8 +18,6 @@
                 <div
                   class="col-md-6 col-md-offset-3 slider-text slider-text-bg">
                   <div class="slider-text-inner text-center">
-                    <h1>{{ object.title }}</h1>
-                    <h2>{{ object.short_description }}</h2>
                   </div>
                 </div>
               </div>
@@ -26,11 +26,24 @@
         </ul>
       </div>
     </aside>
+
     <div id="fh5co-about">
       <div class="row animate-box">
         <div
-          class="col-md-6 col-md-offset-3 text-center heading-section">
-          {{ object.text | markdown }}
+          class="col-md-8 col-md-offset-2 heading-section post">
+          <div class="header">
+            <h1 class="text-center">{{ object.title }}</h1>
+          <h4 class="text-center">{{ object.short_description }}</h4>
+          </div>
+
+          <div class="text">
+            {{ object.text | safe_markdown }}
+            <div class="signature">
+              <div>{% trans 'Ahmed Jazzar' %}</div>
+            <div><em>Updated, {{ object.updated | date }}</em></div>
+            </div>
+
+          </div>
 
           <div class="like-content">
             <span>
@@ -72,6 +85,9 @@
                 </li>
               </ul>
             </div>
+
+          <div class="col-md-4 fh5co-project-detail">
+          </div>
           </div>
         </div>
       </div>

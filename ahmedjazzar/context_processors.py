@@ -5,7 +5,7 @@ from ahmedjazzarcom import models
 
 def ahmedjazzar(request):
     social_accounts = models.SocialAccount.objects.all()
-    latest_posts = models.Blog.objects.order_by('-created')[:3]
+    latest_posts = models.Blog.get_ready().order_by('-created')[:3]
 
     return {
         'is_debug': settings.DEBUG,

@@ -19,6 +19,8 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'markdown_deux',
+    'martor',
+    'meta',
     'secretballot',
     'storages',
 
@@ -66,6 +68,12 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+
+MARTOR_UPLOAD_PATH = 'uploads/posts'
+MARTOR_UPLOAD_URL = '/api/upload/'
+MAX_IMAGE_UPLOAD_SIZE = 5242880
+MARTOR_MARKDOWN_SAFE_MODE = False # default
 
 WSGI_APPLICATION = 'ahmedjazzar.wsgi.application'
 

@@ -1,7 +1,8 @@
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import RedirectView
 
 from ahmedjazzarcom import views
 
@@ -9,7 +10,8 @@ from ahmedjazzarcom import views
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('about', views.AboutView.as_view(), name='about'),
-    path('blog', views.BlogView.as_view(), name='blog'),
+    path('api/upload/', views.MarkdownUploader.as_view(),
+         name='markdown_uploader_page'),
     path('blog', views.BlogView.as_view(), name='blog'),
     path('blog/<slug:slug>', views.BlogPostView.as_view(), name='post'),
     path('contact', views.ContactView.as_view(), name='contact'),
@@ -18,6 +20,12 @@ urlpatterns = [
 
     # Includes
     path('admin/', admin.site.urls),
+    path('martor/', include('martor.urls', )),
+
+    # Old patterns
+    path('single_post/<slug:slug>',
+         RedirectView.as_view(pattern_name='post')),
+
 ]
 
 

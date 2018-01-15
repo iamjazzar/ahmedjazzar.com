@@ -148,6 +148,23 @@ a {
 		text-decoration: none;
 	}
 }
+
+.post {
+	.header {
+		padding: 0 10%;
+
+		h4 {
+			color: $brand-gray;
+		}
+	}
+	.text {
+		margin-top: 65px;
+		.signature	{
+			margin-top: 30px;
+		}
+	}
+}
+
 p {
 	margin-bottom: 20px;
 }
@@ -446,9 +463,18 @@ h1, h2, h3, h4, h5, h6, figure {
 			li {
 				background-repeat: no-repeat;
 				background-size: cover;
-				background-position: bottom center;
+				background-position: center;
 				min-height: 500px;
 				position: relative;
+			}
+			.overlay-gradient {
+				content: '';
+				height: 100%;
+				width: 100%;
+				background-color: rgba(255, 255, 255, 0.1);
+				position: absolute;
+				top: 0;
+				left: 0;
 			}
 		}
 		.flex-control-nav {
@@ -487,6 +513,7 @@ h1, h2, h3, h4, h5, h6, figure {
 				vertical-align: middle;
 				min-height: 700px;
 				padding: 2em;
+
 				@media screen and (max-width: $screen-sm ) {
 					text-align: center;
 				}
@@ -495,6 +522,7 @@ h1, h2, h3, h4, h5, h6, figure {
 					padding: 0;
 					color: rgba(0,0,0,1);
 					font-family: $font-primary;
+					text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 				}
 				h1 {
 					margin-bottom: 20px;
@@ -514,13 +542,13 @@ h1, h2, h3, h4, h5, h6, figure {
 						border-bottom: 1px solid rgba($brand-primary,.7)
 					}
 				}
-				.heading-section{
+				.heading-section {
 					font-size: 50px;
 					color: $brand-secondary;
-					@media screen and (max-width: $screen-sm){
+					@media screen and (max-width: $screen-sm) {
 						font-size: 30px;
 					}
-				}s
+				}
 				.fh5co-lead{
 					font-size: 20px;
 					color: $brand-white;
@@ -605,6 +633,11 @@ h1, h2, h3, h4, h5, h6, figure {
 	}
 }
 
+.suggested-topics {
+	border-top: 3px dashed #eee;
+	margin-top: 100px;
+	padding-top: 100px;
+}
 
 // WORK
 .work{
@@ -804,14 +837,26 @@ h1, h2, h3, h4, h5, h6, figure {
 		@media screen and (max-width: $screen-sm) {
 			width: 100%;
 		}
-		&:before{
+		text-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+
+		&:before {
+			content: '';
+			height: 100%;
+			width: 100%;
+			background-color: rgba(0,0,0,0.3);
+			position: absolute;
+			top:0;
+			left:0;
+		}
+
+		&:after{
 			position: absolute;
 			top: 15px;
 			bottom: 15px;
 			left: 15px;
 			right: 15px;
 			content: '';
-			border: 1px solid rgba($brand-white,.4);
+			border: 1px solid rgba($brand-white,.7);
 		}
 		
 		.desc-t{
@@ -1506,11 +1551,9 @@ input[type="text"] {
   margin: 40px 0 0;
   padding: 40px 0 0;
   font-size: 18px;
-  border-top: 10px dashed #eee;
   text-align: center;
   span {
     color: $brand-secondary;
-    font-family: monospace;
   }
   .btn-secondary {
     display: block;
