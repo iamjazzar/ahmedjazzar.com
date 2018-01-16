@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block body %}
+  <div class="container-wrap">
+    {% include 'components/aside.html' with sliders=sliders %}
+
+    <div id="fh5co-blog">
+      <div class="row">
+        {% for blog in object_list %}
+          <div class="col-md-4">
+            <div class="fh5co-blog animate-box">
+              <a href="{{ blog.url }}" class="blog-bg"
+                 style="background-image: url({{ blog.image.url }});">
+
+              </a>
+              <div class="blog-text">
+                <span class="posted_on">
+                  {{ blog.created | date:'M d, Y' }}
+                </span>
+                <h3>
+                  <a href="{{ blog.url }}">
+                    {{ blog.title }}
+                  </a>
+                </h3>
+                <p>{{ blog.short_description }}</p>
+                <ul class="stuff">
+                  <li>
+                    <i class="fa fa-heart-o"></i>
+                    {{ blog.vote_total }}
+                  </li>
+                  <li><i class="fa fa-eye"></i>{{ blog.views.votes.count }}</li>
+                  <li><a href="{{ blog.url }}">
+                    {% trans 'Read More' %}
+                    <i class="fa fa-angle-right"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

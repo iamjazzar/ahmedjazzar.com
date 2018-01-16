@@ -1,0 +1,34 @@
+{% load i18n %}
+
+<aside id="fh5co-hero">
+  <div class="flexslider">
+    <ul class="slides">
+      {% for slider in sliders %}
+        <li
+          style="background-image: url({{ slider.image.url }});">
+          <div class="overlay-gradient"></div>
+          <div class="container-fluid">
+            <div class="row">
+              <div
+                class="{{ slider.classes }} slider-text">
+                <div class="slider-text-inner {% if slider.center_text %}text-center{% endif %}">
+                  <h1>{{ slider.header }}</h1>
+                  <h2>{{ slider.quote | safe }}</h2>
+                  {% if home %}
+                  <p>
+                    <a class="btn btn-primary btn-demo"></i>
+                      {% trans 'My Work' %}
+                    </a>
+                    <a class="btn btn-primary btn-learn">
+                      {% trans 'Know Me' %}
+                    </a></p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</aside>

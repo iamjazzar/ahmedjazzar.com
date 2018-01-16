@@ -1,21 +1,33 @@
-
-from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
-
-from ahmedjazzarcom.views import FourOhFourView
+from django.urls import path, include
+from django.views.generic import RedirectView
 
 from ahmedjazzarcom import views
 
+
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.Home.as_view(), name='home'),
-    url(r'^404/$', views.FourOhFourView.as_view(), name='404'),
-    url(r'^500/$', views.FiveHundredView.as_view(), name='500'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('about', views.AboutView.as_view(), name='about'),
+    path('api/upload/', views.MarkdownUploader.as_view(),
+         name='markdown_uploader_page'),
+    path('blog', views.BlogView.as_view(), name='blog'),
+    path('blog/<slug:slug>', views.BlogPostView.as_view(), name='post'),
+    path('contact', views.ContactView.as_view(), name='contact'),
+    path('works', views.WorksView.as_view(), name='works'),
+    path('work/<slug:slug>', views.WorkView.as_view(), name='work'),
+
+    # Includes
+    path('admin/', admin.site.urls),
+    path('martor/', include('martor.urls', )),
+
+    # Old patterns
+    path('single_post/<slug:slug>',
+         RedirectView.as_view(pattern_name='post')),
+
 ]
 
-handler404 = FourOhFourView.get_rendered_view()
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

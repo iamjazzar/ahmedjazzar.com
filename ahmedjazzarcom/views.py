@@ -1,100 +1,253 @@
+import uuid
 
-from django.shortcuts import render
-from django.views.generic import TemplateView
+import os
 from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from django.http import JsonResponse
+from django.shortcuts import redirect
+from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.utils.translation import gettext_lazy as _
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    DetailView,
+)
+from meta.views import MetadataMixin
 
-from helpers import last_tweets
-import models
+from secretballot.models import Vote
 
-class Home(TemplateView):
+from ahmedjazzarcom import models
+
+
+class JazzarMetadataMixin(MetadataMixin):
+    description = _('I\'m Ahmed Jazzar, a 23 years old senior '
+                    'software engineer working at Edraak on '
+                    'creating Educational Tecnology.')
+    keywords = [
+        'Ahmed', 'Jazzar', 'Ahmad', 'Jazzar', 'Software', 'Engineer']
+    url = settings.META_SITE_DOMAIN
+
+    image = static('images/logo-grey.png')
+    site_name = _('Ahmed Jazzar')
+    twitter_site = 'https://www.twitter.com/iamjazzar'
+    twitter_creator = 'iamjazzar'
+
+
+class AboutView(JazzarMetadataMixin, TemplateView):
+    description = _('About me, Ahmed Jazzar, the Software Engineer!')
+    template_name = 'about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'about'
+        context['sliders'] = models.Slider.objects.filter(page='about')
+
+        return context
+
+
+class BlogView(MetadataMixin, ListView):
+    description = _('Ahmed Jazzar\'s blog!')
+    queryset = models.Blog.get_ready()
+    template_name = 'blog.html'
+
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'blog'
+        context['sliders'] = models.Slider.objects.filter(page='blog')
+
+        return context
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class BlogPostView(DetailView):
+    template_name = 'blog_post.html'
+    model = models.Blog
+
+    def get(self, *args, **kwargs):
+        self.count_view()
+        return super(BlogPostView, self).get(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogPostView, self).get_context_data(**kwargs)
+
+        context['voted'] = self.did_vote()
+        context['meta'] = self.get_object().as_meta(self.request)
+        context['tab'] = 'blog'
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+        voted = self.did_vote()
+
+        if voted:
+            return JsonResponse({'state': 'Already voted'}, status=406)
+
+        obj = self.get_object()
+        token = request.secretballot_token
+        obj.add_vote(token=token, vote='+1')
+
+        return JsonResponse({'state': 'Successfully voted'}, status=200)
+
+    def count_view(self):
+        obj, created = models.BlogView.objects.get_or_create(
+            blog=self.get_object())
+
+        token = self.request.secretballot_token
+        obj.add_vote(token=token, vote='+1')
+
+    def did_vote(self):
+        content_type = ContentType.objects.get_for_model(self.model).id
+        token = self.request.secretballot_token
+
+        return Vote.objects.filter(
+            content_type=content_type,
+            token=token).exists()
+
+
+class ContactView(MetadataMixin, TemplateView):
+    template_name = 'contact.html'
+    description = _('Contact me, Ahmed Jazzar!')
+
+    def get_context_data(self, **kwargs):
+        context = super(ContactView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'contact'
+        context['sliders'] = models.Slider.objects.filter(page='contact')
+
+        return context
+
+    def post(self, request, **kwargs):
+        data = request.POST
+        name = data['name']
+        email = data['email']
+        message = data['message']
+
+        if message and email:
+            models.ContactRequest.objects.create(
+                name=name, email=email, message=message)
+
+        return redirect(reverse('home'))
+
+
+class HomeView(MetadataMixin, TemplateView):
+    description = _('I\'m Ahmed Jazzar, a 23 years old senior '
+                    'software engineer working at Edraak on '
+                    'creating Educational Tecnology.')
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):
-        context = super(Home, self).get_context_data(**kwargs)
+        context = super(HomeView, self).get_context_data(**kwargs)
 
-        main = models.MainPage.objects.get(pk=1)
-
-        first_name = main.get_first_name()
-        last_name = main.get_last_name()
-        full_name = main.get_full_name()
-        logo = main.get_logo()
-        country = main.get_country()
-        work_location = main.get_work_location()
-        email = main.get_email()
-        github_user = main.get_github_username()
-        twitter_user = main.get_twitter_username()
-        linkedin_user = main.get_linkedin_username()
-        facebook_user = main.get_facebook_username()
-        organization = main.get_organization()
-        position = main.get_position()
-        organization_link = main.get_organization_link()
-
-        side_bar = models.SideBar.objects.all()[0]
-
-        about = side_bar.get_about()
-        age = side_bar.get_age()
-        interests = side_bar.get_interests()
-        latest_projects = side_bar.get_latest_projects()
-
-        timeline = last_tweets(twitter_user)
-
-        context['MEDIA_URL'] = settings.MEDIA_URL
-        context['first_name'] = first_name
-        context['last_name'] = last_name
-        context['full_name'] = full_name
-        context['country'] = country
-        context['organization'] = organization
-        context['position'] = position
-        context['organization_link'] = organization_link
-        context['work_location'] = work_location
-        context['logo'] = logo
-        context['email'] = email
-        context['github_user'] = github_user
-        context['twitter_user'] = twitter_user
-        context['linkedin_user'] = linkedin_user
-        context['facebook_user'] = facebook_user
-
-        context['about'] = about
-        context['age'] = age
-        context['interests'] = interests
-        context['latest_projects'] = latest_projects
-
-        context['timeline']=timeline
-        context['GOOGLE_TRACKING_KEY']=settings.GOOGLE_TRACKING_KEY
+        context['tab'] = 'home'
+        context['works'] = models.Work.objects.order_by('-created')[:3]
+        context['about'] = models.AboutMe.objects.last()
+        context['sliders'] = models.Slider.objects.filter(page='home')
+        context['featured'] = models.Blog.get_ready().filter(
+            featured=True).last()
 
         return context
 
-class FiveHundredView(TemplateView):
-    template_name = "500.html"
+
+class WorksView(MetadataMixin, ListView):
+    template_name = 'works.html'
+    model = models.Work
+    description = _('Ahmed Jazzar\'s projects!')
 
     def get_context_data(self, **kwargs):
-        context = super(FiveHundredView, self).get_context_data(**kwargs)
-        context['EMAIL'] = settings.EMAIL
+        context = super(WorksView, self).get_context_data(**kwargs)
+
+        context['tab'] = 'work'
+        context['sliders'] = models.Slider.objects.filter(page='work')
 
         return context
 
-class FourOhFourView(TemplateView):
-    template_name = "404.html"
+
+class WorkView(DetailView):
+    template_name = 'work.html'
+    model = models.Work
 
     def get_context_data(self, **kwargs):
-        context = super(FourOhFourView, self).get_context_data(**kwargs)
+        context = super(WorkView, self).get_context_data(**kwargs)
 
-        try:
-            navs = models.Nav.objects.all()
-        except:
-            navs = None
-
-        context['navs'] = navs
+        context['tab'] = 'work'
+        context['meta'] = self.get_object().as_meta(self.request)
 
         return context
 
-    @classmethod
-    def get_rendered_view(cls):
-        as_view_fn = cls.as_view()
 
-        def view_fn(request):
-            response = as_view_fn(request)
-            response.render()
-            return response
+@method_decorator(staff_member_required, name='dispatch')
+class MarkdownUploader(View):
+    supported_types = [
+        'image/png',
+        'image/jpg',
+        'image/jpeg',
+        'image/pjpeg',
+        'image/gif',
+    ]
 
-        return view_fn
+    def post(self, request, *args, **kwargs):
+        """
+        Markdown image upload request
+        """
+        if request.is_ajax():
+            if 'markdown-image-upload' in request.FILES:
+                image = request.FILES['markdown-image-upload']
+
+                if image.content_type not in self.supported_types:
+                    data = {
+                        'status': 405, 'error': _('Bad image format.')
+                    }
+
+                    return JsonResponse(data, status=405)
+
+                max_size = settings.MAX_IMAGE_UPLOAD_SIZE
+                if image._size > max_size:
+                    size = max_size / (1024*1024)
+                    error_msg = _('Maximum image file is {size} MB.')
+
+                    data = {
+                        'status': 405,
+                        'error': error_msg.format(size)
+                    }
+
+                    return JsonResponse(data, status=405)
+
+                img_uuid = "{0}-{1}".format(
+                    uuid.uuid4().hex[:10],
+                    image.name.replace(' ', '-')
+                )
+
+                tmp_file = os.path.join(
+                    settings.MARTOR_UPLOAD_PATH, img_uuid)
+
+                def_path = default_storage.save(
+                    tmp_file, ContentFile(image.read()))
+
+                img_url = os.path.join(settings.MEDIA_URL, def_path)
+
+                data = {
+                    'status': 200, 'link': img_url, 'name': image.name
+                }
+                return JsonResponse(data)
+
+            data = {
+                'status': 405,
+                'error': _('Invalid request!')
+            }
+            return JsonResponse(data, status=405)
+
+        data = {
+            'status': 405, 'error': _('Invalid request!')
+        }
+
+        return JsonResponse(data, status=405)

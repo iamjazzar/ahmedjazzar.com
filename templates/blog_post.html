@@ -1,0 +1,146 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+{% load martortags %}
+
+{% block body %}
+  <div class="container-wrap">
+
+    <aside id="fh5co-hero">
+      <div class="flexslider">
+        <ul class="slides">
+          <li style="background-image: url({{ object.image.url }});">
+            <div class="overlay-gradient"></div>
+            <div class="container-fluids">
+              <div class="row">
+                <div
+                  class="col-md-6 col-md-offset-3 slider-text slider-text-bg">
+                  <div class="slider-text-inner text-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <div id="fh5co-about">
+      <div class="row animate-box">
+        <div
+          class="col-md-8 col-md-offset-2 heading-section post">
+          <div class="header">
+            <h1 class="text-center">{{ object.title }}</h1>
+          <h4 class="text-center">{{ object.short_description }}</h4>
+          </div>
+
+          <div class="text">
+            {{ object.text | safe_markdown }}
+            <div class="signature">
+              <div>{% trans 'Ahmed Jazzar' %}</div>
+            <div><em>Updated, {{ object.updated | date }}</em></div>
+            </div>
+
+          </div>
+
+          <div class="like-content">
+            <span>
+              {% trans 'Did you like this post? Like and share it to make it easier for others to see!' %}
+            </span>
+
+            {% if voted %}
+              <button class="btn-secondary" disabled>
+                <i class="fa fa-heart"
+                   aria-hidden="true"></i>
+                {% trans "You liked this!" %}
+              </button>
+            {% else %}
+              <button class="btn-secondary like-review">
+                <i class="fa fa-heart"
+                   aria-hidden="true"></i>{% trans 'Like' %}
+              </button>
+            {% endif %}
+
+            <div class="share-review">
+              <ul class="fh5co-social-icons">
+                <li>
+                  <a class="share-link"
+                     href="{{ object.email_share_url }}"
+                     target="_blank">
+                    <i class="fa fa-envelope"></i></a>
+                </li>
+                <li>
+                  <a class="share-link"
+                     href="{{ object.facebook_share_url }}"
+                     target="_blank">
+                    <i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a class="share-link"
+                     href="{{ object.twitter_share_url }}"
+                     target="_blank">
+                    <i class="fa fa-twitter"></i></a>
+                </li>
+              </ul>
+            </div>
+
+          <div class="col-md-4 fh5co-project-detail">
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript">
+    {% if not voted %}
+      $(function () {
+        $(document).one('click', '.like-review', function (e) {
+          $.ajax({
+            type: "POST",
+            context: this,
+            url: "{% url 'post' object.slug %}",
+            success: function (i, o, r) {
+              $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> {% trans "You liked this!" %}');
+              $(this).children('.fa-heart').addClass('animate-like');
+            }
+          });
+        });
+      });
+    {% else %}
+      (function ($) {
+        $.fn.visible = function (partial) {
+          var $t = $(this),
+            $w = $(window),
+            viewTop = $w.scrollTop(),
+            viewBottom = viewTop + $w.height(),
+            _top = $t.offset().top,
+            _bottom = _top + $t.height(),
+            compareTop = partial === true ? _bottom : _top,
+            compareBottom = partial === true ? _top : _bottom;
+
+          return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+        };
+
+      })(jQuery);
+      $(window).scroll(function (event) {
+        $('.fa-heart').each(function (i, el) {
+          var el = $(el);
+          if (el.visible(true)) {
+            el.addClass('animate-like');
+          } else {
+            el.removeClass('visible');
+          }
+        });
+      });
+    {% endif %}
+
+  </script>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block body %}
+  <div class="container-wrap">
+    {% include 'components/aside.html' with sliders=sliders %}
+
+    <div id="fh5co-work">
+      <div class="row">
+        {% for work in object_list %}
+        <div class="col-md-4 text-center animate-box">
+          <a href="{{ work.url }}" class="work"
+             style="background-image: url({{ work.main_image.url }});">
+            <div class="desc">
+              <h3>{{ work.name }}</h3>
+              <span>{{ work.type }}</span>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

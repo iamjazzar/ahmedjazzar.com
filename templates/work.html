@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+
+{% block body %}
+  <div class="container-wrap">
+    <aside id="fh5co-hero">
+      <div class="flexslider">
+        <ul class="slides">
+          <li style="background-image: url({{ object.main_image.url }});">
+            <div class="overlay-gradient"></div>
+            <div class="row">
+              <div
+                  class="col-md-6 col-md-offset-3 slider-text slider-text-bg">
+                <div class="slider-text-inner text-center">
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <div id="fh5co-work">
+      <div class="row">
+        <div class="col-md-8">
+          {% for image in object.images.all %}
+            <a href="{{ image.image.url }}"
+               class="image-popup img-portfolio-detail">
+              <img src="{{ image.image.url }}"
+                   alt="{% blocktrans with object.name as name %}{{ name }}'s Images{% endblocktrans %}"
+                   class="img-responsive">
+            </a>
+          {% endfor %}
+        </div>
+        <div class="col-md-4 fh5co-project-detail">
+          <h2 class="fh5co-project-title">{{ object.name }}</h2>
+          <span class="fh5co-project-sub">{{ object.type }}</span>
+          <div>
+            <a href="{{ object.link }}" target="_blank">
+              {% trans '[Link]' %}
+            </a>
+          </div>
+
+          <p>{{ object.description }}</p>
+          <div class="fh5co-project-service">
+            <h3>{% trans 'Work Domain' %}</h3>
+            <ul>
+              {% for service in object.get_services_display %}
+                <li>{{ service }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-xs-12 suggested-topics">
+          {% for work in object.related_works.all %}
+            <div class="col-md-4 text-center animate-box">
+              <a href="{{ work.url }}" class="work"
+                 style="background-image: url({{ work.main_image.url }});">
+                <div class="desc">
+                  <h3>{{ work.name }}</h3>
+                  <span>{{ work.short_description }}</span>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block body %}
+  <div class="container-wrap">
+    {% include 'components/aside.html' with sliders=sliders %}
+
+    <div id="fh5co-about">
+      <div class="row animate-box">
+        <div
+            class="col-md-6 col-md-offset-3 text-center heading-section">
+          <h3>{% trans 'My History' %}</h3>
+          {% with '<a href="https://github.com/ahmedaljazzar">' as link_begin %}
+          {% with '</a>' as link_end %}
+            <p>
+            {% blocktrans %}
+              There’s no test like production. Check my production code
+              on Github {{ link_begin }}here{{ link_end }}!
+            {% endblocktrans %}
+          {% endwith %}
+          {% endwith %}
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center animate-box">
+          <p><img src="{% static 'images/about.jpg' %}"
+                  alt="Free HTML5 Bootstrap Template"
+                  class="img-responsive"></p>
+        </div>
+        <div class="col-md-8 col-md-offset-2 text-center animate-box">
+          <div class="about-desc">
+            <h3>{% trans "Hi! I'm Jazzar" %}</h3>
+            <p>{% blocktrans %}
+              Building great independent solutions for Edraak's platform
+              and working on its data engineering and research is my
+              daily task.
+            {% endblocktrans %}</p>
+            <p>{% blocktrans %}
+              You can say that I'm a Global Shaper as well in Amman hub
+              where who's completely focusing on reshaping the community
+              and the region around me, getting to know more passionate
+              people, and trying to get the more out of them.
+            {% endblocktrans %}</p>
+            <p>{% blocktrans %}
+              I'm also holding a passionate degree in Computer Science
+              from University of Jordan since 2015.
+            {% endblocktrans %}</p>
+            <p>
+            <ul class="fh5co-social-icons">
+              {% for account in social_accounts %}
+                <li>
+                  <a href="{{ account.link }}">
+                    <i class="fa {{ account.get_class }}"></i>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

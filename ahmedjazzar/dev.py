@@ -1,27 +1,19 @@
-
-from .base import *
+from .common import *
 
 DEBUG = True
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ahmedjazzar',
+        'USER': 'root',
     },
 }
 
-
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static', 'staticfiles')
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '.compiled'),
-    os.path.join(BASE_DIR, 'static'),
-)
+SITE_BASE = 'http://127.0.0.1'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '.compiled', 'mediafiles')
+
+META_SITE_PROTOCOL = 'http'
+META_SITE_DOMAIN = 'localhost'

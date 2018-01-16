@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block body %}
+  <div class="container-wrap">
+    {% include 'components/aside.html' with sliders=sliders %}
+
+    <div id="fh5co-contact">
+      <div class="row animate-box">
+        <div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+          <h2>{% trans 'Fill the form,' %}</h2>
+          <p>{% trans "but don't forget that Artificial Intelligence usually beats natural stupidity. 😜" %}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-md-push-1 animate-box">
+          <h3>{% trans "Don't like forms?" %}</h3>
+          <ul class="contact-info">
+            <li><i class="fa fa-map-signs"></i>
+              {% trans 'Amman, Jordan' %}
+            </li>
+            <li><i class="fa fa-envelope-o"></i>
+              <a href="#">me[at]ahmedjazzar.com</a>
+            </li>
+            <li><i class="fa fa-globe"></i><a
+                href="{% url 'home' %}">www.ahmedjazzar.com</a></li>
+          </ul>
+        </div>
+        <div class="col-md-7 col-md-push-1 animate-box">
+          <div class="row">
+            <form action="{% url 'contact' %}" method="post">
+              {% csrf_token %}
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control"
+                         placeholder="{% trans 'Name' %}" name="name">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control"
+                         placeholder="{% trans 'Email' %}" name="email">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                <textarea class="form-control" id="" cols="30"
+                          rows="7"
+                          placeholder="{% trans 'Message' %}"
+                          name="message"></textarea>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input type="submit"
+                         value="{% trans 'Send Message' %}"
+                         class="btn btn-primary btn-modify">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
