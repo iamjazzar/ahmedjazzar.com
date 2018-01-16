@@ -80,21 +80,22 @@ class BlogPostView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(BlogPostView, self).get_context_data(**kwargs)
 
-        context['voted'] = self.did_vote()
-        context['meta'] = self.get_object().as_meta(self.request)
+        post = self.get_object()
+        context['voted'] = self.did_vote(post=post)
+        context['meta'] = post.as_meta(self.request)
         context['tab'] = 'blog'
 
         return context
 
     def post(self, request, *args, **kwargs):
-        voted = self.did_vote()
+        post = self.get_object()
+        voted = self.did_vote(post=post)
 
         if voted:
             return JsonResponse({'state': 'Already voted'}, status=406)
 
-        obj = self.get_object()
         token = request.secretballot_token
-        obj.add_vote(token=token, vote='+1')
+        post.add_vote(token=token, vote='+1')
 
         return JsonResponse({'state': 'Successfully voted'}, status=200)
 
@@ -105,11 +106,12 @@ class BlogPostView(DetailView):
         token = self.request.secretballot_token
         obj.add_vote(token=token, vote='+1')
 
-    def did_vote(self):
+    def did_vote(self, post):
         content_type = ContentType.objects.get_for_model(self.model).id
         token = self.request.secretballot_token
 
         return Vote.objects.filter(
+            object_id=post.id,
             content_type=content_type,
             token=token).exists()
 
