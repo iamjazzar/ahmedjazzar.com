@@ -48,7 +48,7 @@ class AboutView(JazzarMetadataMixin, TemplateView):
         context = super(AboutView, self).get_context_data(**kwargs)
 
         context['tab'] = 'about'
-        context['sliders'] = models.Slider.objects.filter(page='about')
+        context['sliders'] = models.Slider.for_page(page='about')
 
         return context
 
@@ -63,7 +63,7 @@ class BlogView(MetadataMixin, ListView):
         context = super(BlogView, self).get_context_data(**kwargs)
 
         context['tab'] = 'blog'
-        context['sliders'] = models.Slider.objects.filter(page='blog')
+        context['sliders'] = models.Slider.for_page(page='blog')
 
         return context
 
@@ -124,7 +124,7 @@ class ContactView(MetadataMixin, TemplateView):
         context = super(ContactView, self).get_context_data(**kwargs)
 
         context['tab'] = 'contact'
-        context['sliders'] = models.Slider.objects.filter(page='contact')
+        context['sliders'] = models.Slider.for_page('contact')
 
         return context
 
@@ -153,7 +153,7 @@ class HomeView(MetadataMixin, TemplateView):
         context['tab'] = 'home'
         context['works'] = models.Work.objects.order_by('-created')[:3]
         context['about'] = models.AboutMe.objects.last()
-        context['sliders'] = models.Slider.objects.filter(page='home')
+        context['sliders'] = models.Slider.for_page(page='home')
         context['featured'] = models.Blog.get_ready().filter(
             featured=True).last()
 
@@ -169,7 +169,7 @@ class WorksView(MetadataMixin, ListView):
         context = super(WorksView, self).get_context_data(**kwargs)
 
         context['tab'] = 'work'
-        context['sliders'] = models.Slider.objects.filter(page='work')
+        context['sliders'] = models.Slider.for_page(page='work')
 
         return context
 
