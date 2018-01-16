@@ -16,6 +16,9 @@ class BlogAdmin(admin.ModelAdmin):
         django_models.TextField: {'widget': AdminMartorWidget},
     }
 
+    def view_on_site(self, obj):
+        return obj.url
+
 
 class ContactRequestAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'resolved']
