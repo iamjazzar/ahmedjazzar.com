@@ -127,12 +127,15 @@ class Slider(models.Model):
     image = models.ImageField()
     page = models.CharField(max_length=128, choices=PAGES)
     center_text = models.BooleanField(default=False)
-    order = models.PositiveSmallIntegerField(null=True, unique=True)
+    order = models.PositiveSmallIntegerField(null=True)
     classes = models.CharField(
         max_length=265,
         help_text='col-md-6 col-md-offset-3 col-md-pull-3',
         default='col-md-6 col-md-offset-3 col-md-pull-3'
     )
+
+    class Meta:
+        unique_together = ('page', 'order', )
 
     @classmethod
     def for_page(cls, page):
