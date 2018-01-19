@@ -30,6 +30,7 @@ class Blog(ModelMeta, models.Model):
 
     related_posts = models.ManyToManyField('self')
 
+    pub_date = models.DateTimeField(null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -166,6 +167,7 @@ class Work(ModelMeta, models.Model):
     related_works = models.ManyToManyField('self')
 
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     _metadata = {
         'description': 'short_description',
