@@ -79,6 +79,9 @@ class Blog(ModelMeta, models.Model):
 
         return full_url
 
+    def get_related(self):
+        return self.related_posts.all()[:3]
+
     @classmethod
     def get_ready(cls):
         return cls.objects.filter(draft=False)
@@ -186,6 +189,9 @@ class Work(ModelMeta, models.Model):
 
     def get_services_display(self):
         return self.services.split(';')
+
+    def get_related(self):
+        return self.related_works.all()[:3]
 
     def __str__(self):
         return self.name

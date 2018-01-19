@@ -90,6 +90,19 @@
           </div>
           </div>
         </div>
+        <div class="col-xs-12 suggested-topics">
+          {% for blog in object.get_related %}
+            <div class="col-md-4 text-center animate-box">
+              <a href="{{ blog.url }}" class="work"
+                 style="background-image: url({{ blog.image.url }});">
+                <div class="desc">
+                  <h3>{{ blog.name }}</h3>
+                  <span>{{ blog.short_description }}</span>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
@@ -139,8 +152,5 @@
         });
       });
     {% endif %}
-
   </script>
-
-
 {% endblock %}
