@@ -1636,6 +1636,10 @@ input[type="text"] {
 	line-height: 1.5em;
 	cursor: default;
 
+	@media screen and (max-width: $screen-md ) {
+    font-size: 19px;
+	}
+
 	.code-area {
 		position: absolute;
 		min-width: 320px;
