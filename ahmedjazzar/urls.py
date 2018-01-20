@@ -30,7 +30,7 @@ urlpatterns = [
     path('martor/', include('martor.urls')),
 
     # Old patterns
-    path('single_post/<slug:slug>',
+    path('single-post/<slug:slug>',
          RedirectView.as_view(pattern_name='post')),
 ]
 
