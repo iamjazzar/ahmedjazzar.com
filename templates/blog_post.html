@@ -40,7 +40,9 @@
             {{ object.text | safe_markdown }}
             <div class="signature">
               <div>{% trans 'Ahmed Jazzar' %}</div>
-            <div><em>Updated, {{ object.updated | date }}</em></div>
+
+            <div><em>Published, {{ object.pub_date | date }}</em></div>
+            <div><small><em>Updated, {{ object.updated | date }}</em></small></div>
             </div>
 
           </div>
