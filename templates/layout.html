@@ -58,120 +58,128 @@
 	<![endif]-->
 
 </head>
-<body>
-<div id="page">
-  <nav class="fh5co-nav" role="navigation">
-    <div class="container-wrap">
-      <div class="top-menu">
-        <div class="row">
-          <div class="col-sm-6">
-            <div id="fh5co-logo">
-              <img src="{% static 'images/logo.png' %}"
-                   width="40">
-              <a href="{% url 'home' %}">
-                {% trans 'Ahmed Jazzar' %}
-              </a></div>
+<body class="{% block body_classes %}{% endblock %}">
+{% block website %}
+  <div id="page">
+    <nav class="fh5co-nav" role="navigation">
+      <div class="container-wrap">
+        <div class="top-menu">
+          <div class="row">
+            <div class="col-sm-6">
+              <div id="fh5co-logo">
+                <img src="{% static 'images/logo.png' %}"
+                     width="40">
+                <a href="{% url 'home' %}">
+                  {% trans 'Ahmed Jazzar' %}
+                </a></div>
+            </div>
+            <div class="col-xs-6 text-right menu-1">
+              <ul>
+                <li class="{% if tab == 'home' %}active{% endif %}">
+                  <a href="{% url 'home' %}">{% trans 'Home' %}</a>
+                </li>
+                <li class="{% if tab == 'work' %}active{% endif %}">
+                  <a href="{% url 'works' %}">{% trans 'Work' %}</a>
+                </li>
+                <li class="{% if tab == 'blog' %}active{% endif %}">
+                  {# class="has-dropdown" #}
+                  <a href="{% url 'blog' %}">{% trans 'Blog' %}</a>
+                  {#                <ul class="dropdown">#}
+                  {#                  <li><a href="#">Mako</a></li>#}
+                  {#                  <li><a href="#">Django</a></li>#}
+                  {#                  <li><a href="#">Branding</a></li>#}
+                  {#                  <li><a href="#">API</a></li>#}
+                  {#                </ul>#}
+                </li>
+                <li class="{% if tab == 'about' %}active{% endif %}">
+                  <a href="{% url 'about' %}">{% trans 'About' %}</a>
+                </li>
+                <li class="{% if tab == 'contact' %}active{% endif %}">
+                  <a
+                    href="{% url 'contact' %}">{% trans 'Contact' %}</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-xs-6 text-right menu-1">
-            <ul>
-              <li class="{% if tab == 'home' %}active{% endif %}">
-                <a href="{% url 'home' %}">{% trans 'Home' %}</a>
+        </div>
+      </div>
+    </nav>
+    {% block body %}
+
+    {% endblock %}
+    <div class="container-wrap">
+      <footer id="fh5co-footer" role="contentinfo">
+        <div class="row">
+          <div class="col-md-3 fh5co-widget">
+            <h4>{% trans 'I am' %}</h4>
+            <p>{% trans 'A senior software engineer, and a Global Shaper – World Economic Forum' %}</p>
+          </div>
+          <div class="col-md-3 col-md-push-1">
+            <h4>{% trans 'Latest Posts' %}</h4>
+            <ul class="fh5co-footer-links">
+              {% for post in latest_posts %}
+                <li>
+                  <a href="{{ post.url }}">{{ post.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="col-md-3 col-md-push-1">
+            <h4>{% trans 'Links' %}</h4>
+            <ul class="fh5co-footer-links">
+              <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+              <li><a href="{% url 'works' %}">{% trans 'Work' %}</a>
               </li>
-              <li class="{% if tab == 'work' %}active{% endif %}">
-                <a href="{% url 'works' %}">{% trans 'Work' %}</a>
+              <li><a href="{% url 'blog' %}">{% trans 'Blog' %}</a></li>
+              <li><a
+                href="{% url 'contact' %}">{% trans 'Contact Me' %}</a>
               </li>
-              <li class="{% if tab == 'blog' %}active{% endif %}">
-                {# class="has-dropdown" #}
-                <a href="{% url 'blog' %}">{% trans 'Blog' %}</a>
-                {#                <ul class="dropdown">#}
-                {#                  <li><a href="#">Mako</a></li>#}
-                {#                  <li><a href="#">Django</a></li>#}
-                {#                  <li><a href="#">Branding</a></li>#}
-                {#                  <li><a href="#">API</a></li>#}
-                {#                </ul>#}
-              </li>
-              <li class="{% if tab == 'about' %}active{% endif %}">
-                <a href="{% url 'about' %}">{% trans 'About' %}</a>
-              </li>
-              <li class="{% if tab == 'contact' %}active{% endif %}">
-                <a
-                href="{% url 'contact' %}">{% trans 'Contact' %}</a>
+              <li><a
+                href="{% url 'about' %}">{% trans 'About Jazzar' %}</a>
               </li>
             </ul>
           </div>
+
+          <div class="col-md-3">
+            <h4>{% trans 'Contact Information' %}</h4>
+            <ul class="fh5co-footer-links">
+              <li>{% trans 'Amman, Jordan' %}</li>
+              <li><a href="#">me[at]ahmedjazzar.com</a></li>
+              <li><a href="#">ahmedjazzar.com</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
+        <div class="row copyright">
+          <div class="col-md-12 text-center">
+            <p>
+              <small class="block">
+                {% now 'Y' as year %}
+                {% blocktrans %}&copy; {{ year }} Ahmed Jazzar. All
+                  Rights
+                  Reserved.{% endblocktrans %}
+              </small>
+            </p>
+            <p>
+            <ul class="fh5co-social-icons">
+              {% for account in social_accounts %}
+                <li>
+                  <a href="{{ account.link }}">
+                    <i class="fa {{ account.get_class }}"></i>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
-  </nav>
-  {% block body %}
-
-  {% endblock %}
-  <div class="container-wrap">
-    <footer id="fh5co-footer" role="contentinfo">
-      <div class="row">
-        <div class="col-md-3 fh5co-widget">
-          <h4>{% trans 'I am' %}</h4>
-          <p>{% trans 'A senior software engineer, and a Global Shaper – World Economic Forum' %}</p>
-        </div>
-        <div class="col-md-3 col-md-push-1">
-          <h4>{% trans 'Latest Posts' %}</h4>
-          <ul class="fh5co-footer-links">
-            {% for post in latest_posts %}
-              <li>
-                <a href="{{ post.url }}">{{ post.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div class="col-md-3 col-md-push-1">
-          <h4>{% trans 'Links' %}</h4>
-          <ul class="fh5co-footer-links">
-            <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
-            <li><a href="{% url 'works' %}">{% trans 'Work' %}</a></li>
-            <li><a href="{% url 'blog' %}">{% trans 'Blog' %}</a></li>
-            <li><a href="{% url 'contact' %}">{% trans 'Contact Me' %}</a></li>
-            <li><a href="{% url 'about' %}">{% trans 'About Jazzar' %}</a></li>
-          </ul>
-        </div>
-
-        <div class="col-md-3">
-          <h4>{% trans 'Contact Information' %}</h4>
-          <ul class="fh5co-footer-links">
-            <li>{% trans 'Amman, Jordan' %}</li>
-            <li><a href="#">me[at]ahmedjazzar.com</a></li>
-            <li><a href="#">ahmedjazzar.com</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="row copyright">
-        <div class="col-md-12 text-center">
-          <p>
-            <small class="block">
-              {% now 'Y' as year %}
-              {% blocktrans %}&copy; {{ year }} Ahmed Jazzar. All Rights
-                Reserved.{% endblocktrans %}
-            </small>
-          </p>
-          <p>
-          <ul class="fh5co-social-icons">
-            {% for account in social_accounts %}
-              <li>
-                <a href="{{ account.link }}">
-                  <i class="fa {{ account.get_class }}"></i>
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-          </p>
-        </div>
-      </div>
-    </footer>
   </div>
-</div>
-<div class="gototop js-top">
-  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
-</div>
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+  </div>
+{% endblock %}
 
 <script
   src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>

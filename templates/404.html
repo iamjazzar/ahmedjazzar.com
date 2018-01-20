@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block body_classes %}four-oh-four{% endblock %}
+
+{% block website %}
+  <div class="code-area">
+  <span class="comment">
+    // 404 page not found.
+  </span>
+    <span>
+    <span class="reserved-main">
+      if
+    </span>
+      (<span style="color:#4ca8ef;">!</span><span
+      style="font-style: italic;color:#bdbdbd;">found</span>)
+    {
+  </span>
+    <span>
+    <span class="reserved-secondary">
+       <i style="width: 10px;display:inline-block"></i>throw
+    </span>
+    <span>
+      (<span class="text">"(╯°□°)╯︵ ┻━┻"</span>);
+    </span>
+      <div>}</div>
+  </span>
+
+    <div>
+      <span class="comment">
+        // Return <a href="{% url 'home' %}">Home</a>
+  </span>
+    </div>
+  </div>
+{% endblock %}
