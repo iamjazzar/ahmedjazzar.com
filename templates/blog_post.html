@@ -40,7 +40,9 @@
             {{ object.text | safe_markdown }}
             <div class="signature">
               <div>{% trans 'Ahmed Jazzar' %}</div>
-            <div><em>Updated, {{ object.updated | date }}</em></div>
+
+            <div><em>Published, {{ object.pub_date | date }}</em></div>
+            <div><small><em>Updated, {{ object.updated | date }}</em></small></div>
             </div>
 
           </div>
@@ -89,6 +91,19 @@
           <div class="col-md-4 fh5co-project-detail">
           </div>
           </div>
+        </div>
+        <div class="col-xs-12 suggested-topics">
+          {% for blog in object.get_related %}
+            <div class="col-md-4 text-center animate-box">
+              <a href="{{ blog.url }}" class="work"
+                 style="background-image: url({{ blog.image.url }});">
+                <div class="desc">
+                  <h3>{{ blog.name }}</h3>
+                  <span>{{ blog.short_description }}</span>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -139,8 +154,5 @@
         });
       });
     {% endif %}
-
   </script>
-
-
 {% endblock %}

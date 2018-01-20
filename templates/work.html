@@ -55,7 +55,7 @@
         </div>
 
         <div class="col-xs-12 suggested-topics">
-          {% for work in object.related_works.all %}
+          {% for work in object.get_related %}
             <div class="col-md-4 text-center animate-box">
               <a href="{{ work.url }}" class="work"
                  style="background-image: url({{ work.main_image.url }});">

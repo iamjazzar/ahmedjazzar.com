@@ -30,6 +30,7 @@ class Blog(ModelMeta, models.Model):
 
     related_posts = models.ManyToManyField('self')
 
+    pub_date = models.DateTimeField(null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -77,6 +78,9 @@ class Blog(ModelMeta, models.Model):
         full_url = parse.urljoin(settings.SITE_BASE, self.url)
 
         return full_url
+
+    def get_related(self):
+        return self.related_posts.all()[:3]
 
     @classmethod
     def get_ready(cls):
@@ -166,6 +170,7 @@ class Work(ModelMeta, models.Model):
     related_works = models.ManyToManyField('self')
 
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     _metadata = {
         'description': 'short_description',
@@ -184,6 +189,9 @@ class Work(ModelMeta, models.Model):
 
     def get_services_display(self):
         return self.services.split(';')
+
+    def get_related(self):
+        return self.related_works.all()[:3]
 
     def __str__(self):
         return self.name

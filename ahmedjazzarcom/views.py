@@ -162,7 +162,7 @@ class HomeView(MetadataMixin, TemplateView):
 
 class WorksView(MetadataMixin, ListView):
     template_name = 'works.html'
-    model = models.Work
+    queryset = models.Work.objects.order_by('-created')
     description = _('Ahmed Jazzar\'s projects!')
 
     def get_context_data(self, **kwargs):
