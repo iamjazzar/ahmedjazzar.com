@@ -5,31 +5,10 @@
 <!DOCTYPE HTML>
 <html>
 <head {% meta_namespaces %}>
-  {% include "meta/meta.html" %}
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  {% trans 'Ahmed Jazzar' as title %}
-  {% trans "I'm Ahmed Jazzar, a 23 years old senior software engineer working on educating people at Edraak." as description %}
-
-  <title>{% trans 'Ahmed Jazzar | Engineering Softwares' %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ description }}"/>
-  <meta name="author" content="{{ title }}"/>
-
-  <!-- Facebook and Twitter integration -->
-  <meta property="og:title" content="{{ title }}"/>
-  <meta property="og:image" content="{% static 'images/logo.png' %}"/>
-  <meta property="og:url" content="https://www.ahmedjazzar.com"/>
-  <meta property="og:site_name" content="{{ title }}"/>
-  <meta property="og:description" content="{{ description }}"/>
-  <meta name="twitter:title" content="{{ title }}"/>
-  <meta name="twitter:image"
-        content="{% static 'images/logo.png' %}"/>
-  <meta name="twitter:url" content="https://www.ahmedjazzar.com"/>
-  <meta name="twitter:site" content="@iamjazzar"/>
-  <meta name="twitter:creator" content="@iamjazzar"/>
+  {% include "meta/meta.html" %}
 
   <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400"
         rel="stylesheet">

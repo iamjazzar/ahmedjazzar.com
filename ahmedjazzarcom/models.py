@@ -37,6 +37,7 @@ class Blog(ModelMeta, models.Model):
     _metadata = {
         'description': 'short_description',
         'image': 'image.url',
+        'title': 'get_meta_title',
     }
 
     def __str__(self):
@@ -81,6 +82,9 @@ class Blog(ModelMeta, models.Model):
 
     def get_related(self):
         return self.related_posts.all()[:3]
+
+    def get_meta_title(self):
+        return '{} | Ahmed Jazzar'.format(self.title)
 
     @classmethod
     def get_ready(cls):
@@ -175,6 +179,7 @@ class Work(ModelMeta, models.Model):
     _metadata = {
         'description': 'short_description',
         'image': 'image.url',
+        'title': 'get_meta_title',
     }
 
     def save(self, **kwargs):
@@ -192,6 +197,9 @@ class Work(ModelMeta, models.Model):
 
     def get_related(self):
         return self.related_works.all()[:3]
+
+    def get_meta_title(self):
+        return '{} | Ahmed Jazzar'.format(self.name)
 
     def __str__(self):
         return self.name

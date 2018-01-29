@@ -27,13 +27,8 @@ from ahmedjazzarcom import models
 
 
 class JazzarMetadataMixin(MetadataMixin):
-    description = _('I\'m Ahmed Jazzar, a 23 years old senior '
-                    'software engineer working at Edraak on '
-                    'creating Educational Tecnology.')
-    keywords = [
-        'Ahmed', 'Jazzar', 'Ahmad', 'Jazzar', 'Software', 'Engineer']
+    keywords = ['Ahmed', 'Ahmad', 'Jazzar', 'Software', 'Engineer']
     url = settings.META_SITE_DOMAIN
-
     image = static('images/logo-grey.png')
     site_name = _('Ahmed Jazzar')
     twitter_site = 'https://www.twitter.com/iamjazzar'
@@ -41,8 +36,9 @@ class JazzarMetadataMixin(MetadataMixin):
 
 
 class AboutView(JazzarMetadataMixin, TemplateView):
-    description = _('About me, Ahmed Jazzar, the Software Engineer!')
     template_name = 'about.html'
+    description = _('About me, Ahmed Jazzar, the Software Engineer!')
+    title = _('About Me | Ahmed Jazzar')
 
     def get_context_data(self, **kwargs):
         context = super(AboutView, self).get_context_data(**kwargs)
@@ -53,11 +49,11 @@ class AboutView(JazzarMetadataMixin, TemplateView):
         return context
 
 
-class BlogView(MetadataMixin, ListView):
-    description = _('Ahmed Jazzar\'s blog!')
+class BlogView(JazzarMetadataMixin, ListView):
     queryset = models.Blog.get_ready()
     template_name = 'blog.html'
-
+    description = _('My blog, Ahmed Jazzar, the Software Engineer!')
+    title = _('Blog | Ahmed Jazzar')
 
     def get_context_data(self, **kwargs):
         context = super(BlogView, self).get_context_data(**kwargs)
@@ -116,9 +112,10 @@ class BlogPostView(DetailView):
             token=token).exists()
 
 
-class ContactView(MetadataMixin, TemplateView):
+class ContactView(JazzarMetadataMixin, TemplateView):
     template_name = 'contact.html'
-    description = _('Contact me, Ahmed Jazzar!')
+    description = _('Contact Me, Ahmed Jazzar, the Software Engineer!')
+    title = _('Contact | Ahmed Jazzar')
 
     def get_context_data(self, **kwargs):
         context = super(ContactView, self).get_context_data(**kwargs)
@@ -141,11 +138,12 @@ class ContactView(MetadataMixin, TemplateView):
         return redirect(reverse('home'))
 
 
-class HomeView(MetadataMixin, TemplateView):
-    description = _('I\'m Ahmed Jazzar, a 23 years old senior '
-                    'software engineer working at Edraak on '
-                    'creating Educational Tecnology.')
+class HomeView(JazzarMetadataMixin, TemplateView):
     template_name = 'home.html'
+    title = _('Ahmed Jazzar | Engineering Software')
+    description = _('I\'m Ahmed Jazzar, a young senior '
+                    'software engineer Freelancer working at Edraak on '
+                    'creating Educational Technology.')
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -160,10 +158,11 @@ class HomeView(MetadataMixin, TemplateView):
         return context
 
 
-class WorksView(MetadataMixin, ListView):
+class WorksView(JazzarMetadataMixin, ListView):
     template_name = 'works.html'
     queryset = models.Work.objects.order_by('-created')
-    description = _('Ahmed Jazzar\'s projects!')
+    title = _('My Work | Ahmed Jazzar')
+    description = _('My work, Ahmed Jazzar, the Software Engineer!')
 
     def get_context_data(self, **kwargs):
         context = super(WorksView, self).get_context_data(**kwargs)
@@ -174,7 +173,7 @@ class WorksView(MetadataMixin, ListView):
         return context
 
 
-class WorkView(DetailView):
+class WorkView(JazzarMetadataMixin, DetailView):
     template_name = 'work.html'
     model = models.Work
 
