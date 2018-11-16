@@ -136,6 +136,7 @@ class Slider(models.Model):
     page = models.CharField(max_length=128, choices=PAGES)
     center_text = models.BooleanField(default=False)
     order = models.PositiveSmallIntegerField(null=True)
+    inverse = models.BooleanField(default=False)
     classes = models.CharField(
         max_length=265,
         help_text='col-md-6 col-md-offset-3 col-md-pull-3',

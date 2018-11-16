@@ -12,8 +12,8 @@
               <div
                 class="{{ slider.classes }} slider-text">
                 <div class="slider-text-inner {% if slider.center_text %}text-center{% endif %}">
-                  <h1>{{ slider.header }}</h1>
-                  <h2>{{ slider.quote | safe }}</h2>
+                  <h1 {% if slider.inverse %}class="inverse"{% endif %}>{{ slider.header }}</h1>
+                  <h2 {% if slider.inverse %}class="inverse"{% endif %}>{{ slider.quote | safe }}</h2>
                   {% if home %}
                   <p>
                     <a class="btn btn-primary btn-demo"></i>
