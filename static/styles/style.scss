@@ -1692,3 +1692,21 @@ input[type="text"] {
 		}
 	}
 }
+
+.see-more {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 600;
+	font-size: 14px;
+	font-family: $font-secondary;
+	border: 1px solid red;
+	padding: 10px 15px;
+
+	border: 1px solid rgba($brand-gray, 1);
+	color: $brand-gray;
+
+	&:hover {
+		border: 1px solid rgba($brand-darker, 1);
+		color: $brand-darker;
+	}
+}
