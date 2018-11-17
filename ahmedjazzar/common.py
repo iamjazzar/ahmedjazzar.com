@@ -76,7 +76,8 @@ STATIC_URL = '/static/'
 MARTOR_UPLOAD_PATH = 'uploads/posts'
 MARTOR_UPLOAD_URL = '/api/upload/'
 MAX_IMAGE_UPLOAD_SIZE = 5242880
-MARTOR_MARKDOWN_SAFE_MODE = False # default
+MARTOR_MARKDOWN_SAFE_MODE = False
+MARTOR_MARKDOWN_EXTENSIONS = {}
 
 WSGI_APPLICATION = 'ahmedjazzar.wsgi.application'
 
