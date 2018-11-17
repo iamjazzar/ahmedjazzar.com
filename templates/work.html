@@ -39,11 +39,13 @@
         <div class="col-md-4 fh5co-project-detail">
           <h2 class="fh5co-project-title">{{ object.name }}</h2>
           <span class="fh5co-project-sub">{{ object.type }}</span>
-          <div>
-            <a href="{{ object.link }}" target="_blank">
-              {% trans '[Link]' %}
-            </a>
-          </div>
+            {% if object.link %}
+                <div>
+                    <a href="{{ object.link }}" target="_blank">
+                        {% trans '[Link]' %}
+                    </a>
+                </div>
+            {% endif %}
 
           <p>{{ object.description | safe_markdown }}</p>
           <div class="fh5co-project-service">
