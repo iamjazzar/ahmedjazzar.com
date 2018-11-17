@@ -166,7 +166,7 @@ class Work(ModelMeta, models.Model):
     name = models.CharField(max_length=128, db_index=True)
     type = models.CharField(max_length=128)
     short_description = models.CharField(max_length=128)
-    description = models.TextField()
+    description = MartorField()
     services = models.CharField( max_length=512)
     main_image = models.ImageField(upload_to='works')
     link = models.URLField(blank=True, null=True)
