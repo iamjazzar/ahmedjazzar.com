@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
 {% load i18n %}
+{% load markdown_deux_tags %}
 {% load staticfiles %}
 
 
@@ -43,7 +44,7 @@
             </a>
           </div>
 
-          <p>{{ object.description }}</p>
+          <p>{{ object.description | safe_markdown }}</p>
           <div class="fh5co-project-service">
             <h3>{% trans 'Work Domain' %}</h3>
             <ul>
