@@ -61,17 +61,14 @@
                   <a href="{% url 'works' %}">{% trans 'Work' %}</a>
                 </li>
                 <li class="{% if tab == 'blog' %}active{% endif %}">
-                  {# class="has-dropdown" #}
                   <a href="{% url 'blog' %}">{% trans 'Blog' %}</a>
-                  {#                <ul class="dropdown">#}
-                  {#                  <li><a href="#">Mako</a></li>#}
-                  {#                  <li><a href="#">Django</a></li>#}
-                  {#                  <li><a href="#">Branding</a></li>#}
-                  {#                  <li><a href="#">API</a></li>#}
-                  {#                </ul>#}
                 </li>
-                <li class="{% if tab == 'about' %}active{% endif %}">
+                <li class="has-dropdown {% if tab == 'about' %}active{% endif %}">
                   <a href="{% url 'about' %}">{% trans 'About' %}</a>
+                  <ul class="dropdown">
+                    <li><a href="{% url 'about' %}">{% trans 'About Me' %}</a></li>
+                    <li><a href="{% if resume %}{{ resume.file.url }}{% else %}#{% endif %}">{% trans "Resume" %}</a></li>
+                  </ul>
                 </li>
                 <li class="{% if tab == 'contact' %}active{% endif %}">
                   <a

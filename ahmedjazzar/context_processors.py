@@ -8,6 +8,7 @@ def ahmedjazzar(request):
     latest_posts = models.Blog.get_ready().order_by('-created')[:3]
 
     return {
+        'resume': models.Resume.get_resume(),
         'is_debug': settings.DEBUG,
         'social_accounts': social_accounts,
         'latest_posts': latest_posts

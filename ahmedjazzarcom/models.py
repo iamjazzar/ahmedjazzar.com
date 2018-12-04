@@ -101,8 +101,12 @@ class Blog(ModelMeta, models.Model):
 
 class BlogView(models.Model):
     blog = models.OneToOneField(
-        Blog, on_delete=CASCADE, unique=True,
-        db_index=True, related_name='views')
+        Blog,
+        on_delete=CASCADE,
+        unique=True,
+        db_index=True,
+        related_name='views'
+    )
 
 
 class ContactRequest(models.Model):
@@ -204,3 +208,11 @@ class Work(ModelMeta, models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Resume(models.Model):
+    file = models.FileField(upload_to='resumes', null=True)
+
+    @classmethod
+    def get_resume(cls):
+        return cls.objects.last()

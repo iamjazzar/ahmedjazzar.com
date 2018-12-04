@@ -5,7 +5,7 @@ staticfiles/
 rev/
 .tmp/
 .compiled/
-
+*.sqlite3
 
 # IDEs and machines files
 .idea/

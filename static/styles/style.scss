@@ -258,8 +258,8 @@ h1, h2, h3, h4, h5, h6, figure {
 					left: 0;
 					right: 0;
 					content: '';
-					width: 58%;
-					height: 2px;
+					width: 70%;
+					height: 3px;
 					background: $brand-primary;
 					margin: 0 auto;
 					opacity: 0;
@@ -327,6 +327,13 @@ h1, h2, h3, h4, h5, h6, figure {
 							&:hover {
 								color: $brand-white;
 							}
+							&:after {
+								$href-width: 55%;
+
+								bottom: -3px;
+								right: $href-width;
+								width: $href-width;
+							}
 						}
 					}
 				}
@@ -335,8 +342,8 @@ h1, h2, h3, h4, h5, h6, figure {
 						color: $brand-black;
 					}
 					.dropdown {
-						// visibility: visible;
-						// opacity: 1;
+						 visibility: visible;
+						 opacity: 1;
 					}
 				}
 			}
