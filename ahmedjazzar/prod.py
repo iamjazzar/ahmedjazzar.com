@@ -3,6 +3,7 @@ from .common import *
 DEBUG = False
 TEMPLATE_DEBUG = False
 IS_LIVE = True
+SECURE_SSL_REDIRECT = True
 
 DATABASES = {
     'default': {
