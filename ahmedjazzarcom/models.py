@@ -28,7 +28,7 @@ class Blog(ModelMeta, models.Model):
     featured = models.BooleanField(default=False)
     draft = models.BooleanField(default=True)
 
-    related_posts = models.ManyToManyField('self', blank=True, null=True)
+    related_posts = models.ManyToManyField('self', blank=True)
 
     pub_date = models.DateTimeField(null=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -176,7 +176,7 @@ class Work(ModelMeta, models.Model):
     link = models.URLField(blank=True, null=True)
 
     images = models.ManyToManyField(ImageModel)
-    related_works = models.ManyToManyField('self', null=True, blank=True)
+    related_works = models.ManyToManyField('self', blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
