@@ -213,6 +213,10 @@ class Work(ModelMeta, models.Model):
 class Resume(models.Model):
     file = models.FileField(upload_to='resumes', null=True)
 
+    @property
+    def url(self):
+        return self.file.url if self.file else None
+
     @classmethod
     def get_resume(cls):
         return cls.objects.last()
