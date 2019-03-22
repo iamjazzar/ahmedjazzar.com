@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'markdown_deux',
     'martor',
     'meta',
+    'rest_framework',
     'secretballot',
     'storages',
 
@@ -61,6 +62,14 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '.compiled'),

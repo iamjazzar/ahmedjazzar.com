@@ -25,6 +25,9 @@ urlpatterns = [
 
     path('robots.txt', include('robots.urls', )),
 
+    # API links
+    path('api/', include('api.urls')),
+
     # Includes
     path('admin/', admin.site.urls),
     path('martor/', include('martor.urls')),

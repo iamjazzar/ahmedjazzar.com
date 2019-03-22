@@ -19,6 +19,11 @@ class BlogAdmin(admin.ModelAdmin):
     def view_on_site(self, obj):
         return obj.url
 
+    def published(self, obj):
+        return obj.published
+
+    published.boolean = True
+
 
 class ContactRequestAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'resolved']
