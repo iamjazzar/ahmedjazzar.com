@@ -63,14 +63,11 @@
                 <li class="{% if tab == 'blog' %}active{% endif %}">
                   <a href="{% url 'blog' %}">{% trans 'Blog' %}</a>
                 </li>
-                <li>
-                  <a href="{{ resume.url }}" download>{% trans 'Resume' %}</a>
-                </li>
                 <li class="has-dropdown {% if tab == 'about' %}active{% endif %}">
                   <a href="{% url 'about' %}">{% trans 'About' %}</a>
                   <ul class="dropdown">
                     <li><a href="{% url 'about' %}">{% trans 'About Me' %}</a></li>
-                    <li><a href="{% if resume %}{{ resume.file.url }}{% else %}#{% endif %}">{% trans "Resume" %}</a></li>
+                    <li><a href="{{ resume.url }}" target="_blank" download>{% trans "Resume" %}</a></li>
                   </ul>
                 </li>
                 <li class="{% if tab == 'contact' %}active{% endif %}">
