@@ -21,7 +21,6 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'robots',
-    'markdown_deux',
     'martor',
     'meta',
     'rest_framework',
