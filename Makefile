@@ -32,3 +32,6 @@ styles: ## Compile the project's styles
 
 ssh: ## SSH into heroku
 	@heroku run bash
+
+logs: # Run Heroku logs
+	@heroku logs --tail
