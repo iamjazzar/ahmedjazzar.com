@@ -29,3 +29,6 @@ requirements: ## Installs all requirements needed by development and test enviro
 styles: ## Compile the project's styles
 	npm install
 	@echo "Finished installing requirements."
+
+ssh: ## SSH into heroku
+	@heroku run bash
